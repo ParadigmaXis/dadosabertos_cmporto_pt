@@ -26,7 +26,9 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.3#egg=ckan'; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckan/requirements.txt; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
-    $APP_HOME/bin/pip install ckanext-pdfview
+    $APP_HOME/bin/pip install ckanext-pdfview; \
+    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-harvest.git#egg=ckanext-harvest; \
+    $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt
 
 # Set configurations
 RUN mkdir -p $CKAN_CONFIG; \
@@ -40,7 +42,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats" \
+      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest ckan_harvester" \
       "package_edit_return_url                         = /dataset/edit/<NAME>" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
@@ -55,7 +57,9 @@ RUN mkdir -p $CKAN_CONFIG; \
       "search.facets.limit                             = 1000" \
       "guia.admin.verf_vocabs                          = false" \
       "guia.admin.verf_cats                            = false" \
-      "ckan.search.show_all_types                      = true"; \
+      "ckan.search.show_all_types                      = true" \
+      "ckan.harvest.mq.type                            = rabbitmq" \
+      "ckan.harvest.mq.hostname                        = isa"; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
     
 # Copy start script
