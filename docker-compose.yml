@@ -1,0 +1,25 @@
+db:
+  build: ./docker/postgres
+  hostname: db
+  domainname: localdomain
+  volumes: 
+    - /srv/docker/ckan/db:/var/lib/postgresql/data
+
+solr:
+  build: ./docker/solr
+  hostname: solr
+  domainname: localdomain
+  volumes:
+   - /srv/docker/ckan/solr:/opt/solr/example/solr/ckan
+   
+ckan:
+  build: .
+  hostname: ckan
+  domainname: localdomain
+  links:
+    - db:db
+    - solr:solr
+  ports:
+    - 80:80
+  volumes:
+    - /srv/docker/ckan/filestore:/srv/app/store
