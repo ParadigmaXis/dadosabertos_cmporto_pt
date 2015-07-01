@@ -1,12 +1,14 @@
 db:
-  build: ./docker/postgres
+#  build: ./docker/postgres
+  image: hermes:5001/db
   hostname: db
   domainname: localdomain
   volumes: 
     - /srv/docker/ckan/db:/var/lib/postgresql/data
 
 solr:
-  build: ./docker/solr
+#  build: ./docker/solr
+  image: hermes:5001/solr
   hostname: solr
   domainname: localdomain
   volumes:
@@ -23,3 +25,4 @@ ckan:
     - 80:80
   volumes:
     - /srv/docker/ckan/filestore:/srv/app/store
+    - /srv/docker/ckan/conf:/srv/app/conf

@@ -34,6 +34,14 @@ mkdir -p $STORE_PATH
 chown apache $STORE_PATH
 chmod u+rwx $STORE_PATH
 
+# Add MQ settings
+if [ ! -f /srv/app/conf/app.ini ]; then
+    cp -n "$APP_CONFIG_FILE" /srv/app/conf/
+else
+    cp -f /srv/app/conf/app.ini "$APP_CONFIG"
+fi
+"$APP_HOME"/bin/paster --plugin=ckan config-tool -f "$APP_CONFIG_FILE" "$CKAN_CONFIG/$CONFIG_FILE" -e
+
 # Initialize db
 "$APP_HOME"/bin/paster --plugin=ckan db init -c "${CKAN_CONFIG}/ckan.ini"
 

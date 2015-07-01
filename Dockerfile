@@ -2,6 +2,8 @@ FROM centos:7
 
 ENV APP_NAME ckan
 ENV APP_HOME /srv/app/$APP_NAME
+ENV APP_CONFIG /etc/app
+ENV APP_CONFIG_FILE $APP_CONFIG/app.ini
 ENV CKAN_CONFIG /etc/ckan
 ENV CKAN_DB_USER ckan
 ENV CKAN_DB_PASS 123456
@@ -12,7 +14,7 @@ ENV STORE_PATH /srv/app/store
 RUN yum -y update; \
     yum -y install epel-release; \
     yum -y install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm; \
-    yum -y install httpd python-virtualenv mod_wsgi git postgresql94 postgresql94-devel gcc; \
+    yum -y install httpd python-virtualenv mod_wsgi git postgresql94 postgresql94-devel gcc supervisor; \
     yum clean all
 
 # Should be $APP_NAME
@@ -27,7 +29,7 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckan/requirements.txt; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
-    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-harvest.git#egg=ckanext-harvest; \
+    $APP_HOME/bin/pip install -e git+https://github.com/ParadigmaXis/ckanext-harvest.git#egg=ckanext-harvest; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt
 
 # Set configurations
@@ -57,11 +59,13 @@ RUN mkdir -p $CKAN_CONFIG; \
       "search.facets.limit                             = 1000" \
       "guia.admin.verf_vocabs                          = false" \
       "guia.admin.verf_cats                            = false" \
-      "ckan.search.show_all_types                      = true" \
-      "ckan.harvest.mq.type                            = rabbitmq" \
-      "ckan.harvest.mq.hostname                        = isa"; \
+      "ckan.search.show_all_types                      = true"; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
-    
+
+# Add APP Settings
+RUN mkdir -p $APP_CONFIG
+ADD ./app.ini $APP_CONFIG_FILE
+
 # Copy start script
 COPY ./docker/ckan/start.bash /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.bash
