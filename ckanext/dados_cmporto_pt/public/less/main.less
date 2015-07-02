@@ -1,0 +1,266 @@
+/*
+ CSS rules that override those provided by CKAN's main.css (which is itself derived from CKAN's main.less)
+*/
+
+.account-masthead {
+    background-color: rgb(40, 40, 40);
+}
+
+@cmp_lighter_washedout_color: #dadfeb;
+@cmp_washedout_color: #c1cade;
+@cmp_dar_washedout_color: #9baacc;
+@cmp_lightest_color: #0b4be0;
+@cmp_lighter_color: #093bb0;
+@cmp_light_color: #08349c;
+@cmp_medium_color: #062b80;
+@cmp_another_color: #072875;
+@cmp_dark_color: #052369;
+@cmp_yet_another_color: #041a4f;
+@cmp_darker_color: #031236;
+@cmp_darkest_color: #010a1f;
+
+
+a {
+  color: @cmp_medium_color;
+}
+a:hover,
+a:focus {
+  color: @cmp_darker_color;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  background-color: @cmp_another_color;
+  background-image: -moz-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_medium_color), to(@cmp_dark_color));
+  background-image: -webkit-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: -o-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: linear-gradient(to bottom, @cmp_medium_color, @cmp_dark_color);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: @cmp_another_color;
+  background-image: -moz-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_medium_color), to(@cmp_dark_color));
+  background-image: -webkit-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: -o-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
+  background-image: linear-gradient(to bottom, @cmp_medium_color, @cmp_dark_color);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
+}
+.btn-primary {
+  background-color: @cmp_light_color;
+  background-image: -moz-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_lighter_color), to(@cmp_medium_color));
+  background-image: -webkit-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: -o-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: linear-gradient(to bottom, @cmp_lighter_color, @cmp_medium_color);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
+  *background-color: @cmp_medium_color;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  background-color: @cmp_medium_color;
+  *background-color: @cmp_dark_color;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: @cmp_yet_another_color;
+}
+.btn-link {
+  color: @cmp_medium_color;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: @cmp_darker_color;
+}
+.btn-group.open .btn-primary.dropdown-toggle {
+  background-color: @cmp_medium_color;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover,
+.nav-list > .active > a:focus {
+  background-color: @cmp_medium_color;
+}
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  background-color: @cmp_medium_color;
+}
+.nav .dropdown-toggle .caret {
+  border-top-color: @cmp_medium_color;
+  border-bottom-color: @cmp_medium_color;
+}
+.nav .dropdown-toggle:hover .caret,
+.nav .dropdown-toggle:focus .caret {
+  border-top-color: @cmp_darker_color;
+  border-bottom-color: @cmp_darker_color;
+}
+a.thumbnail:hover,
+a.thumbnail:focus {
+  border-color: @cmp_medium_color;
+}
+a.tag:hover {
+  background-color: @cmp_lighter_color;
+  border: 1px solid @cmp_medium_color;
+  -webkit-box-shadow: inset 0 1px 0 @cmp_lightest_color;
+  -moz-box-shadow: inset 0 1px 0 @cmp_lightest_color;
+  box-shadow: inset 0 1px 0 @cmp_lightest_color;
+}
+.banner {
+  background-color: @cmp_medium_color;
+}
+.media-view:hover,
+.media-view.hovered {
+  border-color: @cmp_medium_color;
+}
+.media-view:hover .banner,
+.media-view.hovered .banner {
+  background-color: @cmp_medium_color;
+}
+.editor .editor-info-block a {
+  color: @cmp_medium_color;
+}
+.control-custom.disabled .checkbox.btn {
+  background-color: @cmp_light_color;
+  background-image: -moz-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_lighter_color), to(@cmp_medium_color));
+  background-image: -webkit-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: -o-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
+  background-image: linear-gradient(to bottom, @cmp_lighter_color, @cmp_medium_color);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
+  border-color: @cmp_medium_color @cmp_medium_color @cmp_darker_color;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: @cmp_medium_color;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.control-custom.disabled .checkbox.btn:hover,
+.control-custom.disabled .checkbox.btn:focus,
+.control-custom.disabled .checkbox.btn:active,
+.control-custom.disabled .checkbox.btn.active,
+.control-custom.disabled .checkbox.btn.disabled,
+.control-custom.disabled .checkbox.btn[disabled] {
+  background-color: @cmp_medium_color;
+  *background-color: @cmp_dark_color;
+}
+.control-custom.disabled .checkbox.btn:active,
+.control-custom.disabled .checkbox.btn.active {
+  background-color: @cmp_yet_another_color;
+}
+.resource-list.reordering .resource-item.ui-sortable-helper {
+  border: 1px solid @cmp_medium_color;
+}
+.resource-list.reordering .resource-item.ui-sortable-helper .handle {
+  border-color: @cmp_medium_color;
+}
+.view-list li a.active,
+.view-list li a:hover {
+  border-color: @cmp_medium_color;
+}
+.view-list li a.active .icon,
+.view-list li a:hover .icon {
+  background-color: @cmp_medium_color;
+}
+.view-list li .arrow {
+  border-top-color: @cmp_medium_color;
+}
+.view-list li.active a {
+  border-color: @cmp_medium_color;
+}
+.view-list li.active a .icon {
+  background-color: @cmp_medium_color;
+}
+.view-list.stacked::-webkit-scrollbar-thumb:hover {
+  background-color: @cmp_medium_color;
+}
+.homepage .module-search .module-content {
+  background-color: @cmp_medium_color;
+}
+.homepage .module-search .tags {
+  background-color: @cmp_yet_another_color;
+}
+.account-masthead {
+  background: @cmp_yet_another_color url("../../../base/images/bg.png");
+}
+.account-masthead .account ul li {
+  border-left: 1px solid @cmp_darker_color;
+}
+.account-masthead .account ul li a {
+  color: @cmp_washedout_color;
+}
+.account-masthead .account ul li a:hover {
+  color: @cmp_lighter_washedout_color;
+  background-color: @cmp_darker_color;
+}
+.account-masthead .account .notifications a span {
+  background-color: @cmp_darker_color;
+}
+.account-masthead .account .notifications a:hover span {
+  background-color: @cmp_darkest_color;
+}
+.masthead {
+  background: @cmp_medium_color url("../../../base/images/bg.png");
+}
+.masthead input[type="text"] {
+  border-color: @cmp_dark_color;
+}
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li.active a {
+  background-color: @cmp_yet_another_color;
+}
+.masthead .btn-navbar,
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus,
+.masthead .btn-navbar:active,
+.masthead .btn-navbar.active,
+.masthead .btn-navbar.disabled,
+.masthead .btn-navbar[disabled] {
+  background-color: @cmp_yet_another_color;
+}
+.site-footer {
+  background: @cmp_medium_color url("../../../base/images/bg.png");
+}
+.site-footer input[type="text"] {
+  border-color: @cmp_dark_color;
+}
+.site-footer .navigation .nav-pills li a:hover,
+.site-footer .navigation .nav-pills li.active a {
+  background-color: @cmp_yet_another_color;
+}
+.site-footer .btn-navbar,
+.site-footer .btn-navbar:hover,
+.site-footer .btn-navbar:focus,
+.site-footer .btn-navbar:active,
+.site-footer .btn-navbar.active,
+.site-footer .btn-navbar.disabled,
+.site-footer .btn-navbar[disabled] {
+  background-color: @cmp_yet_another_color;
+}
+.site-footer,
+.site-footer label,
+.site-footer small {
+  color: @cmp_dar_washedout_color;
+}
+.site-footer a {
+  color: @cmp_dar_washedout_color;
+}
+.attribution small {
+  color: @cmp_dar_washedout_color;
+  font-size: 12px;
+}
+.popover-followee .nav li a i {
+  background-color: @cmp_medium_color;
+}
+.popover-followee .nav li.active a i {
+  color: @cmp_medium_color;
+}
+body {
+  background: @cmp_medium_color url("../../../base/images/bg.png");
+}
