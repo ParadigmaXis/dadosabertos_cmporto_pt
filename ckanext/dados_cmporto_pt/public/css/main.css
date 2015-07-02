@@ -165,6 +165,11 @@ a.tag:hover {
 .view-list.stacked::-webkit-scrollbar-thumb:hover {
   background-color: #062b80;
 }
+@media (min-width: 768px) {
+  .hero {
+    background: #ffffff url("../img/bg_body.png");
+  }
+}
 .homepage .module-search .module-content {
   background-color: #062b80;
 }
@@ -248,4 +253,8 @@ a.tag:hover {
 }
 body {
   background: #062b80 url("../../../base/images/bg.png");
+}
+.ie8 .hero,
+.ie7 .hero {
+  background: url("../img/bg_body.png");
 }

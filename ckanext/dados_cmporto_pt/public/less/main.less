@@ -180,6 +180,11 @@ a.tag:hover {
 .view-list.stacked::-webkit-scrollbar-thumb:hover {
   background-color: @cmp_medium_color;
 }
+@media (min-width: 768px) {
+  .hero {
+    background: white url("../img/bg_body.png");
+  }
+}
 .homepage .module-search .module-content {
   background-color: @cmp_medium_color;
 }
@@ -263,4 +268,8 @@ a.tag:hover {
 }
 body {
   background: @cmp_medium_color url("../../../base/images/bg.png");
+}
+.ie8 .hero,
+.ie7 .hero {
+  background: url("../img/bg_body.png");
 }
