@@ -35,7 +35,7 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
 # Set configurations
 RUN mkdir -p $CKAN_CONFIG; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e \
-      "ckan.site_url                                   = http://opendata.cm-porto.net" \
+      "ckan.site_url                                   = http://dados.cm-porto.pt" \
       "sqlalchemy.url                                  = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$CKAN_DB_NAME" \
       "solr_url                                        = http://solr:8983/solr/ckan" \
       "ckan.auth.create_unowned_dataset                = false" \
@@ -45,20 +45,13 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
       "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest ckan_harvester" \
-      "package_edit_return_url                         = /dataset/edit/<NAME>" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
-      "ckan.locales_offered                            = pt_PT" \
-      "ckan.locales_filtered_out                       = pt_PT" \
+      "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
       "ckan.max_resource_size                          = 100" \
       "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
       "ckan.storage_path                               = $STORE_PATH" \
-      "ckan.datasets_per_page                          = 1000" \
-      "search.facets.default                           = 1000" \
-      "search.facets.limit                             = 1000" \
-      "guia.admin.verf_vocabs                          = false" \
-      "guia.admin.verf_cats                            = false" \
       "ckan.search.show_all_types                      = true"; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
 
