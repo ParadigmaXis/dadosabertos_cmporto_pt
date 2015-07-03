@@ -4,6 +4,7 @@ import ckan.plugins.toolkit as toolkit
 
 class CMPortoPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
+    plugins.implements(plugins.IRoutes, inherit=True)
 
     # IConfigurer
 
@@ -11,3 +12,12 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'dados_cmporto_pt')
+
+    # IRoutes
+
+    def before_map(self, map):
+        """This IRoutes implementation overrides the standard
+        ``/ckan-admin/config`` behaviour with a custom controller.
+        """
+        map.connect('/ckan-admin/config', controller='ckanext.dados_cmporto_pt.controller:AdminController', action='config')
+        return map
