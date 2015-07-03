@@ -2,63 +2,62 @@
  CSS rules that override those provided by CKAN's main.css (which is itself derived from CKAN's main.less)
 */
 
-.account-masthead {
-    background-color: rgb(40, 40, 40);
-}
+// Colors
+@cmp_color_washed1: #dadfeb;
+@cmp_color_washed2: #c1cade;
+@cmp_color_washed3: #9baacc;
+@cmp_color_bright1: #0b4be0;
+@cmp_color_bright2: #093bb0;
+@cmp_color_bright3: #08349c;
+@cmp_color_dark1: #062b80;
+@cmp_color_dark2: #072875;
+@cmp_color_dark3: #052369;
+@cmp_color_dark4: #041a4f;
+@cmp_color_dark5: #031236;
+@cmp_color_dark6: #010a1f;
 
-@cmp_lighter_washedout_color: #dadfeb;
-@cmp_washedout_color: #c1cade;
-@cmp_dar_washedout_color: #9baacc;
-@cmp_lightest_color: #0b4be0;
-@cmp_lighter_color: #093bb0;
-@cmp_light_color: #08349c;
-@cmp_medium_color: #062b80;
-@cmp_another_color: #072875;
-@cmp_dark_color: #052369;
-@cmp_yet_another_color: #041a4f;
-@cmp_darker_color: #031236;
-@cmp_darkest_color: #010a1f;
-
+// Lengths
+@layout_min_width: 768px;
 
 a {
-  color: @cmp_medium_color;
+  color: @cmp_color_dark1;
 }
 a:hover,
 a:focus {
-  color: @cmp_darker_color;
+  color: @cmp_color_dark5;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
-  background-color: @cmp_another_color;
-  background-image: -moz-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_medium_color), to(@cmp_dark_color));
-  background-image: -webkit-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: -o-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: linear-gradient(to bottom, @cmp_medium_color, @cmp_dark_color);
+  background-color: @cmp_color_dark2;
+  background-image: -moz-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_color_dark1), to(@cmp_color_dark3));
+  background-image: -webkit-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: -o-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: linear-gradient(to bottom, @cmp_color_dark1, @cmp_color_dark3);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  background-color: @cmp_another_color;
-  background-image: -moz-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_medium_color), to(@cmp_dark_color));
-  background-image: -webkit-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: -o-linear-gradient(top, @cmp_medium_color, @cmp_dark_color);
-  background-image: linear-gradient(to bottom, @cmp_medium_color, @cmp_dark_color);
+  background-color: @cmp_color_dark2;
+  background-image: -moz-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_color_dark1), to(@cmp_color_dark3));
+  background-image: -webkit-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: -o-linear-gradient(top, @cmp_color_dark1, @cmp_color_dark3);
+  background-image: linear-gradient(to bottom, @cmp_color_dark1, @cmp_color_dark3);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
 }
 .btn-primary {
-  background-color: @cmp_light_color;
-  background-image: -moz-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_lighter_color), to(@cmp_medium_color));
-  background-image: -webkit-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: -o-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: linear-gradient(to bottom, @cmp_lighter_color, @cmp_medium_color);
+  background-color: @cmp_color_bright3;
+  background-image: -moz-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_color_bright2), to(@cmp_color_dark1));
+  background-image: -webkit-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: -o-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: linear-gradient(to bottom, @cmp_color_bright2, @cmp_color_dark1);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
-  *background-color: @cmp_medium_color;
+  *background-color: @cmp_color_dark1;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -66,78 +65,78 @@ a:focus {
 .btn-primary.active,
 .btn-primary.disabled,
 .btn-primary[disabled] {
-  background-color: @cmp_medium_color;
-  *background-color: @cmp_dark_color;
+  background-color: @cmp_color_dark1;
+  *background-color: @cmp_color_dark3;
 }
 .btn-primary:active,
 .btn-primary.active {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .btn-link {
-  color: @cmp_medium_color;
+  color: @cmp_color_dark1;
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: @cmp_darker_color;
+  color: @cmp_color_dark5;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .nav-list > .active > a,
 .nav-list > .active > a:hover,
 .nav-list > .active > a:focus {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .nav .dropdown-toggle .caret {
-  border-top-color: @cmp_medium_color;
-  border-bottom-color: @cmp_medium_color;
+  border-top-color: @cmp_color_dark1;
+  border-bottom-color: @cmp_color_dark1;
 }
 .nav .dropdown-toggle:hover .caret,
 .nav .dropdown-toggle:focus .caret {
-  border-top-color: @cmp_darker_color;
-  border-bottom-color: @cmp_darker_color;
+  border-top-color: @cmp_color_dark5;
+  border-bottom-color: @cmp_color_dark5;
 }
 a.thumbnail:hover,
 a.thumbnail:focus {
-  border-color: @cmp_medium_color;
+  border-color: @cmp_color_dark1;
 }
 a.tag:hover {
-  background-color: @cmp_lighter_color;
-  border: 1px solid @cmp_medium_color;
-  -webkit-box-shadow: inset 0 1px 0 @cmp_lightest_color;
-  -moz-box-shadow: inset 0 1px 0 @cmp_lightest_color;
-  box-shadow: inset 0 1px 0 @cmp_lightest_color;
+  background-color: @cmp_color_bright2;
+  border: 1px solid @cmp_color_dark1;
+  -webkit-box-shadow: inset 0 1px 0 @cmp_color_bright1;
+  -moz-box-shadow: inset 0 1px 0 @cmp_color_bright1;
+  box-shadow: inset 0 1px 0 @cmp_color_bright1;
 }
 .banner {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .media-view:hover,
 .media-view.hovered {
-  border-color: @cmp_medium_color;
+  border-color: @cmp_color_dark1;
 }
 .media-view:hover .banner,
 .media-view.hovered .banner {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .editor .editor-info-block a {
-  color: @cmp_medium_color;
+  color: @cmp_color_dark1;
 }
 .control-custom.disabled .checkbox.btn {
-  background-color: @cmp_light_color;
-  background-image: -moz-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_lighter_color), to(@cmp_medium_color));
-  background-image: -webkit-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: -o-linear-gradient(top, @cmp_lighter_color, @cmp_medium_color);
-  background-image: linear-gradient(to bottom, @cmp_lighter_color, @cmp_medium_color);
+  background-color: @cmp_color_bright3;
+  background-image: -moz-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@cmp_color_bright2), to(@cmp_color_dark1));
+  background-image: -webkit-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: -o-linear-gradient(top, @cmp_color_bright2, @cmp_color_dark1);
+  background-image: linear-gradient(to bottom, @cmp_color_bright2, @cmp_color_dark1);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
-  border-color: @cmp_medium_color @cmp_medium_color @cmp_darker_color;
+  border-color: @cmp_color_dark1 @cmp_color_dark1 @cmp_color_dark5;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: @cmp_medium_color;
+  *background-color: @cmp_color_dark1;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
@@ -147,78 +146,103 @@ a.tag:hover {
 .control-custom.disabled .checkbox.btn.active,
 .control-custom.disabled .checkbox.btn.disabled,
 .control-custom.disabled .checkbox.btn[disabled] {
-  background-color: @cmp_medium_color;
-  *background-color: @cmp_dark_color;
+  background-color: @cmp_color_dark1;
+  *background-color: @cmp_color_dark3;
 }
 .control-custom.disabled .checkbox.btn:active,
 .control-custom.disabled .checkbox.btn.active {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .resource-list.reordering .resource-item.ui-sortable-helper {
-  border: 1px solid @cmp_medium_color;
+  border: 1px solid @cmp_color_dark1;
 }
 .resource-list.reordering .resource-item.ui-sortable-helper .handle {
-  border-color: @cmp_medium_color;
+  border-color: @cmp_color_dark1;
 }
 .view-list li a.active,
 .view-list li a:hover {
-  border-color: @cmp_medium_color;
+  border-color: @cmp_color_dark1;
 }
 .view-list li a.active .icon,
 .view-list li a:hover .icon {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .view-list li .arrow {
-  border-top-color: @cmp_medium_color;
+  border-top-color: @cmp_color_dark1;
 }
 .view-list li.active a {
-  border-color: @cmp_medium_color;
+  border-color: @cmp_color_dark1;
 }
 .view-list li.active a .icon {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .view-list.stacked::-webkit-scrollbar-thumb:hover {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
-@media (min-width: 768px) {
+@media (min-width: @layout_min_width) {
   .hero {
+    background-color: transparent;
+    background-image: none;
+  }
+  .homepage {
     background: white url("../img/bg_body.png");
   }
 }
+@media (min-width: @layout_min_width) {
+  [role=main],
+  .main {
+    background:  white url("../img/bg_body.png");
+  }
+}
+@media (min-width: @layout_min_width) {
+  .homepage [role=main],
+  .homepage .main {
+    background: transparent;
+  }
+}
+@media (min-width: @layout_min_width) {
+  .wrapper {
+    background-color: rgba(255,255,255,0.8);
+  }
+}
+.homepage .module-search {
+  background-color: transparent;
+}
 .homepage .module-search .module-content {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
+  opacity: 0.8;
 }
 .homepage .module-search .tags {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .account-masthead {
-  background: @cmp_yet_another_color url("../../../base/images/bg.png");
+  background: @cmp_color_dark4 url("../../../base/images/bg.png");
 }
 .account-masthead .account ul li {
-  border-left: 1px solid @cmp_darker_color;
+  border-left: 1px solid @cmp_color_dark5;
 }
 .account-masthead .account ul li a {
-  color: @cmp_washedout_color;
+  color: @cmp_color_washed2;
 }
 .account-masthead .account ul li a:hover {
-  color: @cmp_lighter_washedout_color;
-  background-color: @cmp_darker_color;
+  color: @cmp_color_washed1;
+  background-color: @cmp_color_dark5;
 }
 .account-masthead .account .notifications a span {
-  background-color: @cmp_darker_color;
+  background-color: @cmp_color_dark5;
 }
 .account-masthead .account .notifications a:hover span {
-  background-color: @cmp_darkest_color;
+  background-color: @cmp_color_dark6;
 }
 .masthead {
-  background: @cmp_medium_color url("../../../base/images/bg.png");
+  background: @cmp_color_dark1 url("../../../base/images/bg.png");
 }
 .masthead input[type="text"] {
-  border-color: @cmp_dark_color;
+  border-color: @cmp_color_dark3;
 }
 .masthead .navigation .nav-pills li a:hover,
 .masthead .navigation .nav-pills li.active a {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .masthead .btn-navbar,
 .masthead .btn-navbar:hover,
@@ -227,17 +251,17 @@ a.tag:hover {
 .masthead .btn-navbar.active,
 .masthead .btn-navbar.disabled,
 .masthead .btn-navbar[disabled] {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .site-footer {
-  background: @cmp_medium_color url("../../../base/images/bg.png");
+  background: @cmp_color_dark1 url("../../../base/images/bg.png");
 }
 .site-footer input[type="text"] {
-  border-color: @cmp_dark_color;
+  border-color: @cmp_color_dark3;
 }
 .site-footer .navigation .nav-pills li a:hover,
 .site-footer .navigation .nav-pills li.active a {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .site-footer .btn-navbar,
 .site-footer .btn-navbar:hover,
@@ -246,30 +270,31 @@ a.tag:hover {
 .site-footer .btn-navbar.active,
 .site-footer .btn-navbar.disabled,
 .site-footer .btn-navbar[disabled] {
-  background-color: @cmp_yet_another_color;
+  background-color: @cmp_color_dark4;
 }
 .site-footer,
 .site-footer label,
 .site-footer small {
-  color: @cmp_dar_washedout_color;
+  color: @cmp_color_washed3;
 }
 .site-footer a {
-  color: @cmp_dar_washedout_color;
+  color: @cmp_color_washed3;
 }
 .attribution small {
-  color: @cmp_dar_washedout_color;
+  color: @cmp_color_washed3;
   font-size: 12px;
 }
 .popover-followee .nav li a i {
-  background-color: @cmp_medium_color;
+  background-color: @cmp_color_dark1;
 }
 .popover-followee .nav li.active a i {
-  color: @cmp_medium_color;
+  color: @cmp_color_dark1;
 }
 body {
-  background: @cmp_medium_color url("../../../base/images/bg.png");
+  background: @cmp_color_dark1 url("../../../base/images/bg.png");
 }
 .ie8 .hero,
 .ie7 .hero {
-  background: url("../img/bg_body.png");
+  background-color: transparent;
+  background-image: none;
 }

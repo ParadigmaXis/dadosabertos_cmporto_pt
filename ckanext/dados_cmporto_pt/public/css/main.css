@@ -1,9 +1,6 @@
 /*
  CSS rules that override those provided by CKAN's main.css (which is itself derived from CKAN's main.less)
 */
-.account-masthead {
-  background-color: #282828;
-}
 a {
   color: #062b80;
 }
@@ -167,11 +164,36 @@ a.tag:hover {
 }
 @media (min-width: 768px) {
   .hero {
+    background-color: transparent;
+    background-image: none;
+  }
+  .homepage {
     background: #ffffff url("../img/bg_body.png");
   }
 }
+@media (min-width: 768px) {
+  [role=main],
+  .main {
+    background: #ffffff url("../img/bg_body.png");
+  }
+}
+@media (min-width: 768px) {
+  .homepage [role=main],
+  .homepage .main {
+    background: transparent;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+.homepage .module-search {
+  background-color: transparent;
+}
 .homepage .module-search .module-content {
   background-color: #062b80;
+  opacity: 0.8;
 }
 .homepage .module-search .tags {
   background-color: #041a4f;
@@ -256,5 +278,6 @@ body {
 }
 .ie8 .hero,
 .ie7 .hero {
-  background: url("../img/bg_body.png");
+  background-color: transparent;
+  background-image: none;
 }
