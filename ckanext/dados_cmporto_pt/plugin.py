@@ -3,6 +3,8 @@ import ckan.plugins.toolkit as toolkit
 
 
 class CMPortoPlugin(plugins.SingletonPlugin):
+    '''Theme for the dados.cmporto.pt portal
+    '''
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
 
