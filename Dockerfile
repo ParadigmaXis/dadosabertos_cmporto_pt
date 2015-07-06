@@ -30,7 +30,8 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
     $APP_HOME/bin/pip install -e git+https://github.com/ParadigmaXis/ckanext-harvest.git#egg=ckanext-harvest; \
-    $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt
+    $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt; \
+    $APP_HOME/bin/pip install ckanext-geoview
 
 # Add dados_cmporto_pt plugin
 ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
@@ -47,12 +48,13 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest ckan_harvester dados_cmporto_pt" \
+      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest ckan_harvester dados_cmporto_pt geo_view" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
       "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
       "ckan.max_resource_size                          = 100" \
-      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view"; \
+      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view" \
+      "ckanext.geo_view.ol_viewer                      = wms"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
       "ckan.storage_path                               = $STORE_PATH" \
       "ckan.search.show_all_types                      = true"; \
