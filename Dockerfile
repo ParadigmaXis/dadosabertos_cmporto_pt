@@ -31,7 +31,7 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
     $APP_HOME/bin/pip install -e git+https://github.com/ParadigmaXis/ckanext-harvest.git#egg=ckanext-harvest; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt; \
-    $APP_HOME/bin/pip install ckanext-geoview
+    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview
 
 # Add dados_cmporto_pt plugin
 ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
@@ -53,11 +53,11 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.locale_order                               = pt_PT" \
       "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
       "ckan.max_resource_size                          = 100" \
-      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view" \
-      "ckanext.geo_view.ol_viewer                      = wms"; \
+      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
       "ckan.storage_path                               = $STORE_PATH" \
-      "ckan.search.show_all_types                      = true"; \
+      "ckan.search.show_all_types                      = true" \
+      "ckanext.geo_view.ol_viewer                      = wms"; \
     cd $APP_HOME/src/ckan/ckanext-dados_cmporto_pt && "$APP_HOME"/bin/python setup.py develop; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
 
