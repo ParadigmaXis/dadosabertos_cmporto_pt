@@ -1,0 +1,15 @@
+.px-dataset-simples-icon:before {
+  content: "S";
+  background-color: #444;
+  color: #fff;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.px-dataset-composto-icon:before {
+  content: "C";
+  background-color: #444;
+  color: #fff;
+  padding-left: 4px;
+  padding-right: 4px;
+}
