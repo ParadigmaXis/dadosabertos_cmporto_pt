@@ -1,0 +1,12 @@
+{% ckan_extends %}
+
+{% block page_heading %}
+    {% if pkg.type == 'simples' %}
+    <i class="px-dataset-simples-icon"></i>
+    {% elif pkg.type == 'composto' %}
+    <i class="px-dataset-composto-icon"></i>
+    {% elif pkg.type == 'dataset' %}
+    <i class="px-dataset-icon"></i>
+    {% endif %}
+   {{ super() }}
+{% endblock %}
