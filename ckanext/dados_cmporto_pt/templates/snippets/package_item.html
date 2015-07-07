@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+{% block heading_title %}
+    {% if package.type == 'dataset' %}
+    <i class="px-dataset-simples-icon"></i>
+    {% elif package.type == 'composto' %}
+    <i class="px-dataset-composto-icon"></i>
+    {% endif %}
+    {{ super() }}
+{% endblock %}
