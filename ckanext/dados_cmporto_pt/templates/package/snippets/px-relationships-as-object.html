@@ -1,8 +1,8 @@
 
-{# PXIS: relationships_as_object #}
 {% block package_relationships_as_object %}
 
   	<section id="dataset-relationships_as_object" class="resources module-content">
+
   	{% if pkg.type == "composto" %}
   		{# Lista de compostos-pai #}
 	  	{% set list_packages_pai = h.get_relationships_Packages(pkg.list_relationships_as_Obj_isDependencyOf_Subj) %}
@@ -59,6 +59,32 @@
   		{% endif %}
   		
   	{% endif %}  {# pkg.type == "composto" #}
-
+	
+	{% if pkg.type == "simples" and pkg.list_relationships_as_Obj_isDependencyOf_Subj %}
+  	{% set list_packages = h.get_relationships_Packages(pkg.list_relationships_as_Obj_isDependencyOf_Subj) %}
+  	{% if list_packages|length > 0 %}
+  	<div class="container-fluid">
+		<div class="row-fluid">
+	   	<div class="{{ label_span }}">
+		  <p><strong tooltip-id="field-relationships_as_object_string">Faz parte de</strong></p>
+		</div>
+		<div class="{{ field_span }}">
+		<!--Body content-->
+		{% if c.print_model == 1 %}
+		  {% snippet 'snippets/relationship_package_grid.html', packages=list_packages, item_class="resource-item", hide_resources=true %}
+		{% else %}
+		  <div class="page-container">
+		  <div id="projects" class="row projects">
+		  {% snippet 'snippets/package_list.html', packages=list_packages, facet_nav_on='0', list_class='datasets isotope', item_class="dataset isotope" %}
+          </div>
+	      </div>
+		{% endif %}		
+		</div>
+		</div>
+	</div>
+	{% endif %}
+	{% endif %} {# pkg.type == "simples" and ... #}
+	
+	</section>
 {% endblock %}
   

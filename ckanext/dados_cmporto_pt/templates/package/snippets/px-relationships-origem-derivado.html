@@ -1,0 +1,73 @@
+
+{% block package_relationships_origem_derivado %}
+
+<section id="dataset-relationships-origem-derivado" class="resources module-content">
+	{% if pkg.list_relationships_as_Subj_derives_from_Obj %}
+	{% set derivado_de_list_packages = h.get_relationships_Packages(pkg.list_relationships_as_Subj_derives_from_Obj) %}
+	{% else %}
+	{% set derivado_de_list_packages = [] %}
+	{% endif %}
+	
+ 	{% if pkg.list_relationships_as_Obj_derives_from_Subj %}
+ 	{% set origem_de_list_packages = h.get_relationships_Packages(pkg.list_relationships_as_Obj_derives_from_Subj) %}
+ 	{% else %}
+ 	{% set origem_de_list_packages = [] %}
+	{% endif %}
+	
+	{% if derivado_de_list_packages|length > 0 or origem_de_list_packages|length > 0 %}
+  	<h3 class="{{ h3_module_content }}">Origem dos dados</h3>
+  	{% endif %}
+	
+	{% if derivado_de_list_packages|length > 0 %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+	   	<div class="{{ label_span }}">
+	   	<!--Sidebar content-->
+		<p><strong tooltip-id='field-derives_from'>Derivado de</strong></p>
+		</div>
+		<div class="{{ field_span }}">
+		{# DEBUG:
+		<p>pkg.list_relationships_as_Subj_derives_from_Obj : {{ pkg.list_relationships_as_Subj_derives_from_Obj }} </p> #}
+		<!--Body content-->
+		
+		{% if c.print_model == 1 %}
+		  {% snippet 'snippets/relationship_package_grid.html', packages=derivado_de_list_packages, item_class="resource-item", hide_resources=true %}
+		{% else %}
+		  <div class="page-container">
+		  <div id="projects" class="row projects">
+		  {% snippet 'snippets/package_list.html', packages=derivado_de_list_packages, facet_nav_on='0', list_class='datasets', item_class="dataset" %}
+		  </div>
+		  </div>
+		{% endif %}
+		</div>
+		</div>
+	</div>
+  	{% endif %}
+ 
+ 	{% if origem_de_list_packages|length > 0 %}
+	<div class="container-fluid">
+		<div class="row-fluid">
+	   	<div class="{{ label_span }}">
+	   	<!--Sidebar content-->
+		<p><strong tooltip-id='field-has_derivation'>Origem de</strong></p>
+		</div>
+		<div class="{{ field_span }}">
+		<!--Body content-->
+		{% if c.print_model == 1 %}
+		  {% snippet 'snippets/relationship_package_grid.html', packages=origem_de_list_packages, item_class="resource-item", hide_resources=true %}
+		{% else %}
+		  <div class="page-container">
+		  <div id="projects" class="row projects">
+		  {% snippet 'snippets/package_list.html', facet_nav_on='0', packages=origem_de_list_packages, list_class='datasets', item_class="dataset" %}
+		  </div>
+		  </div>
+		{% endif %}
+		</div>
+		</div>
+	</div>
+ 	{% endif %}
+
+</section>
+	
+{% endblock %}
+  
