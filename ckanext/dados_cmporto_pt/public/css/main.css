@@ -314,3 +314,7 @@ body {
   display: block;
   float: left;
 }
+img.tiny-logo {
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+}

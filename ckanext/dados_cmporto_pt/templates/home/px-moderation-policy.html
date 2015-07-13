@@ -1,0 +1,18 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Política de Moderação') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Política de Moderação'), controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{{ _('Política de Moderação') }}</h1>
+      <i>Conteúdo a definir</i>
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
