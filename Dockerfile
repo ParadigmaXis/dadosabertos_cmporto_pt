@@ -25,7 +25,7 @@ ADD ./docker/apache/app.wsgi $CKAN_CONFIG/
 RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     mkdir -p $APP_HOME; \
     virtualenv --no-site-packages $APP_HOME; \
-    $APP_HOME/bin/pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.3#egg=ckan'; \
+    $APP_HOME/bin/pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.3.1#egg=ckan'; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckan/requirements.txt; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
