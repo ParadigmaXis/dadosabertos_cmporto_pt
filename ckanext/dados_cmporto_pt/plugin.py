@@ -1,5 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckanext.harvest.harvesters import CKANHarvester
+
+import logging
+log = logging.getLogger(__name__)
 
 
 class CMPortoPlugin(plugins.SingletonPlugin):
@@ -26,3 +32,22 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         map.connect('/privacy-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='privacy_policy')
         map.connect('/moderation-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy')
         return map
+
+class GuiaHarvesterPlugin(CKANHarvester):
+    '''Harvester for CMPorto's GUIA
+    '''
+    def info(self):
+        return {
+            'name': 'guia',
+            'title': 'GUIA',
+            'description': 'Harvests remote GUIA CKAN instances',
+            'form_config_interface':'Text'
+        }
+
+    def _should_import(self,package_dict):
+        extras = package_dict.get('extras', [])
+        is_public_package = extras.get('fornecimento_externo', '') == u'Não'
+        if not is_public_package:
+            log.warn('Remote dataset is not published ({0}), not importing...'.format(package_dict.get('id', '')))
+            return False
+        return True
