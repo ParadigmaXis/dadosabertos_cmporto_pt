@@ -66,6 +66,9 @@ RUN mkdir -p $CKAN_CONFIG; \
 RUN mkdir -p $APP_CONFIG
 ADD ./app.ini $APP_CONFIG_FILE
 
+# Supervisor to run ckan and harvest jobs
+COPY ./docker/ckan/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Copy start script
 COPY ./docker/ckan/start.bash /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.bash
