@@ -1,0 +1,18 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Termos de Utilização') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Termos de Utilização'), controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='terms_of_use' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{{ _('Termos de Utilização') }}</h1>
+      <i>Conteúdo a definir</i>
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

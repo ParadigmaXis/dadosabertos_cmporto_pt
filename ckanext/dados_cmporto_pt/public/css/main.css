@@ -1,0 +1,320 @@
+/*
+ CSS rules that override those provided by CKAN's main.css (which is itself derived from CKAN's main.less)
+*/
+a {
+  color: #062b80;
+}
+a:hover,
+a:focus {
+  color: #031236;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  background-color: #072875;
+  background-image: -moz-linear-gradient(top, #062b80, #052369);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#062b80), to(#052369));
+  background-image: -webkit-linear-gradient(top, #062b80, #052369);
+  background-image: -o-linear-gradient(top, #062b80, #052369);
+  background-image: linear-gradient(to bottom, #062b80, #052369);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: #072875;
+  background-image: -moz-linear-gradient(top, #062b80, #052369);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#062b80), to(#052369));
+  background-image: -webkit-linear-gradient(top, #062b80, #052369);
+  background-image: -o-linear-gradient(top, #062b80, #052369);
+  background-image: linear-gradient(to bottom, #062b80, #052369);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff810606', endColorstr='#ff690505', GradientType=0);
+}
+.btn-primary {
+  background-color: #08349c;
+  background-image: -moz-linear-gradient(top, #093bb0, #062b80);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#093bb0), to(#062b80));
+  background-image: -webkit-linear-gradient(top, #093bb0, #062b80);
+  background-image: -o-linear-gradient(top, #093bb0, #062b80);
+  background-image: linear-gradient(to bottom, #093bb0, #062b80);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
+  *background-color: #062b80;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  background-color: #062b80;
+  *background-color: #052369;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #041a4f;
+}
+.btn-link {
+  color: #062b80;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: #031236;
+}
+.btn-group.open .btn-primary.dropdown-toggle {
+  background-color: #062b80;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover,
+.nav-list > .active > a:focus {
+  background-color: #062b80;
+}
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  background-color: #062b80;
+}
+.nav .dropdown-toggle .caret {
+  border-top-color: #062b80;
+  border-bottom-color: #062b80;
+}
+.nav .dropdown-toggle:hover .caret,
+.nav .dropdown-toggle:focus .caret {
+  border-top-color: #031236;
+  border-bottom-color: #031236;
+}
+a.thumbnail:hover,
+a.thumbnail:focus {
+  border-color: #062b80;
+}
+a.tag:hover {
+  background-color: #093bb0;
+  border: 1px solid #062b80;
+  -webkit-box-shadow: inset 0 1px 0 #0b4be0;
+  -moz-box-shadow: inset 0 1px 0 #0b4be0;
+  box-shadow: inset 0 1px 0 #0b4be0;
+}
+.banner {
+  background-color: #062b80;
+}
+.media-view:hover,
+.media-view.hovered {
+  border-color: #062b80;
+}
+.media-view:hover .banner,
+.media-view.hovered .banner {
+  background-color: #062b80;
+}
+.editor .editor-info-block a {
+  color: #062b80;
+}
+.control-custom.disabled .checkbox.btn {
+  background-color: #08349c;
+  background-image: -moz-linear-gradient(top, #093bb0, #062b80);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#093bb0), to(#062b80));
+  background-image: -webkit-linear-gradient(top, #093bb0, #062b80);
+  background-image: -o-linear-gradient(top, #093bb0, #062b80);
+  background-image: linear-gradient(to bottom, #093bb0, #062b80);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffb20808', endColorstr='#ff810606', GradientType=0);
+  border-color: #062b80 #062b80 #031236;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #062b80;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.control-custom.disabled .checkbox.btn:hover,
+.control-custom.disabled .checkbox.btn:focus,
+.control-custom.disabled .checkbox.btn:active,
+.control-custom.disabled .checkbox.btn.active,
+.control-custom.disabled .checkbox.btn.disabled,
+.control-custom.disabled .checkbox.btn[disabled] {
+  background-color: #062b80;
+  *background-color: #052369;
+}
+.control-custom.disabled .checkbox.btn:active,
+.control-custom.disabled .checkbox.btn.active {
+  background-color: #041a4f;
+}
+.resource-list.reordering .resource-item.ui-sortable-helper {
+  border: 1px solid #062b80;
+}
+.resource-list.reordering .resource-item.ui-sortable-helper .handle {
+  border-color: #062b80;
+}
+.view-list li a.active,
+.view-list li a:hover {
+  border-color: #062b80;
+}
+.view-list li a.active .icon,
+.view-list li a:hover .icon {
+  background-color: #062b80;
+}
+.view-list li .arrow {
+  border-top-color: #062b80;
+}
+.view-list li.active a {
+  border-color: #062b80;
+}
+.view-list li.active a .icon {
+  background-color: #062b80;
+}
+.view-list.stacked::-webkit-scrollbar-thumb:hover {
+  background-color: #062b80;
+}
+@media (min-width: 768px) {
+  .hero {
+    background-color: transparent;
+    background-image: none;
+  }
+  .homepage {
+    background: #ffffff url("../img/bg_body.png");
+  }
+}
+@media (min-width: 768px) {
+  [role=main],
+  .main {
+    background: #ffffff url("../img/bg_body.png");
+  }
+}
+@media (min-width: 768px) {
+  .homepage [role=main],
+  .homepage .main {
+    background: transparent;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+.homepage .module-search {
+  background-color: transparent;
+}
+.homepage .module-search .module-content {
+  background-color: #062b80;
+  opacity: 0.8;
+}
+.homepage .module-search .tags {
+  background-color: #041a4f;
+}
+.account-masthead {
+  background: #041a4f url("../../../base/images/bg.png");
+}
+.account-masthead .account ul li {
+  border-left: 1px solid #031236;
+}
+.account-masthead .account ul li a {
+  color: #c1cade;
+}
+.account-masthead .account ul li a:hover {
+  color: #dadfeb;
+  background-color: #031236;
+}
+.account-masthead .account .notifications a span {
+  background-color: #031236;
+}
+.account-masthead .account .notifications a:hover span {
+  background-color: #010a1f;
+}
+.masthead {
+  background: #062b80 url("../../../base/images/bg.png");
+}
+.masthead hgroup h1,
+.masthead hgroup h2 {
+  clear: both;
+}
+.masthead hgroup h1 {
+  margin: 0;
+}
+.masthead hgroup h2 {
+  position: static;
+}
+.masthead input[type="text"] {
+  border-color: #052369;
+}
+.masthead .navigation {
+  margin-bottom: 10px;
+}
+.masthead .navigation .nav-pills li a:hover,
+.masthead .navigation .nav-pills li.active a {
+  background-color: #041a4f;
+}
+.masthead .btn-navbar,
+.masthead .btn-navbar:hover,
+.masthead .btn-navbar:focus,
+.masthead .btn-navbar:active,
+.masthead .btn-navbar.active,
+.masthead .btn-navbar.disabled,
+.masthead .btn-navbar[disabled] {
+  background-color: #041a4f;
+}
+.site-footer {
+  background: #062b80 url("../../../base/images/bg.png");
+}
+.site-footer input[type="text"] {
+  border-color: #052369;
+}
+.site-footer .navigation .nav-pills li a:hover,
+.site-footer .navigation .nav-pills li.active a {
+  background-color: #041a4f;
+}
+.site-footer .btn-navbar,
+.site-footer .btn-navbar:hover,
+.site-footer .btn-navbar:focus,
+.site-footer .btn-navbar:active,
+.site-footer .btn-navbar.active,
+.site-footer .btn-navbar.disabled,
+.site-footer .btn-navbar[disabled] {
+  background-color: #041a4f;
+}
+.site-footer,
+.site-footer label,
+.site-footer small {
+  color: #9baacc;
+}
+.site-footer a {
+  color: #9baacc;
+}
+.attribution small {
+  color: #9baacc;
+  font-size: 12px;
+}
+.popover-followee .nav li a i {
+  background-color: #062b80;
+}
+.popover-followee .nav li.active a i {
+  color: #062b80;
+}
+body {
+  background: #062b80 url("../../../base/images/bg.png");
+}
+.ie8 .hero,
+.ie7 .hero {
+  background-color: transparent;
+  background-image: none;
+}
+/*
+ CSS rules that don't have a direct correspondence to those from CKAN's main.less. These should be extracted to a
+ separate file.
+*/
+.masthead .header-image {
+  position: relative;
+  top: 1em;
+}
+.masthead .logo {
+  display: block;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  height: 96px;
+}
+.masthead .main-heading {
+  height: 82px;
+  display: block;
+  float: left;
+}
+img.tiny-logo {
+  padding-bottom: 0.5em;
+  padding-right: 0.5em;
+}
