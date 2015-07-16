@@ -1,0 +1,2 @@
+# m  h  dom mon dow   command
+*/2 *  *   *   *   "/usr/local/bin/ckan-harvest-run.bash"

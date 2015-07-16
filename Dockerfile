@@ -14,7 +14,7 @@ ENV STORE_PATH /srv/app/store
 RUN yum -y update; \
     yum -y install epel-release; \
     yum -y install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm; \
-    yum -y install httpd python-virtualenv mod_wsgi git postgresql94 postgresql94-devel gcc supervisor; \
+    yum -y install httpd python-virtualenv mod_wsgi git postgresql94 postgresql94-devel gcc supervisor cronie; \
     yum clean all
 
 # Should be $APP_NAME
@@ -25,7 +25,7 @@ ADD ./docker/apache/app.wsgi $CKAN_CONFIG/
 RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     mkdir -p $APP_HOME; \
     virtualenv --no-site-packages $APP_HOME; \
-    $APP_HOME/bin/pip install -e 'git+https://github.com/ckan/ckan.git@ckan-2.3.1#egg=ckan'; \
+    $APP_HOME/bin/pip install -e 'git+https://github.com/ckan/ckan.git@release-v2.3.1#egg=ckan'; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckan/requirements.txt; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
@@ -48,7 +48,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest ckan_harvester dados_cmporto_pt geo_view" \
+      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest guia_harvester dados_cmporto_pt geo_view" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
       "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
@@ -66,9 +66,21 @@ RUN mkdir -p $APP_CONFIG
 ADD ./app.ini $APP_CONFIG_FILE
 
 # Supervisor to run ckan and harvest jobs
+RUN mkdir -p /etc/supervisor/conf.d
+RUN mkdir -p /var/log/ckan/std
 COPY ./docker/ckan/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY ./docker/ckan/crontab.root /var/spool/cron/root
+COPY ./docker/ckan/ckan-harvest-gatherer.bash /usr/local/bin/
+COPY ./docker/ckan/ckan-harvest-fetcher.bash /usr/local/bin/
+COPY ./docker/ckan/ckan-harvest-run.bash /usr/local/bin/
+RUN chmod +x /usr/local/bin/ckan-harvest-gatherer.bash; \
+    chmod +x /usr/local/bin/ckan-harvest-fetcher.bash; \
+    chmod +x /usr/local/bin/ckan-harvest-run.bash; \
+    chmod 600 /var/spool/cron/root; \
+    env > /etc/envvars
 
 # Copy start script
+COPY ./docker/ckan/utils.bash /usr/local/bin/
 COPY ./docker/ckan/start.bash /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.bash
 
@@ -78,4 +90,4 @@ RUN chmod +x /usr/local/bin/httpd-foreground
 
 # Port, command and Shared data
 EXPOSE 80
-CMD ["start.bash"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

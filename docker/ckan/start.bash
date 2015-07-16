@@ -1,19 +1,8 @@
 #!/bin/bash
 
+source $(dirname "$0")/utils.bash
+
 export PGPASSWORD=$DB_ENV_POSTGRES_PASSWORD
-
-function wait_for_service {
-  while : ; do
-    exec 6<>/dev/tcp/$1/$2
-    if [[ $? -eq 0 ]]; then
-      break
-    fi
-    sleep 1
-  done
-
-  exec 6>&- # close output connection
-  exec 6<&- # close input connection
-}
 
 # Wait for dependencies
 wait_for_service db 5432
