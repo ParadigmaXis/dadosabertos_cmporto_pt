@@ -12,3 +12,8 @@ function wait_for_service {
   exec 6<&- # close input connection
 }
 
+function wait_for_lock {
+  while [ -f $1 ]; do
+    sleep 1
+  done
+}
