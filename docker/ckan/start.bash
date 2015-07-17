@@ -15,7 +15,7 @@ if [[ $count -eq 0 ]]; then
   echo 'Creating database...'
   createuser -h db -U postgres -S -D -R -w $CKAN_DB_USER
   createdb -h db -U postgres -O $CKAN_DB_USER $CKAN_DB_NAME -E utf-8 
-  psql -h db -U postgres -c "ALTER ROLE $CKAN_DB_USER WITH ENCRYPTED PASSWORD '123456';"
+  psql -h db -U postgres -c "ALTER ROLE $CKAN_DB_USER WITH ENCRYPTED PASSWORD '$CKAN_DB_PASS';"
 fi
 
 # Configure filestore
