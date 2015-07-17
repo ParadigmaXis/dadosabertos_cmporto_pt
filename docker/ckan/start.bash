@@ -34,4 +34,8 @@ fi
 # Initialize db
 "$APP_HOME"/bin/paster --plugin=ckan db init -c "${CKAN_CONFIG}/ckan.ini"
 
+# Release lock
+rm -rf /root/start.lock
+
+# Start Apache
 exec httpd-foreground

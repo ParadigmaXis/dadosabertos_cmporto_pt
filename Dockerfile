@@ -82,7 +82,8 @@ RUN chmod +x /usr/local/bin/ckan-harvest-gatherer.bash; \
 # Copy start script
 COPY ./docker/ckan/utils.bash /usr/local/bin/
 COPY ./docker/ckan/start.bash /usr/local/bin/
-RUN chmod +x /usr/local/bin/start.bash
+RUN chmod +x /usr/local/bin/start.bash; \
+    touch /root/start.lock
 
 # Copy apache start script
 COPY ./docker/apache/httpd-foreground /usr/local/bin/
