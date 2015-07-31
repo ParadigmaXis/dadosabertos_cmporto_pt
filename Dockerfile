@@ -49,6 +49,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
       "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats harvest guia_harvester dados_cmporto_pt geo_view" \
+      "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
       "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
