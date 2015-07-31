@@ -188,6 +188,9 @@ a.tag:hover {
     background-color: rgba(255, 255, 255, 0.9);
   }
 }
+.homepage .row {
+  margin-bottom: 20px;
+}
 .homepage .module-search {
   background-color: transparent;
 }
@@ -335,5 +338,5 @@ img.tiny-logo {
   margin-right: 12px;
 }
 .boxes .box {
-  border-top: 4px solid #08349c;
+  border-top: 4px solid #062b80;
 }
