@@ -334,3 +334,6 @@ img.tiny-logo {
   float: left;
   margin-right: 12px;
 }
+.boxes .box {
+  border-top: 4px solid #08349c;
+}
