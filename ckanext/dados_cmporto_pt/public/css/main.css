@@ -185,7 +185,7 @@ a.tag:hover {
 }
 @media (min-width: 768px) {
   .wrapper {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
   }
 }
 .homepage .module-search {
@@ -193,7 +193,7 @@ a.tag:hover {
 }
 .homepage .module-search .module-content {
   background-color: #062b80;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .homepage .module-search .tags {
   background-color: #041a4f;
