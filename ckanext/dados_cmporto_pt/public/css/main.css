@@ -295,9 +295,13 @@ body {
   background-image: none;
 }
 /*
- CSS rules that don't have a direct correspondence to those from CKAN's main.less. These should be extracted to a
+ CSS rules that don't have a direct correspondence to those from CKAN's main.css. These should be extracted to a
  separate file.
 */
+.masthead a:hover {
+  color: white;
+  text-decoration: none;
+}
 .masthead .header-image {
   position: relative;
   top: 1em;
@@ -320,4 +324,13 @@ body {
 img.tiny-logo {
   padding-bottom: 0.5em;
   padding-right: 0.5em;
+}
+.sponsors {
+  max-width: none;
+  height: 100px;
+  margin-top: 0.5em;
+}
+.ckan-footer-logo {
+  float: left;
+  margin-right: 12px;
 }
