@@ -5,13 +5,8 @@ Based on group/snippets/group-item.html
 {% set type = group.type or 'group' %}
 {% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
 
-<li class="media-item">
-  {% block image %}
-    <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}" class="media-image">
-  {% endblock %}
-  {% block link %}
-  <a href="{{ url }}" title="{{ _('View {name}').format(name=group.display_name) }}" class="media-view">
-    <span>{{ _('View {name}').format(name=group.display_name) }}</span>
+<div class="span2">
+  <a href="{{ url }}" title="{{ _('View {name}').format(name=group.display_name) }}">
+    <img src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}">
   </a>
-  {% endblock %}
-</li>
+</div>
