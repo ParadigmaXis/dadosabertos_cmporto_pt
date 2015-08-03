@@ -1,0 +1,8 @@
+
+<div class="module module-narrow module-shallow box">
+<ul class="media-grid" data-module="media-grid">
+{% for _g in c.groups %}
+	{% snippet "home/snippets/category.html", group=_g, position=loop.index %}
+{% endfor %}
+</ul>
+</div>
