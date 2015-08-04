@@ -52,7 +52,8 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
-      "ckan.locales_filtered_out = en_GB pt_BR         = pt_BR" \
+      "ckan.locales_filtered_out                       = en_GB pt_BR pt_BR" \
+      "ckan.i18n_directory                             = $APP_HOME/src/ckan/ckanext-dados_cmporto_pt/ckanext/dados_cmporto_pt/" \
       "ckan.max_resource_size                          = 100" \
       "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
