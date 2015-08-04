@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-08-03 16:56+0100\n"
+"PO-Revision-Date: 2015-08-04 10:32+0100\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/ckan/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -4051,7 +4051,7 @@ msgstr ""
 
 #: ckan/templates/user/edit_user_form.html:27
 msgid "Change password"
-msgstr "Alterar a palavra de passe"
+msgstr "Alterar a palavra-passe"
 
 #: ckan/templates/user/edit_user_form.html:29 ckan/templates/user/logout_first.html:12
 #: ckan/templates/user/new_user_form.html:8 ckan/templates/user/perform_reset.html:20
@@ -4102,15 +4102,15 @@ msgstr "Criar uma Conta"
 
 #: ckan/templates/user/login.html:42
 msgid "Forgotten your password?"
-msgstr "Esqueceu a sua palavra de passe?"
+msgstr "Esqueceu a sua palavra-passe?"
 
 #: ckan/templates/user/login.html:44
 msgid "No problem, use our password recovery form to reset it."
-msgstr "Não há problema, use o nosso formulário de recuperação de palavra de passe para a redefinir."
+msgstr "Não há problema, use o nosso formulário de recuperação de palavra-passe para a redefinir."
 
 #: ckan/templates/user/login.html:47
 msgid "Forgot your password?"
-msgstr "Esqueceu a sua palavra de passe?"
+msgstr "Esqueceu a sua palavra-passe?"
 
 #: ckan/templates/user/logout.html:3 ckan/templates/user/logout.html:9
 msgid "Logged Out"
@@ -4222,7 +4222,7 @@ msgstr ""
 
 #: ckan/templates/user/request_reset.html:6
 msgid "Password reset"
-msgstr "Redefinir a palavra de passe"
+msgstr "Redefinir a palavra-passe"
 
 #: ckan/templates/user/request_reset.html:19
 msgid "Request reset"
