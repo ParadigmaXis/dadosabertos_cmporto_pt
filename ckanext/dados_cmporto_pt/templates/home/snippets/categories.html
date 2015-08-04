@@ -1,0 +1,11 @@
+
+<div class="module module-narrow module-shallow box">
+
+<div class="row-fluid">
+<div class="row"></div>
+{% for _g in c.groups %}
+	{% snippet "home/snippets/category.html", group=_g, position=loop.index %}
+{% endfor %}
+</div>
+<div class="row"></div>
+</div>

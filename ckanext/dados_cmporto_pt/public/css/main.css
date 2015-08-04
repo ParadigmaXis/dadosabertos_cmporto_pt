@@ -171,6 +171,11 @@ a.tag:hover {
     background: #ffffff url("../img/bg_body.png");
   }
 }
+
+[role=main] {
+  min-height: 150px;
+}
+
 @media (min-width: 768px) {
   [role=main],
   .main {
@@ -339,4 +344,8 @@ img.tiny-logo {
 }
 .boxes .box {
   border-top: 4px solid #062b80;
+}
+
+.row-fluid [class*="span"] {
+  margin-left: 15px !important;
 }
