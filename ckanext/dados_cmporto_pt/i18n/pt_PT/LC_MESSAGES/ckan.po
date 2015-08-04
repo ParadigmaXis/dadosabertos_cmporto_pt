@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-08-04 11:41+0100\n"
+"PO-Revision-Date: 2015-08-04 14:47+0100\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/ckan/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -763,7 +763,7 @@ msgstr "{actor} atualizou o conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:76
 msgid "{actor} changed the extra {extra} of the dataset {dataset}"
-msgstr "{actor} alterou o extra {extra} do conjunto de dados {dataset}"
+msgstr "{actor} alterou o campo extra {extra} do conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:79
 msgid "{actor} updated the resource {resource} in the dataset {dataset}"
@@ -795,7 +795,7 @@ msgstr "{actor} apagou o conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:101
 msgid "{actor} deleted the extra {extra} from the dataset {dataset}"
-msgstr "{actor} apagou o extra {extra} do conjunto de dados {dataset}"
+msgstr "{actor} apagou o campo extra {extra} do conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:104
 msgid "{actor} deleted the resource {resource} from the dataset {dataset}"
@@ -815,7 +815,7 @@ msgstr "{actor} criou o conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:117
 msgid "{actor} added the extra {extra} to the dataset {dataset}"
-msgstr "{actor} adicionou o extra {extra} ao conjunto de dados {dataset}"
+msgstr "{actor} adicionou o campo extra {extra} ao conjunto de dados {dataset}"
 
 #: ckan/lib/activity_streams.py:120
 msgid "{actor} added the resource {resource} to the dataset {dataset}"
@@ -2003,7 +2003,7 @@ msgstr ""
 
 #: ckan/templates/header.html:12
 msgid "Sysadmin settings"
-msgstr ""
+msgstr "Propriedades do Administrador do sistema"
 
 #: ckan/templates/header.html:18
 msgid "View profile"
@@ -2013,8 +2013,8 @@ msgstr "Ver perfil"
 #, python-format
 msgid "Dashboard (%(num)d new item)"
 msgid_plural "Dashboard (%(num)d new items)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Painel de controlo (%(num)d novo item)"
+msgstr[1] "Painel de controlo (%(num)d novos itens)"
 
 #: ckan/templates/header.html:33 ckan/templates/user/dashboard.html:16
 msgid "Edit settings"
@@ -2575,7 +2575,7 @@ msgstr ""
 
 #: ckan/templates/home/snippets/search.html:2
 msgid "E.g. environment"
-msgstr "Pe ambiente"
+msgstr "Ex. ambiente"
 
 #: ckan/templates/home/snippets/search.html:6
 msgid "Search data"
@@ -2587,7 +2587,7 @@ msgstr "Palavras-chave populares"
 
 #: ckan/templates/home/snippets/stats.html:5
 msgid "{0} statistics"
-msgstr "{0} estatísticas"
+msgstr "{0}: estatísticas"
 
 #: ckan/templates/home/snippets/stats.html:10
 msgid "dataset"
@@ -2636,7 +2636,7 @@ msgstr ""
 
 #: ckan/templates/macros/form.html:290 ckan/templates/related/snippets/related_form.html:7
 msgid "The form contains invalid entries:"
-msgstr ""
+msgstr "O formulário contém entradas inválidas:"
 
 #: ckan/templates/macros/form.html:395
 msgid "Required field"
@@ -3038,7 +3038,7 @@ msgstr ""
 
 #: ckan/templates/package/search.html:53
 msgid "API Docs"
-msgstr "Dosumentos API"
+msgstr "Documentação da API"
 
 #: ckan/templates/package/search.html:55
 msgid "full {format} dump"
@@ -3047,12 +3047,12 @@ msgstr ""
 #: ckan/templates/package/search.html:56
 #, python-format
 msgid " You can also access this registry using the %(api_link)s (see %(api_doc_link)s) or download a %(dump_link)s. "
-msgstr ""
+msgstr "Também pode aceder a este sistema de registo usando a %(api_link)s (consulte %(api_doc_link)s) ou transfira um %(dump_link)s. "
 
 #: ckan/templates/package/search.html:60
 #, python-format
 msgid " You can also access this registry using the %(api_link)s (see %(api_doc_link)s). "
-msgstr ""
+msgstr "Também pode aceder a este sistema de registo usando a %(api_link)s (consulte %(api_doc_link)s). "
 
 #: ckan/templates/package/view_edit_base.html:9
 msgid "All views"
@@ -3100,7 +3100,7 @@ msgstr "Título"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:4
 msgid "eg. A descriptive title"
-msgstr "pe. Um título descritivo"
+msgstr "ex. Um título descritivo"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:13
 msgid "eg. my-dataset"
@@ -3112,7 +3112,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/package_basic_fields.html:24
 msgid "eg. economy, mental health, government"
-msgstr ""
+msgstr "ex. economia, saúde mental, governo"
 
 #: ckan/templates/package/snippets/package_basic_fields.html:40
 msgid " License definitions and additional information can be found at <a href=\"http://opendefinition.org/licenses/\">opendefinition.org</a> "
@@ -3146,7 +3146,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/package_form.html:39
 msgid "Are you sure you want to delete this dataset?"
-msgstr ""
+msgstr "Tem a certeza que deseja apagar este conjunto de dados?"
 
 #: ckan/templates/package/snippets/package_form.html:44
 msgid "Next: Add Data"
@@ -3186,7 +3186,7 @@ msgstr "Ficheiro"
 
 #: ckan/templates/package/snippets/resource_form.html:28
 msgid "eg. January 2011 Gold Prices"
-msgstr "pe. January 2011 Gold Prices"
+msgstr "ex. Janeiro 2011 Gold Prices"
 
 #: ckan/templates/package/snippets/resource_form.html:32
 msgid "Some useful notes about the data"
@@ -3194,7 +3194,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/resource_form.html:37
 msgid "eg. CSV, XML or JSON"
-msgstr "pe. CSV, XML or JSON"
+msgstr "ex. CSV, XML or JSON"
 
 #: ckan/templates/package/snippets/resource_form.html:40
 msgid "This will be guessed automatically. Leave blank if you wish"
@@ -3202,7 +3202,7 @@ msgstr ""
 
 #: ckan/templates/package/snippets/resource_form.html:51
 msgid "eg. 2012-06-05"
-msgstr "pe. 2012-06-05"
+msgstr "ex. 2012-06-05"
 
 #: ckan/templates/package/snippets/resource_form.html:53
 msgid "File Size"
@@ -3307,23 +3307,23 @@ msgstr "Adicionar dados"
 
 #: ckan/templates/package/snippets/view_form.html:8
 msgid "eg. My View"
-msgstr "pe. A minha Vista"
+msgstr "ex. A minha Vista"
 
 #: ckan/templates/package/snippets/view_form.html:9
 msgid "eg. Information about my view"
-msgstr ""
+msgstr "ex. Informação sobre a minha vista"
 
 #: ckan/templates/package/snippets/view_form_filters.html:16
 msgid "Add Filter"
-msgstr ""
+msgstr "Adicionar Filtro"
 
 #: ckan/templates/package/snippets/view_form_filters.html:28
 msgid "Remove Filter"
-msgstr ""
+msgstr "Remover Filtro"
 
 #: ckan/templates/package/snippets/view_form_filters.html:46
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: ckan/templates/package/snippets/view_help.html:2
 msgid "What's a view?"
@@ -3339,7 +3339,7 @@ msgstr ""
 
 #: ckan/templates/related/base_form_page.html:20
 msgid "What are related items?"
-msgstr ""
+msgstr "O que são itens relacionados?"
 
 #: ckan/templates/related/base_form_page.html:22
 msgid ""
@@ -3353,7 +3353,7 @@ msgstr ""
 
 #: ckan/templates/related/dashboard.html:6 ckan/templates/related/dashboard.html:9 ckan/templates/related/dashboard.html:16
 msgid "Apps & Ideas"
-msgstr ""
+msgstr "Apps & Ideias"
 
 #: ckan/templates/related/dashboard.html:21
 #, python-format
@@ -3367,11 +3367,11 @@ msgstr ""
 
 #: ckan/templates/related/dashboard.html:29
 msgid "There have been no apps submitted yet."
-msgstr ""
+msgstr "Ainda não foram submetidas apps."
 
 #: ckan/templates/related/dashboard.html:48
 msgid "What are applications?"
-msgstr ""
+msgstr "O que são aplicações?"
 
 #: ckan/templates/related/dashboard.html:50
 msgid " These are applications built with the datasets as well as ideas for things that could be done with them. "
@@ -3379,11 +3379,11 @@ msgstr ""
 
 #: ckan/templates/related/dashboard.html:58 ckan/templates/snippets/search_form.html:70
 msgid "Filter Results"
-msgstr ""
+msgstr "Filtrar Resultados"
 
 #: ckan/templates/related/dashboard.html:63
 msgid "Filter by type"
-msgstr ""
+msgstr "Filtrar por tipo"
 
 #: ckan/templates/related/dashboard.html:65
 msgid "All"
@@ -3407,7 +3407,7 @@ msgstr ""
 
 #: ckan/templates/related/edit.html:3
 msgid "Edit related item"
-msgstr ""
+msgstr "Editar item relacionado"
 
 #: ckan/templates/related/edit.html:6
 msgid "Edit Related"
@@ -3447,7 +3447,7 @@ msgstr "Uma pequena informação sobre o item..."
 
 #: ckan/templates/related/snippets/related_form.html:22
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ckan/templates/related/snippets/related_form.html:28
 msgid "Are you sure you want to delete this related item?"
@@ -3575,19 +3575,19 @@ msgstr ""
 
 #: ckan/templates/snippets/related.html:18
 msgid "Add Item"
-msgstr ""
+msgstr "Adicionar Item"
 
 #: ckan/templates/snippets/search_form.html:16
 msgid "Submit"
-msgstr ""
+msgstr "Submeter"
 
 #: ckan/templates/snippets/search_form.html:31 ckan/templates/snippets/simple_search.html:8 ckan/templates/snippets/sort_by.html:12
 msgid "Order by"
-msgstr "Ordenado por:"
+msgstr "Ordenado por"
 
 #: ckan/templates/snippets/search_form.html:77
 msgid " <p class=\"extra\">Please try another search.</p> "
-msgstr ""
+msgstr "Por favor, tente outra pesquisa."
 
 #: ckan/templates/snippets/search_form.html:83
 msgid " <p><strong>There was an error while searching.</strong> Please try again.</p> "
@@ -3596,8 +3596,8 @@ msgstr ""
 #: ckan/templates/snippets/search_result_text.html:15
 msgid "{number} dataset found for \"{query}\""
 msgid_plural "{number} datasets found for \"{query}\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{number} conjunto de dados encontrado para \"{query}\""
+msgstr[1] "{number} conjuntos de dados encontrados para \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:16
 msgid "No datasets found for \"{query}\""
@@ -3616,18 +3616,18 @@ msgstr "Nenhum conjunto de dados encontrado"
 #: ckan/templates/snippets/search_result_text.html:21
 msgid "{number} group found for \"{query}\""
 msgid_plural "{number} groups found for \"{query}\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{number} grupo encontrado para \"{query}\""
+msgstr[1] "{number} grupos encontrados para \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:22
 msgid "No groups found for \"{query}\""
-msgstr ""
+msgstr "Nenhum grupo encontrado para \"{query}\""
 
 #: ckan/templates/snippets/search_result_text.html:23
 msgid "{number} group found"
 msgid_plural "{number} groups found"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{number} grupo encontrado"
+msgstr[1] "{number} grupos encontrados"
 
 #: ckan/templates/snippets/search_result_text.html:24
 msgid "No groups found"
@@ -3671,7 +3671,7 @@ msgstr ""
 
 #: ckan/templates/snippets/context/user.html:23 ckan/templates/user/read_base.html:57
 msgid "Edits"
-msgstr ""
+msgstr "Edições"
 
 #: ckan/templates/tag/index.html:33 ckan/templates/tag/index.html:34
 msgid "Search Tags"
@@ -3679,11 +3679,11 @@ msgstr "Procurar Palavras-chave"
 
 #: ckan/templates/user/dashboard.html:6
 msgid "Dashboard"
-msgstr ""
+msgstr "Painel de controlo"
 
 #: ckan/templates/user/dashboard.html:19 ckan/templates/user/dashboard.html:37
 msgid "News feed"
-msgstr ""
+msgstr "Notícias"
 
 #: ckan/templates/user/dashboard.html:20 ckan/templates/user/dashboard_datasets.html:12
 msgid "My Datasets"
@@ -3707,7 +3707,7 @@ msgstr ""
 
 #: ckan/templates/user/dashboard_datasets.html:19 ckan/templates/user/dashboard_groups.html:22 ckan/templates/user/dashboard_organizations.html:22 ckan/templates/user/read.html:16
 msgid "Create one now?"
-msgstr ""
+msgstr "Criar um agora?"
 
 #: ckan/templates/user/dashboard_groups.html:20
 msgid "You are not a member of any groups."
@@ -3743,11 +3743,11 @@ msgstr "Nome completo"
 
 #: ckan/templates/user/edit_user_form.html:11
 msgid "eg. Joe Bloggs"
-msgstr "pe. Joe Bloggs"
+msgstr "ex. Joe Bloggs"
 
 #: ckan/templates/user/edit_user_form.html:13
 msgid "eg. joe@example.com"
-msgstr "pe. joe@exemplo.com"
+msgstr "ex. joe@exemplo.com"
 
 #: ckan/templates/user/edit_user_form.html:15
 msgid "A little information about yourself"
@@ -3763,27 +3763,27 @@ msgstr "Alterar a palavra-passe"
 
 #: ckan/templates/user/edit_user_form.html:29 ckan/templates/user/logout_first.html:12 ckan/templates/user/new_user_form.html:8 ckan/templates/user/perform_reset.html:20 ckan/templates/user/snippets/login_form.html:22
 msgid "Password"
-msgstr "Palavra de passe"
+msgstr "Palavra-passe"
 
 #: ckan/templates/user/edit_user_form.html:31
 msgid "Confirm Password"
-msgstr "Confirmar a Palavra de passe"
+msgstr "Confirmar a Palavra-passe"
 
 #: ckan/templates/user/edit_user_form.html:37
 msgid "Are you sure you want to delete this User?"
-msgstr ""
+msgstr "Tem a certeza que quer apagar este Utilizador?"
 
 #: ckan/templates/user/edit_user_form.html:43
 msgid "Are you sure you want to regenerate the API key?"
-msgstr ""
+msgstr "Tem a certeza que quer regerar a chave API?"
 
 #: ckan/templates/user/edit_user_form.html:44
 msgid "Regenerate API Key"
-msgstr ""
+msgstr "Regerar a chave API"
 
 #: ckan/templates/user/edit_user_form.html:48
 msgid "Update Profile"
-msgstr "Atualizar PErfil"
+msgstr "Atualizar Perfil"
 
 #: ckan/templates/user/list.html:3 ckan/templates/user/snippets/user_search.html:11
 msgid "All Users"
@@ -3795,7 +3795,7 @@ msgstr "Iniciar sessão"
 
 #: ckan/templates/user/login.html:25
 msgid "Need an Account?"
-msgstr "Precisa  de uma Conta?"
+msgstr "Precisa de uma Conta?"
 
 #: ckan/templates/user/login.html:27
 msgid "Then sign right up, it only takes a minute."
@@ -3823,7 +3823,7 @@ msgstr "Sessão Terminada"
 
 #: ckan/templates/user/logout.html:11
 msgid "You are now logged out."
-msgstr ""
+msgstr "A sua sessão terminou."
 
 #: ckan/templates/user/logout_first.html:9
 msgid "You're already logged in as {user}."
@@ -3847,7 +3847,7 @@ msgstr ""
 
 #: ckan/templates/user/logout_first.html:25
 msgid "Log out now"
-msgstr ""
+msgstr "Terminar sessão agora"
 
 #: ckan/templates/user/new.html:6
 msgid "Registration"
@@ -3855,7 +3855,7 @@ msgstr ""
 
 #: ckan/templates/user/new.html:14
 msgid "Register for an Account"
-msgstr ""
+msgstr "Registar uma Conta"
 
 #: ckan/templates/user/new.html:26
 msgid "Why Sign Up?"
@@ -3879,15 +3879,15 @@ msgstr "Criar Conta"
 
 #: ckan/templates/user/perform_reset.html:4 ckan/templates/user/perform_reset.html:14
 msgid "Reset Your Password"
-msgstr "Redefinir a sua Palavra de passe"
+msgstr "Redefinir a sua Palavra-passe"
 
 #: ckan/templates/user/perform_reset.html:7
 msgid "Password Reset"
-msgstr "Redefinir Palavra de passe"
+msgstr "Redefinir Palavra-passe"
 
 #: ckan/templates/user/perform_reset.html:24
 msgid "Update Password"
-msgstr "Atualizar Palavra de passe"
+msgstr "Atualizar Palavra-passe"
 
 #: ckan/templates/user/perform_reset.html:38 ckan/templates/user/request_reset.html:32
 msgid "How does this work?"
@@ -3895,11 +3895,11 @@ msgstr "Como é que isto funciona?"
 
 #: ckan/templates/user/perform_reset.html:40
 msgid "Simply enter a new password and we'll update your account"
-msgstr ""
+msgstr "Introduza simplesmente uma nova palavra-passe e nós atualizaremos a sua conta"
 
 #: ckan/templates/user/read.html:21
 msgid "User hasn't created any datasets."
-msgstr ""
+msgstr "O utilizador não criou nenhum conjunto de dados."
 
 #: ckan/templates/user/read_base.html:39
 msgid "You have not provided a biography."
@@ -3923,7 +3923,7 @@ msgstr ""
 
 #: ckan/templates/user/read_base.html:96
 msgid "API Key"
-msgstr ""
+msgstr "Chave API"
 
 #: ckan/templates/user/request_reset.html:6
 msgid "Password reset"
@@ -3943,11 +3943,11 @@ msgstr "Atividade de:"
 
 #: ckan/templates/user/snippets/followee_dropdown.html:23
 msgid "Search list..."
-msgstr ""
+msgstr "Procurar na lista..."
 
 #: ckan/templates/user/snippets/followee_dropdown.html:44
 msgid "You are not following anything"
-msgstr ""
+msgstr "Não está a seguir nada"
 
 #: ckan/templates/user/snippets/followers.html:9
 msgid "No followers"
@@ -3961,13 +3961,13 @@ msgstr "Procurar Utilizadores"
 msgid "Complete"
 msgstr ""
 
-#: ckanext/datapusher/helpers.py:20
+#: ckanext/datapusher/helpers.py:20l
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #: ckanext/datapusher/helpers.py:21
 msgid "Submitting"
-msgstr ""
+msgstr "Submetendo"
 
 #: ckanext/datapusher/helpers.py:27
 msgid "Not Uploaded Yet"
@@ -4095,7 +4095,7 @@ msgstr ""
 
 #: ckanext/reclineview/theme/templates/recline_graph_form.html:3 ckanext/reclineview/theme/templates/recline_map_form.html:3
 msgid "eg: 0"
-msgstr "pe: 0"
+msgstr "ex: 0"
 
 #: ckanext/reclineview/theme/templates/recline_graph_form.html:4 ckanext/reclineview/theme/templates/recline_map_form.html:4
 msgid "Number of rows"
@@ -4103,7 +4103,7 @@ msgstr ""
 
 #: ckanext/reclineview/theme/templates/recline_graph_form.html:4 ckanext/reclineview/theme/templates/recline_map_form.html:4
 msgid "eg: 100"
-msgstr "pe: 100"
+msgstr "ex: 100"
 
 #: ckanext/reclineview/theme/templates/recline_graph_form.html:6
 msgid "Graph type"
