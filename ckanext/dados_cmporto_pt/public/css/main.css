@@ -200,14 +200,18 @@ a.tag:hover {
   background-color: transparent;
 }
 .homepage .module-search .module-content {
-  background-color: #062b80;
+  background-color: #b6c0d9;
   opacity: 0.9;
 }
 .homepage .module-search .tags {
-  background-color: #041a4f;
+  background-color: white;
 }
+.homepage .module-search .tags h3 {
+	color: #041a4f;
+}
+
 .account-masthead {
-  background: #041a4f url("../../../base/images/bg.png");
+  background: #062b80 url("../../../base/images/bg.png");
 }
 .account-masthead .account ul li {
   border-left: 1px solid #031236;
@@ -348,4 +352,18 @@ img.tiny-logo {
 
 .row-fluid [class*="span"] {
   margin-left: 15px !important;
+}
+
+.category-icon:hover {
+	background-color: red;
+	
+}
+
+.category-icon-urbanismo-e-edificado {
+	/*background-image: url('icons-categorias/urbanismo-e-edificado-txt.png');*/
+}
+
+img.category-icon-urbanismo-e-edificado:hover {
+	background-position: 0 0;
+	
 }
