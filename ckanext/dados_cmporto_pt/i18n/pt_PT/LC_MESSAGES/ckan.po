@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: CKAN\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2015-01-26 11:55+0000\n"
-"PO-Revision-Date: 2015-08-04 17:19+0100\n"
+"PO-Revision-Date: 2015-08-05 10:56+0100\n"
 "Last-Translator: Adrià Mercader <adria.mercader@okfn.org>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/ckan/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: ckan/controllers/home.py:100
 msgid "Please <a href=\"{link}\">update your profile</a> and add your email address and your full name. {site} uses your email address if you need to reset your password."
-msgstr "Por favor, <a href=\"{link}\">atualize o seu perfil</a> e adicione o seu endereço de email e o seu nome completo. {site} usa o seu endereço de email se necessitar de repor a sua palavra-passe."
+msgstr "Por favor, <a href=\"{link}\">atualize o seu perfil</a> e adicione o seu endereço de email e o seu nome completo. {site} usa o seu endereço de email se necessitar de repor a sua senha."
 
 #: ckan/controllers/home.py:103
 #, python-format
@@ -352,7 +352,7 @@ msgstr "Por favor, <a href=\"%s\">atualize o seu perfil</a> e adicione o seu end
 #: ckan/controllers/home.py:105
 #, python-format
 msgid "%s uses your email address if you need to reset your password."
-msgstr "%s usa o seu endereço de email se necessitar de repor a sua palavra-passe."
+msgstr "%s usa o seu endereço de email se necessitar de repor a sua senha."
 
 #: ckan/controllers/home.py:109
 #, python-format
@@ -673,7 +673,7 @@ msgstr "Início de sessão falhou. Nome de utilizador ou senha errado."
 
 #: ckan/controllers/user.py:417
 msgid "Unauthorized to request reset password."
-msgstr "Não está autorizado a solicitar a reposição da palavra-chave."
+msgstr "Não está autorizado a solicitar a reposição da senha."
 
 #: ckan/controllers/user.py:446
 #, python-format
@@ -696,7 +696,7 @@ msgstr "Não foi possível enviar a hiperligação de reposição: %s"
 
 #: ckan/controllers/user.py:474
 msgid "Unauthorized to reset password."
-msgstr "Não está autorizado para repor a palavra-passe."
+msgstr "Não está autorizado para repor a senha."
 
 #: ckan/controllers/user.py:486
 msgid "Invalid reset key. Please try again."
@@ -1076,7 +1076,7 @@ msgstr ""
 
 #: ckan/lib/mailer.py:145 ckan/templates/user/request_reset.html:3 ckan/templates/user/request_reset.html:13
 msgid "Reset your password"
-msgstr "Reinicie a sua palavra-passe"
+msgstr "Redefinir a sua senha"
 
 #: ckan/lib/mailer.py:151
 msgid "Invite for {site_title}"
@@ -2070,19 +2070,19 @@ msgstr "Configurar"
 
 #: ckan/templates/admin/base.html:10 ckan/templates/admin/trash.html:29
 msgid "Trash"
-msgstr ""
+msgstr "Lixo"
 
 #: ckan/templates/admin/config.html:11 ckan/templates/admin/confirm_reset.html:7
 msgid "Are you sure you want to reset the config?"
-msgstr "Tem a certeza que deseja reiniciar a configuração?"
+msgstr "Tem a certeza que deseja redefinir a configuração?"
 
 #: ckan/templates/admin/config.html:12
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "Redefinir"
 
 #: ckan/templates/admin/config.html:13
 msgid "Update Config"
-msgstr ""
+msgstr "Atualizar Config"
 
 #: ckan/templates/admin/config.html:22
 msgid "CKAN config options"
@@ -2604,11 +2604,11 @@ msgstr "itens relacionados"
 #: ckan/templates/macros/form.html:126
 #, python-format
 msgid "You can use <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true\">Markdown formatting</a> here"
-msgstr ""
+msgstr "Pode usar <a href=\"#markdown\" title=\"Markdown quick reference\" data-target=\"popover\" data-content=\"%(markdown_tooltip)s\" data-html=\"true\">formato Markdown</a> aqui"
 
 #: ckan/templates/macros/form.html:265
 msgid "This field is required"
-msgstr "O campo é necessário"
+msgstr "Este campo é necessário"
 
 #: ckan/templates/macros/form.html:265
 msgid "Custom"
@@ -2648,11 +2648,11 @@ msgstr "Adicionar conjunto de dados"
 
 #: ckan/templates/organization/bulk_process.html:16
 msgid " found for \"{query}\""
-msgstr ""
+msgstr " encontrado para \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:18
 msgid "Sorry no datasets found for \"{query}\""
-msgstr ""
+msgstr "Desculpe nenhum conjunto de dados encontrado para \"{query}\""
 
 #: ckan/templates/organization/bulk_process.html:37
 msgid "Make public"
@@ -2672,7 +2672,7 @@ msgstr "Privado"
 
 #: ckan/templates/organization/bulk_process.html:88
 msgid "This organization has no datasets associated to it"
-msgstr ""
+msgstr "Esta organização não tem conjuntos de dados associados"
 
 #: ckan/templates/organization/confirm_delete.html:11
 msgid "Are you sure you want to delete organization - {name}?"
@@ -2750,7 +2750,7 @@ msgstr "Uma pequena informação sobre a minha organização..."
 
 #: ckan/templates/organization/snippets/organization_form.html:60
 msgid "Are you sure you want to delete this Organization? This will delete all the public and private datasets belonging to this organization."
-msgstr ""
+msgstr "Tem a certeza que quer apagar esta Organização? Isto apagará todos os conjuntos de dados públicos e privados pertencentes a esta organização."
 
 #: ckan/templates/organization/snippets/organization_form.html:64
 msgid "Save Organization"
@@ -2774,15 +2774,15 @@ msgstr " Um Conjunto de dados é uma coleção de recursos de dados (tal como fi
 
 #: ckan/templates/package/confirm_delete.html:11
 msgid "Are you sure you want to delete dataset - {name}?"
-msgstr ""
+msgstr "Tem a certeza que pretende apagar o conjunto de dados - {name}?"
 
 #: ckan/templates/package/confirm_delete_resource.html:11
 msgid "Are you sure you want to delete resource - {name}?"
-msgstr ""
+msgstr "Tem a certeza que pretende apagar o recurso - {name}?"
 
 #: ckan/templates/package/edit_base.html:16
 msgid "View dataset"
-msgstr ""
+msgstr "Ver conjunto de dados"
 
 #: ckan/templates/package/edit_base.html:20
 msgid "Edit metadata"
@@ -2790,19 +2790,19 @@ msgstr "Editar metadados"
 
 #: ckan/templates/package/edit_view.html:3 ckan/templates/package/edit_view.html:4 ckan/templates/package/edit_view.html:8 ckan/templates/package/edit_view.html:12
 msgid "Edit view"
-msgstr ""
+msgstr "Editar vista"
 
 #: ckan/templates/package/edit_view.html:20 ckan/templates/package/new_view.html:28 ckan/templates/package/snippets/resource_item.html:33 ckan/templates/snippets/datapreview_embed_dialog.html:16
 msgid "Preview"
-msgstr ""
+msgstr "Pré-visualizar"
 
 #: ckan/templates/package/edit_view.html:21 ckan/templates/related/edit_form.html:5
 msgid "Update"
-msgstr ""
+msgstr "Atualizar"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Associate this group with this dataset"
-msgstr ""
+msgstr "Associar este grupo com este conjunto de dados"
 
 #: ckan/templates/package/group_list.html:14
 msgid "Add to group"
@@ -2810,15 +2810,15 @@ msgstr "Adicionar ao grupo"
 
 #: ckan/templates/package/group_list.html:23
 msgid "There are no groups associated with this dataset"
-msgstr ""
+msgstr "Não há nenhum grupo associado a este conjunto de dados"
 
 #: ckan/templates/package/new_package_form.html:15
 msgid "Update Dataset"
-msgstr ""
+msgstr "Atualizar Conjunto de dados"
 
 #: ckan/templates/package/new_resource.html:5
 msgid "Add data to the dataset"
-msgstr ""
+msgstr "Adicionar dados ao conjunto de dados"
 
 #: ckan/templates/package/new_resource.html:11 ckan/templates/package/new_resource_not_draft.html:8
 msgid "Add New Resource"
@@ -2834,7 +2834,7 @@ msgstr "Novo recurso"
 
 #: ckan/templates/package/new_view.html:3 ckan/templates/package/new_view.html:4 ckan/templates/package/new_view.html:8 ckan/templates/package/new_view.html:12
 msgid "Add view"
-msgstr ""
+msgstr "Adicionar vista"
 
 #: ckan/templates/package/new_view.html:19
 msgid " Data Explorer views may be slow and unreliable unless the DataStore extension is enabled. For more information, please see the <a href='http://docs.ckan.org/en/latest/maintaining/data-viewer.html#viewing-structured-data-the-data-explorer' target='_blank'>Data Explorer documentation</a>. "
@@ -2855,7 +2855,7 @@ msgstr ""
 
 #: ckan/templates/package/related_list.html:12
 msgid "No related items"
-msgstr ""
+msgstr "Nenhum item relacionado"
 
 #: ckan/templates/package/related_list.html:17
 msgid "Add Related Item"
@@ -2915,7 +2915,7 @@ msgstr ""
 
 #: ckan/templates/package/resource_edit_base.html:28
 msgid "Views"
-msgstr ""
+msgstr "Vistas"
 
 #: ckan/templates/package/resource_read.html:39
 msgid "API Endpoint"
@@ -3503,11 +3503,11 @@ msgstr ""
 
 #: ckan/templates/snippets/facet_list.html:80
 msgid "Show More {facet_type}"
-msgstr ""
+msgstr "Mostrar Mais {facet_type}"
 
 #: ckan/templates/snippets/facet_list.html:83
 msgid "Show Only Popular {facet_type}"
-msgstr ""
+msgstr "Mostrar Só Populares {facet_type}"
 
 #: ckan/templates/snippets/facet_list.html:87
 msgid "There are no {facet_type} that match this search"
@@ -3683,11 +3683,11 @@ msgstr "Criar um agora?"
 
 #: ckan/templates/user/dashboard_groups.html:20
 msgid "You are not a member of any groups."
-msgstr ""
+msgstr "Não é membro de qualquer grupo"
 
 #: ckan/templates/user/dashboard_organizations.html:20
 msgid "You are not a member of any organizations."
-msgstr ""
+msgstr "Não é membro de qualquer organização."
 
 #: ckan/templates/user/edit.html:6 ckan/templates/user/edit_base.html:3 ckan/templates/user/list.html:6 ckan/templates/user/list.html:13 ckan/templates/user/read_base.html:5 ckan/templates/user/read_base.html:8 ckan/templates/user/snippets/user_search.html:2
 msgid "Users"
@@ -3699,7 +3699,7 @@ msgstr "Informação da Conta"
 
 #: ckan/templates/user/edit.html:19
 msgid " Your profile lets other CKAN users know about who you are and what you do. "
-msgstr "O seu perfil permite os outros utilizadores saberem quem é e o que faz."
+msgstr "O seu perfil permite que os outros utilizadores saibam quem é e o que faz."
 
 #: ckan/templates/user/edit_user_form.html:7
 msgid "Change details"
@@ -3731,15 +3731,15 @@ msgstr ""
 
 #: ckan/templates/user/edit_user_form.html:27
 msgid "Change password"
-msgstr "Alterar a palavra-passe"
+msgstr "Alterar a senha"
 
 #: ckan/templates/user/edit_user_form.html:29 ckan/templates/user/logout_first.html:12 ckan/templates/user/new_user_form.html:8 ckan/templates/user/perform_reset.html:20 ckan/templates/user/snippets/login_form.html:22
 msgid "Password"
-msgstr "Palavra-passe"
+msgstr "Senha"
 
 #: ckan/templates/user/edit_user_form.html:31
 msgid "Confirm Password"
-msgstr "Confirmar a Palavra-passe"
+msgstr "Confirmar"
 
 #: ckan/templates/user/edit_user_form.html:37
 msgid "Are you sure you want to delete this User?"
@@ -3779,15 +3779,15 @@ msgstr "Criar uma Conta"
 
 #: ckan/templates/user/login.html:42
 msgid "Forgotten your password?"
-msgstr "Esqueceu a sua palavra-passe?"
+msgstr "Esqueceu a sua senha?"
 
 #: ckan/templates/user/login.html:44
 msgid "No problem, use our password recovery form to reset it."
-msgstr "Não há problema, use o nosso formulário de recuperação de palavra-passe para a redefinir."
+msgstr "Não há problema, use o nosso formulário de recuperação de senha para a redefinir."
 
 #: ckan/templates/user/login.html:47
 msgid "Forgot your password?"
-msgstr "Esqueceu a sua palavra-passe?"
+msgstr "Esqueceu a sua senha?"
 
 #: ckan/templates/user/logout.html:3 ckan/templates/user/logout.html:9
 msgid "Logged Out"
@@ -3859,7 +3859,7 @@ msgstr "Redefinir Palavra-passe"
 
 #: ckan/templates/user/perform_reset.html:24
 msgid "Update Password"
-msgstr "Atualizar Palavra-passe"
+msgstr "Atualizar Senha"
 
 #: ckan/templates/user/perform_reset.html:38 ckan/templates/user/request_reset.html:32
 msgid "How does this work?"
@@ -3867,7 +3867,7 @@ msgstr "Como é que isto funciona?"
 
 #: ckan/templates/user/perform_reset.html:40
 msgid "Simply enter a new password and we'll update your account"
-msgstr "Introduza simplesmente uma nova palavra-passe e nós atualizaremos a sua conta"
+msgstr "Introduza simplesmente uma nova senha e nós atualizaremos a sua conta"
 
 #: ckan/templates/user/read.html:21
 msgid "User hasn't created any datasets."
@@ -3899,7 +3899,7 @@ msgstr "Chave API"
 
 #: ckan/templates/user/request_reset.html:6
 msgid "Password reset"
-msgstr "Redefinir a palavra-passe"
+msgstr "Redefinir a senha"
 
 #: ckan/templates/user/request_reset.html:19
 msgid "Request reset"
@@ -3907,7 +3907,7 @@ msgstr "Pedir redefinição"
 
 #: ckan/templates/user/request_reset.html:34
 msgid "Enter your username into the box and we will send you an email with a link to enter a new password."
-msgstr "Introduza o Nome de utilizador na caixa e ser-lhe-á enviado um email com uma hiperligação para introduzir uma palavra-passe nova."
+msgstr "Introduza o Nome de utilizador na caixa e ser-lhe-á enviado um email com uma hiperligação para introduzir uma senha nova."
 
 #: ckan/templates/user/snippets/followee_dropdown.html:14 ckan/templates/user/snippets/followee_dropdown.html:15
 msgid "Activity from:"
