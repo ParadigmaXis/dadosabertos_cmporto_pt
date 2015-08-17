@@ -5,8 +5,8 @@ Based on group/snippets/group-item.html
 {% set type = group.type or 'group' %}
 {% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}
 
-<div class="span2 category-icon-{{group.name}}">
+<div class="span2 category-icon  category-icon-{{group.name}}" >
   <a href="{{ url }}" title="">
-    <img class="category-icon-{{group.name}}" src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}">
+    <img class="category-icon" src="{{ group.image_display_url or h.url_for_static('/base/images/placeholder-group.png') }}" alt="{{ group.name }}">
   </a>
 </div>
