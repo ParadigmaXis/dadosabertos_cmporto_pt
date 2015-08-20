@@ -21,7 +21,6 @@ class GBridgeUIPlugin(plugins.SingletonPlugin):
         }
 
 
-
 def get_relationships_as_Subj_dependsOn_Obj(pkg_id):
     try:
         package = model.Package.get(pkg_id)
