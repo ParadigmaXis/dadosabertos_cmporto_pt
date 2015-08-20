@@ -12,3 +12,9 @@
     {% endif %}
    {{ super() }}
 {% endblock %}
+
+{% block package_resources %}
+{% if pkg.type != 'composto' %}
+	{{ super() }}
+{% endif %}
+{% endblock %}
