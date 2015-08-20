@@ -1,35 +1,17 @@
 
 {% block package_relationships_origem_derivado %}
 
-<section id="dataset-relationships-origem-derivado" class="resources module-content">
-	{% if pkg.list_relationships_as_Subj_derives_from_Obj %}
-	{% set derivado_de_list_packages = h.get_relationships_Packages(pkg.list_relationships_as_Subj_derives_from_Obj) %}
-	{% else %}
-	{% set derivado_de_list_packages = [] %}
-	{% endif %}
-	
- 	{% if pkg.list_relationships_as_Obj_derives_from_Subj %}
- 	{% set origem_de_list_packages = h.get_relationships_Packages(pkg.list_relationships_as_Obj_derives_from_Subj) %}
- 	{% else %}
- 	{% set origem_de_list_packages = [] %}
-	{% endif %}
-	
-	{% if derivado_de_list_packages|length > 0 or origem_de_list_packages|length > 0 %}
-  	<h3 class="{{ h3_module_content }}">Origem dos dados</h3>
-  	{% endif %}
-	
+<section id="dataset-relationships-origem-derivado" class="resources">
+	{% set derivado_de_list_packages = h.get_relationships_as_Subj_derives_from_Obj(pkg.id) %}
+ 	{% set origem_de_list_packages = h.get_relationships_as_Obj_has_derivation_Subj(pkg.id) %}
+
 	{% if derivado_de_list_packages|length > 0 %}
+	<h3 tooltip-id='field-derives_from'>Derivado de</h3>
 	<div class="container-fluid">
 		<div class="row-fluid">
-	   	<div class="{{ label_span }}">
-	   	<!--Sidebar content-->
-		<p><strong tooltip-id='field-derives_from'>Derivado de</strong></p>
-		</div>
-		<div class="{{ field_span }}">
 		{# DEBUG:
-		<p>pkg.list_relationships_as_Subj_derives_from_Obj : {{ pkg.list_relationships_as_Subj_derives_from_Obj }} </p> #}
+		<p>derivado_de_list_packages: {{ derivado_de_list_packages }} </p> #}
 		<!--Body content-->
-		
 		{% if c.print_model == 1 %}
 		  {% snippet 'snippets/relationship_package_grid.html', packages=derivado_de_list_packages, item_class="resource-item", hide_resources=true %}
 		{% else %}
@@ -40,18 +22,15 @@
 		  </div>
 		{% endif %}
 		</div>
-		</div>
 	</div>
   	{% endif %}
  
  	{% if origem_de_list_packages|length > 0 %}
+ 	<h3 tooltip-id='field-has_derivation'>Origem de</h3>
 	<div class="container-fluid">
 		<div class="row-fluid">
-	   	<div class="{{ label_span }}">
-	   	<!--Sidebar content-->
-		<p><strong tooltip-id='field-has_derivation'>Origem de</strong></p>
-		</div>
-		<div class="{{ field_span }}">
+		{# DEBUG:
+		<p>origem_de_list_packages: {{ origem_de_list_packages }} </p> #}
 		<!--Body content-->
 		{% if c.print_model == 1 %}
 		  {% snippet 'snippets/relationship_package_grid.html', packages=origem_de_list_packages, item_class="resource-item", hide_resources=true %}
@@ -62,7 +41,6 @@
 		  </div>
 		  </div>
 		{% endif %}
-		</div>
 		</div>
 	</div>
  	{% endif %}
