@@ -40,8 +40,12 @@
         {% block updateds %}
         <div class="box">
           <div class="inner">
-            <h3>{{ _('Dados atualizados recentemente') }}</h3>
-            <!-- empty block -->
+          <h3>{{ _('Dados atualizados recentemente') }}</h3>
+          {#
+          {% set datasets_url = h.url_for(controller='package', action='search') %}
+          <a href="{{ datasets_url }}">Todos</a>
+          #}
+          {% snippet 'home/snippets/recent_datasets.html' %}
           </div>
         </div>
         {% endblock %}
