@@ -54,6 +54,8 @@ class GuiaHarvesterPlugin(CKANHarvester):
         }
 
     def _should_import(self,package_dict):
+        if package_dict.get('type', '') == u'app': 
+            return False 
         extras = package_dict.get('extras', [])
         is_public_package = extras.get('fornecimento_externo', '') == u'Não'
         if not is_public_package:
