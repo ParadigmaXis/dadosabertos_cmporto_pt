@@ -58,6 +58,7 @@ RUN mkdir -p $CKAN_CONFIG; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
       "ckan.storage_path                               = $STORE_PATH" \
       "ckan.i18n_directory                             = $APP_HOME/src/ckan/ckanext-dados_cmporto_pt/ckanext/dados_cmporto_pt" \
+      "ckan.tracking_enabled                           = true" \
       "ckan.search.show_all_types                      = true" \
       "ckanext.geo_view.ol_viewer                      = wms"; \
     cd $APP_HOME/src/ckan/ckanext-dados_cmporto_pt && "$APP_HOME"/bin/python setup.py develop; \

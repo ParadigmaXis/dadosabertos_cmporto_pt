@@ -20,6 +20,9 @@
           <div class="inner">
             <h3>{{ _('Dados mais vistos') }}</h3>
             <!-- empty block -->
+            {% set datasets_url = h.url_for(controller='package', action='search') %}
+            <a href="{{datasets_url}}?sort=views_recent+desc">Todos</a>
+            {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets() %}
           </div>
         </div>
         {% endblock %}
@@ -45,7 +48,7 @@
           {% set datasets_url = h.url_for(controller='package', action='search') %}
           <a href="{{datasets_url}}?sort=metadata_modified+desc">Todos</a>
           
-          {% snippet 'home/snippets/recent_datasets.html' %}
+          {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_recent_datasets() %}
           </div>
         </div>
         {% endblock %}
