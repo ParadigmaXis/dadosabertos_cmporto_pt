@@ -1,0 +1,11 @@
+{% set datasets_url = h.url_for(controller='package', action='search') %}
+
+<section class="group-list module module-narrow module-shallow">
+<div id="tag_cloud" class="wordcloud"> 
+	{% for _tag, _w in top_tags %}
+	<span data-weight="{{ _w }}"><a href="{{datasets_url}}?tags={{_tag}}">{{ _tag }}</a></span>
+	{% endfor %}
+</div>
+</section>
+
+{% resource 'dados_cmporto_pt/px_tags_frame' %}

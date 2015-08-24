@@ -27,7 +27,8 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'dados_cmporto_pt')
+        toolkit.add_resource('public', 'dados_cmporto_pt')
+        
 
     # IRoutes
 
