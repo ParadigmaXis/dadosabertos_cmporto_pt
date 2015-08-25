@@ -8,6 +8,10 @@ a:hover,
 a:focus {
   color: #031236;
 }
+.homepage .row-fluid [class*="span"] {
+  margin-left: 15px !important;
+  *margin-left: 15px !important;
+}
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
@@ -171,16 +175,14 @@ a.tag:hover {
     background: #ffffff url("../img/bg_body.png");
   }
 }
-
-[role=main] {
-  min-height: 150px;
-}
-
 @media (min-width: 768px) {
   [role=main],
   .main {
     background: #ffffff url("../img/bg_body.png");
   }
+}
+[role=main] {
+  min-height: 150px;
 }
 @media (min-width: 768px) {
   .homepage [role=main],
@@ -200,16 +202,15 @@ a.tag:hover {
   background-color: transparent;
 }
 .homepage .module-search .module-content {
-  background-color: #b6c0d9;
+  background-color: #062b80;
   opacity: 0.9;
 }
 .homepage .module-search .tags {
   background-color: white;
 }
 .homepage .module-search .tags h3 {
-	color: #041a4f;
+  color: #041a4f;
 }
-
 .account-masthead {
   background: #062b80 url("../../../base/images/bg.png");
 }
@@ -349,57 +350,50 @@ img.tiny-logo {
 .boxes .box {
   border-top: 4px solid #062b80;
 }
-
-.row-fluid [class*="span"] {
-  margin-left: 15px !important;
+div.group-icon {
+  width: 128px;
+  height: 128px;
+  background-repeat: no-repeat;
 }
-
-
-div.category-icon {
-	width: 128px;
-	height: 128px;
-	background-repeat: no-repeat;
+img.group-icon:hover {
+  opacity: 0.0;
 }
-img.category-icon:hover {
-	opacity: 0.0;
+.group-icon-urbanismo-e-edificado {
+  background-image: url('icons-groups/urbanismo-e-edificado-txt.png');
 }
-.category-icon-urbanismo-e-edificado {
-	background-image: url('icons-categorias/urbanismo-e-edificado-txt.png');
+.group-icon-administracao {
+  background-image: url('icons-groups/administracao-txt.png');
 }
-.category-icon-administracao {
-	background-image: url('icons-categorias/administracao-txt.png');
+.group-icon-ambiente {
+  background-image: url('icons-groups/ambiente-txt.png');
 }
-.category-icon-ambiente {
-	background-image: url('icons-categorias/ambiente-txt.png');
+.group-icon-atividade-economica {
+  background-image: url('icons-groups/atividade-economica-txt.png');
 }
-.category-icon-atividade-economica {
-	background-image: url('icons-categorias/atividade-economica-txt.png');
+.group-icon-cultura_1 {
+  background-image: url('icons-groups/cultura-txt.png');
 }
-.category-icon-cultura_1 {
-	background-image: url('icons-categorias/cultura-txt.png');
+.group-icon-desporto {
+  background-image: url('icons-groups/desporto-txt.png');
 }
-.category-icon-desporto {
-	background-image: url('icons-categorias/desporto-txt.png');
+.group-icon-educacao-e-ciencia {
+  background-image: url('icons-groups/educacao-e-ciencia-txt.png');
 }
-.category-icon-educacao-e-ciencia {
-	background-image: url('icons-categorias/educacao-e-ciencia-txt.png');
+.group-icon-informacao-de-base {
+  background-image: url('icons-groups/informacao-de-base-txt.png');
 }
-.category-icon-informacao-de-base {
-	background-image: url('icons-categorias/informacao-de-base-txt.png');
+.group-icon-infraestruturas-e-mobilidade {
+  background-image: url('icons-groups/infraestruturas-e-mobilidade-txt.png');
 }
-.category-icon-infraestruturas-e-mobilidade {
-	background-image: url('icons-categorias/infraestruturas-e-mobilidade-txt.png');
+.group-icon-protecao-civil-e-seguranca {
+  background-image: url('icons-groups/protecao-civil-e-seguranca-txt.png');
 }
-.category-icon-protecao-civil-e-seguranca {
-	background-image: url('icons-categorias/protecao-civil-e-seguranca-txt.png');
+.group-icon-saude-e-acao-social {
+  background-image: url('icons-groups/saude-e-acao-social-txt.png');
 }
-.category-icon-saude-e-acao-social {
-	background-image: url('icons-categorias/saude-e-acao-social-txt.png');
+.group-icon-sociedade {
+  background-image: url('icons-groups/sociedade-txt.png');
 }
-.category-icon-sociedade {
-	background-image: url('icons-categorias/sociedade-txt.png');
+.group-icon-urbanismo-e-edificado {
+  background-image: url('icons-groups/urbanismo-e-edificado-txt.png');
 }
-.category-icon-urbanismo-e-edificado {
-	background-image: url('icons-categorias/urbanismo-e-edificado-txt.png');
-}
-
