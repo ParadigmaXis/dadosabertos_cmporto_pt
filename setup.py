@@ -81,5 +81,6 @@ setup(
         guia_harvester=ckanext.dados_cmporto_pt.plugin:GuiaHarvesterPlugin
         gbridge_ui=ckanext.dados_cmporto_pt.gbridge_ui_plugin:GBridgeUIPlugin
         od_ui_plugin=ckanext.dados_cmporto_pt.od_ui_plugin:OpenDataUIPlugin
+        read_composto_simples_plugin=ckanext.dados_cmporto_pt.read_composto_simples_plugin:ReadCompostoSimplesPlugin
     ''',
 )
