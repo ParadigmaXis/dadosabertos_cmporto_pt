@@ -26,6 +26,10 @@ a:hover,
 a:focus {
   color: @cmp_color_dark5;
 }
+.homepage .row-fluid [class*="span"] {
+  margin-left: 15px !important;
+  *margin-left: 15px !important;
+}
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
@@ -194,6 +198,9 @@ a.tag:hover {
     background:  white url("../img/bg_body.png");
   }
 }
+[role=main] {
+  min-height: 150px;
+}
 @media (min-width: @layout_min_width) {
   .homepage [role=main],
   .homepage .main {
@@ -216,10 +223,13 @@ a.tag:hover {
   opacity: 0.9;
 }
 .homepage .module-search .tags {
-  background-color: @cmp_color_dark4;
+  background-color: white;
+}
+.homepage .module-search .tags h3 {
+  color: @cmp_color_dark4;
 }
 .account-masthead {
-  background: @cmp_color_dark4 url("../../../base/images/bg.png");
+  background: @cmp_color_dark1 url("../../../base/images/bg.png");
 }
 .account-masthead .account ul li {
   border-left: 1px solid @cmp_color_dark5;
@@ -363,3 +373,52 @@ img.tiny-logo {
 .boxes .box {
   border-top: 4px solid @cmp_color_dark1;
 }
+
+div.group-icon {
+	width: 128px;
+	height: 128px;
+	background-repeat: no-repeat;
+}
+img.group-icon:hover {
+	opacity: 0.0;
+}
+.group-icon-urbanismo-e-edificado {
+	background-image: url('icons-groups/urbanismo-e-edificado-txt.png');
+}
+.group-icon-administracao {
+	background-image: url('icons-groups/administracao-txt.png');
+}
+.group-icon-ambiente {
+	background-image: url('icons-groups/ambiente-txt.png');
+}
+.group-icon-atividade-economica {
+	background-image: url('icons-groups/atividade-economica-txt.png');
+}
+.group-icon-cultura_1 {
+	background-image: url('icons-groups/cultura-txt.png');
+}
+.group-icon-desporto {
+	background-image: url('icons-groups/desporto-txt.png');
+}
+.group-icon-educacao-e-ciencia {
+	background-image: url('icons-groups/educacao-e-ciencia-txt.png');
+}
+.group-icon-informacao-de-base {
+	background-image: url('icons-groups/informacao-de-base-txt.png');
+}
+.group-icon-infraestruturas-e-mobilidade {
+	background-image: url('icons-groups/infraestruturas-e-mobilidade-txt.png');
+}
+.group-icon-protecao-civil-e-seguranca {
+	background-image: url('icons-groups/protecao-civil-e-seguranca-txt.png');
+}
+.group-icon-saude-e-acao-social {
+	background-image: url('icons-groups/saude-e-acao-social-txt.png');
+}
+.group-icon-sociedade {
+	background-image: url('icons-groups/sociedade-txt.png');
+}
+.group-icon-urbanismo-e-edificado {
+	background-image: url('icons-groups/urbanismo-e-edificado-txt.png');
+}
+
