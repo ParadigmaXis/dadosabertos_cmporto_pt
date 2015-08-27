@@ -1,0 +1,12 @@
+{#
+ Dataset field and value in a tuple list witha a global label
+#}
+
+<h3 tooltip-id={{tooltip_id}}>{{ label }}</h3>
+<div class="container-fluid">
+	<div class="row-fluid">
+	{% for _field, _val in tuple_list %} 
+	<p><strong>{{ _field }}</strong> &nbsp; {{ _val }}</p>
+	{% endfor %}
+	</div>
+</div>
