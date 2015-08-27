@@ -4,7 +4,7 @@
 <div class="row-fluid">
 <div class="row"></div>
 {% for _g in c.groups|sort(attribute='display_name') %}
-	{% snippet "home/snippets/category.html", group=_g, position=loop.index %}
+	{% snippet "home/snippets/group.html", group=_g, position=loop.index %}
 {% endfor %}
 </div>
 <div class="row"></div>
