@@ -56,7 +56,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.max_resource_size                          = 100" \
       "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
-      "package_hide_extras  =  fornecimento_externo 	identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica   restricoes_acesso_interno limitacoes fornecimento_externo limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria  codificacao_caracteres" \ 
+      "package_hide_extras  =  fornecimento_externo 	identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica   restricoes_acesso_interno limitacoes fornecimento_externo limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria  codificacao_caracteres notas_metodologicas" \ 
       "ckan.storage_path                               = $STORE_PATH" \
       "ckan.i18n_directory                             = $APP_HOME/src/ckan/ckanext-dados_cmporto_pt/ckanext/dados_cmporto_pt" \
       "ckan.tracking_enabled                           = true" \
