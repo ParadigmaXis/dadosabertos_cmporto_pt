@@ -21,8 +21,8 @@
 	{% snippet "package/snippets/px-relationships-origem-derivado.html", pkg=pkg %} 
 
 	{# PXIS: Manutencao #}
-	{% if pkg.get('h_manutencao_recurso') and len(pkg.get('h_manutencao_recurso')) > 0 %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Frequência de manutenção', value = pkg.get('h_manutencao_recurso')[0], tooltip_id='field-manutencao_recurso' %}
+	{% if pkg.get('manutencao_recurso') and pkg.get('manutencao_recurso')|length > 0 %}
+		{% snippet "package/snippets/custom_field_text.html", label = 'Frequência de manutenção', value = pkg.get('manutencao_recurso')[0], tooltip_id='field-manutencao_recurso' %}
 	{% endif %}
 
 	{% if pkg.get('objectivo') %}
@@ -33,8 +33,8 @@
 	{% snippet "package/snippets/read_table_consulta_online.html", consulta_online_tuple_list=pkg.consulta_online_tuple_list, tooltip_id='field-consulta_online'  %}
 	{% endif %}
 		
-	{% if pkg.get('h_idioma') and len(pkg.get('h_idioma')) > 0 %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Idioma', value = pkg.get('h_idioma')[0], tooltip_id='field-idioma' %}
+	{% if pkg.get('idioma') and pkg.get('idioma')|length > 0 %}
+		{% snippet "package/snippets/custom_field_text.html", label = 'Idioma', value = pkg.get('idioma')[0], tooltip_id='field-idioma' %}
 	{% endif %}
 	
 	{% if pkg.get('codificacao_caracteres') %}
@@ -62,8 +62,8 @@
 		{% snippet "package/snippets/custom_field_text.html", label = 'Georreferenciado', value = pkg.get('georreferenciado'), tooltip_id='field-georreferenciado' %}
 	{% endif %}
 	
-	{% if pkg.get('h_tipo_representacao_espacial') %}
-		{% snippet "package/snippets/custom_field_list.html", label = 'Representação espacial', values_list = pkg.get('h_tipo_representacao_espacial'), tooltip_id='field-tipo_representacao_espacial' %}
+	{% if pkg.get('tipo_representacao_espacial') %}
+		{% snippet "package/snippets/custom_field_list.html", label = 'Representação espacial', values_list = pkg.get('tipo_representacao_espacial'), tooltip_id='field-tipo_representacao_espacial' %}
 	{% endif %}
 	
 	{% if pkg.get('resolucao_espacial') and pkg.resolucao_espacial_tuple_list[0] %}
@@ -74,8 +74,8 @@
 		{% snippet "package/snippets/custom_field_text.html", label = 'Sistema referência', value = pkg.get('sistema_referencia'), tooltip_id='field-sistema_referencia' %}
 	{% endif %}
 	
-	{% if pkg.get('h_extensao_geografica') %}
-		{% snippet "package/snippets/custom_field_list.html", label = 'Área', values_list = pkg.get('h_extensao_geografica'), tooltip_id='field-extensao_geografica' %}
+	{% if pkg.get('extensao_geografica') %}
+		{% snippet "package/snippets/custom_field_list.html", label = 'Área', values_list = pkg.get('extensao_geografica'), tooltip_id='field-extensao_geografica' %}
 		{% if pkg.get('totalidade_area') %}
 			{% snippet "package/snippets/custom_field_text.html", label = 'Totalidade da área', value = pkg.get('totalidade_area'), tooltip_id='field-totalidade_area' %}
 		{% endif %}

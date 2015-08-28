@@ -26,10 +26,12 @@ class ReadCompostoSimplesPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({'objectivo': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
         
         # vocabulario de peridiocidade de manutencao do recurso
-        schema.update({'manutencao_recurso': [tk.get_converter('convert_from_tags')('manutencao_recurso'), tk.get_validator('ignore_missing')]})
-
+        schema.update({'h_manutencao_recurso': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')]})
+        schema.update({'manutencao_recurso': [self.convert_to_list_of_string('h_manutencao_recurso'), tk.get_validator('ignore_missing')]})
+        
         # Idioma
-        schema.update({'idioma': [tk.get_converter('convert_from_tags')('vocab_iso_639_2'), tk.get_validator('ignore_missing')] })
+        schema.update({'h_idioma': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
+        schema.update({'idioma': [self.convert_to_list_of_string('h_idioma'), tk.get_validator('ignore_missing')] })
         # Codificacao_caracteres
         schema.update({'codificacao_caracteres': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
 
@@ -50,7 +52,8 @@ class ReadCompostoSimplesPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({'georreferenciado': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
 
         # tipo_representacao_espacial
-        schema.update({'tipo_representacao_espacial': [tk.get_converter('convert_from_tags')('vocab_representacao_espacial'), tk.get_validator('ignore_missing') ] })
+        schema.update({'h_tipo_representacao_espacial': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
+        schema.update({'tipo_representacao_espacial': [self.convert_to_list_of_string('h_tipo_representacao_espacial'), tk.get_validator('ignore_missing') ] })
         
         # Resolucao espacial: string json
         schema.update({'resolucao_espacial': [tk.get_converter('convert_from_extras'), self.convert_to_list_dict() ] })
@@ -60,8 +63,9 @@ class ReadCompostoSimplesPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
         schema.update({'sistema_referencia': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
 
         # extensao_geografica:
-        schema.update({'extensao_geografica': [tk.get_converter('convert_from_tags')('vocab_extensao_geografica'), tk.get_validator('ignore_missing')] })
-        
+        schema.update({'h_extensao_geografica': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
+        schema.update({'extensao_geografica': [self.convert_to_list_of_string('h_extensao_geografica'), tk.get_validator('ignore_missing')] })
+                
         # totalidade_area
         schema.update({'totalidade_area': [tk.get_converter('convert_from_extras'), tk.get_validator('ignore_missing')] })
 
@@ -100,5 +104,15 @@ class ReadCompostoSimplesPlugin(plugins.SingletonPlugin, tk.DefaultDatasetForm):
                 table = json.loads(str_table_data)  # list of dict
                 table_data = [ tuple(dict_line.values()) for dict_line in table ]
                 data[key] = table_data
+        return callable
+        
+
+    def convert_to_list_of_string(self, field_name):
+        def callable(key, data, errors, context):
+            str_val = data[(field_name,)]
+            if not str_val:
+                data[key] = []
+            else:
+                data[key] = json.loads(str_val)
         return callable
         
