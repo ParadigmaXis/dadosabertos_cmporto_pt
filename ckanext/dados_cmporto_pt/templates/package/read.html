@@ -21,12 +21,12 @@
 	{% snippet "package/snippets/px-relationships-origem-derivado.html", pkg=pkg %} 
 
 	{# PXIS: Manutencao #}
-	{% if pkg.get('manutencao_recurso') and pkg.get('manutencao_recurso')|length > 0 %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Frequência de manutenção', value = pkg.get('manutencao_recurso')[0], tooltip_id='field-manutencao_recurso' %}
-	{% endif %}
-
 	{% if pkg.get('objectivo') %}
 		{% snippet "package/snippets/custom_field_text.html", label = 'Objetivo', value = pkg.get('objectivo')|safe, tooltip_id='field-objectivo' %}
+	{% endif %}
+
+	{% if pkg.get('manutencao_recurso') and pkg.get('manutencao_recurso')|length > 0 %}
+		{% snippet "package/snippets/custom_field_text.html", label = 'Frequência de manutenção', value = pkg.get('manutencao_recurso')[0], tooltip_id='field-manutencao_recurso' %}
 	{% endif %}
 
 	{% if pkg.get('consulta_online') and pkg.consulta_online_tuple_list[0] %}
