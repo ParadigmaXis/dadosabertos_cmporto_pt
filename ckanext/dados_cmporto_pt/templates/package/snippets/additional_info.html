@@ -1,0 +1,23 @@
+{% ckan_extends %}
+
+{% block extras scoped %}
+  {% if pkg_dict.type in ['simples', 'composto'] %}
+    {% for extra in h.sorted_guia_extras(pkg_dict.extras) %}
+      {% set key, value, template = extra %}
+      {% if value and value != 'null' %}
+        <tr rel="dc:relation" resource="_:extra{{ i }}">
+          <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
+          <td class="dataset-details" property="rdf:value">
+          {% if template %}
+            {% snippet template, key = key, value = value %}
+          {% else %}
+              {{ value }}
+          {% endif %}
+          </td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}

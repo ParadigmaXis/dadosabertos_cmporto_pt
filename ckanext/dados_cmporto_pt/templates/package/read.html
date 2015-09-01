@@ -19,73 +19,7 @@
 {% block package_additional_info %}
 	{% snippet "package/snippets/px-relationships-as-object.html", pkg=pkg %}
 	{% snippet "package/snippets/px-relationships-origem-derivado.html", pkg=pkg %} 
-
-	{# PXIS: Manutencao #}
-	{% if pkg.get('manutencao_recurso') and pkg.get('manutencao_recurso')|length > 0 %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Frequência de manutenção', value = pkg.get('manutencao_recurso')[0], tooltip_id='field-manutencao_recurso' %}
-	{% endif %}
-
-	{% if pkg.get('objectivo') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Objetivo', value = pkg.get('objectivo')|safe, tooltip_id='field-objectivo' %}
-	{% endif %}
-
-	{% if pkg.get('consulta_online') and pkg.consulta_online_tuple_list[0] %}
-	{% snippet "package/snippets/read_table_consulta_online.html", consulta_online_tuple_list=pkg.consulta_online_tuple_list, tooltip_id='field-consulta_online'  %}
-	{% endif %}
-		
-	{% if pkg.get('idioma') and pkg.get('idioma')|length > 0 %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Idioma', value = pkg.get('idioma')[0], tooltip_id='field-idioma' %}
-	{% endif %}
-	
-	{% if pkg.get('codificacao_caracteres') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Codificação caracteres', value = pkg.get('codificacao_caracteres'), tooltip_id='field-codificacao_caracteres' %}
-	{% endif %}
-	
-	{% if pkg.get('dataset_data_criacao') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Data criação', value = pkg.get('dataset_data_criacao'), tooltip_id='field-dataset_data_criacao' %}
-	{% endif %}
-	{% if pkg.get('dataset_data_atualizacao') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Data atualização', value = pkg.get('dataset_data_atualizacao'), tooltip_id='field-dataset_data_atualizacao' %}
-	{% endif %}
-	
-	{% if pkg.get('vigencia_inicio') or pkg.get('vigencia_fim') %}
-		{% snippet "package/snippets/custom_field_text_tuple_list.html", label = 'Periodo de vigência', tuple_list = [('Início', pkg.get('vigencia_inicio')), ('Fim', pkg.get('vigencia_fim'))], tooltip_id='field-codificacao_caracteres' %}
-	{% endif %}
-	
-	{% if pkg.get('anotacoes') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Notas', value = pkg.get('anotacoes'), tooltip_id='field-notas' %}
-	{% endif %}
-	
-	{% snippet "package/snippets/read_responsavel_produtor.html", pkg=pkg %}
-	
-	{% if pkg.get('georreferenciado') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Georreferenciado', value = pkg.get('georreferenciado'), tooltip_id='field-georreferenciado' %}
-	{% endif %}
-	
-	{% if pkg.get('tipo_representacao_espacial') %}
-		{% snippet "package/snippets/custom_field_list.html", label = 'Representação espacial', values_list = pkg.get('tipo_representacao_espacial'), tooltip_id='field-tipo_representacao_espacial' %}
-	{% endif %}
-	
-	{% if pkg.get('resolucao_espacial') and pkg.resolucao_espacial_tuple_list[0] %}
-		{% snippet "package/snippets/read_table_resolucao_espacial.html", label = 'Resolução espacial', resolucao_espacial_tuple_list = pkg.resolucao_espacial_tuple_list, tooltip_id='"field-resolucao_espacial"' %}
-	{% endif %}
-	
-	{% if pkg.get('sistema_referencia') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Sistema referência', value = pkg.get('sistema_referencia'), tooltip_id='field-sistema_referencia' %}
-	{% endif %}
-	
-	{% if pkg.get('extensao_geografica') %}
-		{% snippet "package/snippets/custom_field_list.html", label = 'Área', values_list = pkg.get('extensao_geografica'), tooltip_id='field-extensao_geografica' %}
-		{% if pkg.get('totalidade_area') %}
-			{% snippet "package/snippets/custom_field_text.html", label = 'Totalidade da área', value = pkg.get('totalidade_area'), tooltip_id='field-totalidade_area' %}
-		{% endif %}
-	{% endif %}
-	{% if pkg.get('metameta_norma') %}
-		{% snippet "package/snippets/custom_field_text.html", label = 'Designação do perfil', value = pkg.get('metameta_norma'), tooltip_id='field-metameta_norma' %}
-	{% endif %}
-	
 	{{ super() }}
-	
 {% endblock %} {# package_additional_info #}
 
 {% block package_resources %}
