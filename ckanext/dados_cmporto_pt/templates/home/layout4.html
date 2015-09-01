@@ -21,7 +21,7 @@
           <div class="inner">
             <h3>{{ _('Dados mais vistos') }}</h3>
             <a href="{{datasets_url}}?sort=views_recent+desc">Ver todos</a>
-            {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets() %}
+            {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets(), show_tracking=True %}
           </div>
         </div>
         {% endblock %}
@@ -44,7 +44,7 @@
           <div class="inner">
           <h3>{{ _('Dados atualizados recentemente') }}</h3>
           <a href="{{datasets_url}}?sort=metadata_modified+desc">Ver todos</a>
-          {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_recent_datasets() %}
+          {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_recent_datasets(), show_update_date=True %}
           </div>
         </div>
         {% endblock %}

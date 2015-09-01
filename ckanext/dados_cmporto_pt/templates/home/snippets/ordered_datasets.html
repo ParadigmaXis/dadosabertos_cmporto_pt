@@ -1,5 +1,7 @@
 <section class="group-list module module-narrow module-shallow">
   {% set list_class = "unstyled dataset-list" %}
   {% set item_class = "dataset-item module-content" %}
-  {% snippet 'snippets/package_list.html', packages=packages, hide_resources=True, list_class=list_class, item_class=item_class, truncate=60 %}
+  {% set show_update_date = show_update_date or False %}
+  {% set show_tracking = show_tracking or False %}
+  {% snippet 'snippets/package_list.html', packages=packages, hide_resources=True, list_class=list_class, item_class=item_class, truncate=60, hide_notes=True, show_update_date=show_update_date, show_tracking=show_tracking %}
 </section>
