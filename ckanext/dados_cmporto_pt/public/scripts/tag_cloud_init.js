@@ -11,7 +11,7 @@ $(document).ready(function(){
 			"printMultiplier" : 3,
 			"sort" : "highest"
 		},
-		"font" : "'Times New Roman', Times, serif",
+		"font" : "'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif",
 		"shape" : "square"
 	});
 });
