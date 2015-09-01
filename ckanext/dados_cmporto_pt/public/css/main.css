@@ -349,7 +349,7 @@ img.tiny-logo {
 .boxes .box {
   border-top: 4px solid #062b80;
 }
-.boxes .box .inner h3 {
+.boxes .box > .inner > h3 {
   font-size: 22px;
 }
 div.group-icon {
