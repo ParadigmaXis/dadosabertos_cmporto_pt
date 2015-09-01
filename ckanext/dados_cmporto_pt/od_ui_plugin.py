@@ -21,11 +21,12 @@ class OpenDataUIPlugin(plugins.SingletonPlugin):
 
 def get_recent_datasets():
     _ctx = {'model': model, 'session': model.Session, 'user': c.user or c.author}
-    return logic.get_action('current_package_list_with_resources')(_ctx, {'limit' : 5 })
+    result = logic.get_action('package_search')(_ctx, { 'rows': 5, 'sort' : 'metadata_modified desc', 'q':'type:(dataset OR simples OR composto)' })
+    return result['results']
 
 def get_most_pop_datasets():
     _ctx = {'model': model, 'session': model.Session, 'user': c.user or c.author}
-    result = logic.get_action('package_search')(_ctx, { 'sort' : 'views_recent desc', 'rows': 5 })
+    result = logic.get_action('package_search')(_ctx, { 'sort' : 'views_recent desc', 'rows': 5, 'q':'type:(dataset OR simples OR composto)' })
     return result['results']
 
 def get_top_tags():
