@@ -1,8 +1,24 @@
 {% ckan_extends %}
 
+{% set hide_notes = (hide_notes==True) %}
+
 {% block heading_title %}
     {% if package.type == 'composto' %}
     <i class="px-dataset-composto-icon"></i>
     {% endif %}
-    {{ super() }}
+	{{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
+	{% if show_tracking and package.tracking_summary %}
+	<span class="badge">{{ package.tracking_summary['total'] }}</span>
+	{% endif %}
 {% endblock %}
+
+{% block notes %}
+	{% if hide_notes == False %}
+		{{ super() }}
+	{% endif %}
+	{% if show_update_date %}
+		{{ h.render_datetime(package.metadata_modified, with_hours=False) }}
+	{% endif %}
+{% endblock %}
+
+

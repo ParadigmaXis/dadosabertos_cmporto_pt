@@ -6,29 +6,5 @@ msgstr ""
 "Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "{mins} minute ago"
-msgid_plural "{mins} minutes ago"
-msgstr[0] "há {mins} minuto"
-msgstr[1] "há {mins} minutos"
-
-msgid "{hours} hour ago"
-msgid_plural "{hours} hours ago"
-msgstr[0] "há {hours} hora"
-msgstr[1] "há {hours} horas"
-
-msgid "{days} day ago"
-msgid_plural "{days} days ago"
-msgstr[0] "há {days} dia"
-msgstr[1] "há {days} dias"
-
-msgid "{months} month ago"
-msgid_plural "{months} months ago"
-msgstr[0] "há {months} mês"
-msgstr[1] "há {months} meses"
-
-msgid "over {years} year ago"
-msgid_plural "over {years} years ago"
-msgstr[0] "há mais de um {years} ano"
-msgstr[1] "há mais de {years} anos"
-
-
+msgid "{0} statistics"
+msgstr "Estatísticas do portal"
