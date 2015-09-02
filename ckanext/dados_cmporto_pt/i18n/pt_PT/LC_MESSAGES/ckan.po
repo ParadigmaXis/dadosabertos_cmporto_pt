@@ -9,6 +9,66 @@ msgstr ""
 msgid "{0} statistics"
 msgstr "Estatísticas do portal"
 
+msgid "objectivo"
+msgstr "Objetivo"
+
+msgid "h_manutencao_recurso"
+msgstr "Frequência de manutenção"
+
+msgid "consulta_online"
+msgstr "Consulta online"
+
+msgid "h_idioma"
+msgstr "Idioma"
+
+msgid "codificacao_caracteres"
+msgstr "Codificação de caracteres"
+
+msgid "dataset_data_criacao"
+msgstr "Data de criação"
+
+msgid "dataset_data_atualizacao"
+msgstr "Data de atualização"
+
+msgid "vigencia_inicio"
+msgstr "Periodo de vigência"
+
+msgid "anotacoes"
+msgstr "Notas"
+
+msgid "responsavel_produtor_und_organica"
+msgstr "Unidade orgânica produtora"
+
+msgid "responsavel_produtor_nome"
+msgstr "Responsável"
+
+msgid "responsavel_produtor_email"
+msgstr "Email"
+
+msgid "responsavel_produtor_telefone"
+msgstr "Telefone"
+
+msgid "georreferenciado"
+msgstr "Georreferenciado"
+
+msgid "h_tipo_representacao_espacial"
+msgstr "Representação espacial"
+
+msgid "resolucao_espacial"
+msgstr "Resolução espacial"
+
+msgid "sistema_referencia"
+msgstr "Sistema de referência"
+
+msgid "h_extensao_geografica"
+msgstr "Extensão geográfica"
+
+msgid "totalidade_area"
+msgstr "Totalidade da área"
+
+msgid "metameta_norma"
+msgstr "Perfil de metadados"
+
 #: ckan/authz.py:178
 #, python-format
 msgid "Authorization function not found: %s"
