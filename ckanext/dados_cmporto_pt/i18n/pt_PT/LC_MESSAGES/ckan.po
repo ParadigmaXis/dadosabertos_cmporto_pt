@@ -3689,7 +3689,7 @@ msgstr "desconhecido"
 #: ckan/templates/package/resource_read.html:161
 #: ckan/templates/package/snippets/additional_info.html:68
 msgid "Created"
-msgstr "Criado"
+msgstr "Data de criação"
 
 #: ckan/templates/package/resource_read.html:165
 #: ckan/templates/package/snippets/resource_form.html:37
@@ -4606,7 +4606,7 @@ msgstr "Sessão terminada"
 
 #: ckan/templates/user/logout.html:11
 msgid "You are now logged out."
-msgstr "Estás desconectado."
+msgstr "Acabou de terminar a sessão."
 
 #: ckan/templates/user/logout_first.html:9
 msgid "You're already logged in as {user}."
