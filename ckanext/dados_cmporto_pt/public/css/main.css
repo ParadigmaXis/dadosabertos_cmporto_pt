@@ -350,7 +350,9 @@ img.tiny-logo {
   border-top: 4px solid #062b80;
 }
 .boxes .box > .inner > h3 {
-  font-size: 22px;
+  font-size: 26px;
+  margin-top: 0;
+  color: #062b80;
 }
 div.group-icon {
   width: 128px;
