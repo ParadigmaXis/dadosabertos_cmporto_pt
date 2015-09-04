@@ -17,7 +17,7 @@
 		{{ super() }}
 	{% endif %}
 	{% if show_update_date %}
-		{{ h.render_datetime(package.metadata_modified, with_hours=False) }}
+		{{ _('updated_on') }} {{ h.render_datetime(package.metadata_modified, with_hours=False) }}
 	{% endif %}
 {% endblock %}
 

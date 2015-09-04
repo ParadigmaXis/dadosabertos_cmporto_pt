@@ -9,6 +9,10 @@ msgstr ""
 msgid "{0} statistics"
 msgstr "Estatísticas do portal"
 
+#
+# dados_cmporto_pt plugin
+#
+
 msgid "objectivo"
 msgstr "Objetivo"
 
@@ -68,3 +72,6 @@ msgstr "Totalidade da área"
 
 msgid "metameta_norma"
 msgstr "Perfil de metadados"
+
+msgid "updated_on"
+msgstr "atualizado em"
