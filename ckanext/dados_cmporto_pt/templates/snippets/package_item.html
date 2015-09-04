@@ -3,10 +3,7 @@
 {% set hide_notes = (hide_notes==True) %}
 
 {% block heading_title %}
-	{% if show_tracking and package.tracking_summary %}
-	<span class="badge">{{ package.tracking_summary['total'] }}</span>
-	{% endif %}
-    {% if package.type == 'composto' %}
+	{% if package.type == 'composto' %}
     <i class="px-dataset-composto-icon"></i>
     {% endif %}
 	{{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
@@ -18,6 +15,9 @@
 	{% endif %}
 	{% if show_update_date %}
 		{{ _('updated_on') }} {{ h.render_datetime(package.metadata_modified, with_hours=False) }}
+	{% endif %}
+    {% if show_tracking and package.tracking_summary %}
+	   {{ package.tracking_summary['total'] }} {{ _('Visualizations') }}
 	{% endif %}
 {% endblock %}
 
