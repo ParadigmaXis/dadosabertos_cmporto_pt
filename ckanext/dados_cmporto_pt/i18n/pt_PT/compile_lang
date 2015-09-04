@@ -1,2 +1,2 @@
-msgcat --use-first dados_cmporto_pt.po ckan_2-4_pt_PT_20150902_1620.po -o LC_MESSAGES/ckan.po
+msgcat --use-first dados_cmporto_pt.po ckan_2-4_pt_PT_20150904_1233.po -o LC_MESSAGES/ckan.po
 msgfmt -o LC_MESSAGES/ckan.mo LC_MESSAGES/ckan.po
