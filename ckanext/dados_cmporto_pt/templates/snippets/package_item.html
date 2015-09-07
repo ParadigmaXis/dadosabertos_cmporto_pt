@@ -17,7 +17,7 @@
 		{{ _('updated_on') }} {{ h.render_datetime(package.metadata_modified, with_hours=False) }}
 	{% endif %}
     {% if show_tracking and package.tracking_summary %}
-	   {{ package.tracking_summary['total'] }} {{ _('Visualizations') }}
+	   {{ _('{0} views').format(package.tracking_summary['total']) }}
 	{% endif %}
 {% endblock %}
 

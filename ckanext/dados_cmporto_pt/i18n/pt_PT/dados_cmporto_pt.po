@@ -76,5 +76,5 @@ msgstr "Perfil de metadados"
 msgid "updated_on"
 msgstr "atualizado em"
 
-msgid "Visualizations"
-msgstr "Visualizações"
+msgid "{0} views"
+msgstr "{0} visualizações"
