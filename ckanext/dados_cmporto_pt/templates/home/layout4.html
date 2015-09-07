@@ -19,9 +19,9 @@
         {% block populars %}
         <div class="box">
           <div class="inner">
-            <h3>{{ _('Dados mais vistos') }}</h3>
+            <h3>{{ _('Most viewed datasets') }}</h3>
             {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets(), show_tracking=True, list_class = "unstyled dataset-list" %}
-            <a class="see-all" href="{{datasets_url}}?sort=views_recent+desc">Ver todos ...</a>
+            <a class="see-all" href="{{datasets_url}}?sort=views_recent+desc">{{ _('View all ...') }}</a>
           </div>
         </div>
         {% endblock %}
@@ -30,7 +30,7 @@
         {% block tagcloud %}
         <div class="box">
           <div class="inner">
-            <h3>{{ _('Termos em destaque') }}</h3>
+            <h3>{{ _('Popular terms') }}</h3>
             {% snippet 'home/snippets/most_pop_tags.html', top_tags = h.get_top_tags() %}
           </div>
         </div>
@@ -42,9 +42,9 @@
         {% block updateds %}
         <div class="box">
           <div class="inner">
-            <h3>{{ _('Dados atualizados recentemente') }}</h3>
+            <h3>{{ _('Recently updated datasets') }}</h3>
             {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_recent_datasets(), show_update_date=True, list_class = "unstyled dataset-list" %}
-            <a class="see-all" href="{{datasets_url}}?sort=metadata_modified+desc">Ver todos ...</a>
+            <a class="see-all" href="{{datasets_url}}?sort=metadata_modified+desc">{{ _('View all ...') }}</a>
           </div>
         </div>
         {% endblock %}
