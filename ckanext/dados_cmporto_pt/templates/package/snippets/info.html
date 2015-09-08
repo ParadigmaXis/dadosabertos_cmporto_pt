@@ -1,0 +1,17 @@
+{% ckan_extends %}
+
+{% block nums %}
+  <div class="nums">
+    <dl>
+      <dt>{{ _('Followers') }}</dt>
+      <dd>{{ h.SI_number_span(h.follow_count('dataset', pkg.id)) }}</dd>
+    </dl>
+    {% if pkg.tracking_summary %}
+    <dl>
+      <dt>{{ _('Visualizações') }}</dt>
+      {# <dd>{{ h.SI_number_span(h.follow_count('dataset', pkg.id)) }}</dd> #}
+      <dd>{{ pkg.tracking_summary['total'] }}</dd>
+    </dl>
+	{% endif %}
+  </div>
+{% endblock %}
