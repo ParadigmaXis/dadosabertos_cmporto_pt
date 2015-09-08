@@ -5,6 +5,7 @@ import ckan.model as model
 import ckan.lib.dictization.model_dictize as model_dictize
 from ckan.common import g
 import json
+import utils
 
 from pylons import c
 
@@ -88,28 +89,7 @@ def sorted_guia_extras(package_extras):
     :type package_extras: dict
     '''
 
-    guia_extras = [
-        'objectivo',
-        'h_manutencao_recurso',
-        'consulta_online',
-        'h_idioma',
-        'codificacao_caracteres',
-        'dataset_data_criacao',
-        'dataset_data_atualizacao',
-        'vigencia_inicio',
-        'anotacoes',
-        'responsavel_produtor_und_organica',
-        'responsavel_produtor_nome',
-        'responsavel_produtor_email',
-        'responsavel_produtor_telefone',
-        'georreferenciado',
-        'h_tipo_representacao_espacial',
-        'resolucao_espacial',
-        'sistema_referencia',
-        'h_extensao_geografica',
-        'totalidade_area',
-        'metameta_norma',
-    ]
+    guia_extras = utils.get_ordered_package_extras()
 
     def guia_sort_key(value):
         try:
