@@ -16,8 +16,63 @@
 @cmp_color_dark5: #031236;
 @cmp_color_dark6: #010a1f;
 
+@stagesTextColor: #aeaeae;
+@stagesBackground: #EDEDED;
+
+@stagesActiveTextColor: #fff;
+@stagesActiveBackground: @cmp_color_washed3;
+
+@stagesCompleteTextColor: #fff;
+@stagesCompleteBackground: @cmp_color_washed2;
+
+@stagesCounterTextColor: @stagesBackground;
+@stagesCounterBackground: @stagesTextColor;
+@stagesCounterActiveTextColor: @stagesActiveBackground;
+@stagesCounterActiveBackground: @stagesActiveTextColor;
+@stagesCounterCompleteTextColor: @stagesCompleteBackground;
+@stagesCounterCompleteBackground: stagesCompleteTextColor;
+
 // Lengths
 @layout_min_width: 768px;
+
+.stages {
+  color: @stagesTextColor;
+}
+.stages li {
+  background-color: @stagesBackground;
+}
+.stages li:before {
+  color: @stagesCounterTextColor;
+  background-color: @stagesCounterBackground;
+}
+.stages li:after {
+  border-top-color: @stagesBackground;
+  border-bottom-color: @stagesBackground;
+}
+.stages li.active:after {
+  border-top-color: @stagesActiveBackground;
+  border-bottom-color: @stagesActiveBackground;
+}
+.stages li.complete:after {
+  border-top-color: @stagesCompleteBackground;
+  border-bottom-color: @stagesCompleteBackground;
+}
+.stages li.active:before {
+  color: @stagesCounterActiveTextColor;
+  background: @stagesCounterActiveBackground;
+}
+.stages li.complete:before {
+  color: @stagesCounterCompleteTextColor;
+  background: @stagesCounterCompleteBackground;
+}
+.stages li.active .highlight {
+  color: @stagesActiveTextColor;
+  background: @stagesActiveBackground;
+}
+.stages li.complete .highlight {
+  color: @stagesCompleteTextColor;
+  background: @stagesCompleteBackground;
+}
 
 a {
   color: @cmp_color_dark1;
