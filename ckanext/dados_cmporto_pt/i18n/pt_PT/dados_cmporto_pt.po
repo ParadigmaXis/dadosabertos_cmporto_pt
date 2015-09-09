@@ -78,3 +78,30 @@ msgstr "atualizado em"
 
 msgid "Visualizations"
 msgstr "Visualizações"
+
+msgid "notas resource"
+msgstr "Notas"
+
+msgid "data actualizacao"
+msgstr "Data de atualização dos dados"
+
+msgid "data criacao"
+msgstr "Data de criação dos dados"
+
+msgid "resource type"
+msgstr "Tipo"
+
+msgid "state"
+msgstr "Estado"
+
+msgid "package id"
+msgstr "Conjunto de dados"
+
+msgid "id"
+msgstr "Recurso"
+
+msgid "revision id"
+msgstr "Revisão"
+
+msgid "Metadata"
+msgstr "Metadados"
