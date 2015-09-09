@@ -93,7 +93,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
             package_dict = self._apply_package_extras_white_list(package_dict)
             package_dict = self._apply_package_resource_extras_black_list(package_dict)
             package_dict = self._fix_date_in_fields(package_dict)
-            harvest_object.content = json.dumps(package_dict)
+        harvest_object.content = json.dumps(package_dict)
 
         _super_import = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
 
