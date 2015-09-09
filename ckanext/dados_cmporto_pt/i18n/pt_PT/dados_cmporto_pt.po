@@ -100,14 +100,17 @@ msgstr "Tipo"
 msgid "state"
 msgstr "Estado"
 
-msgid "package id"
+msgid "package_id"
 msgstr "Conjunto de dados"
 
 msgid "id"
 msgstr "Recurso"
 
-msgid "revision id"
+msgid "revision_id"
 msgstr "Revisão"
+
+msgid "position"
+msgstr "Posição"
 
 msgid "Metadata"
 msgstr "Metadados"
