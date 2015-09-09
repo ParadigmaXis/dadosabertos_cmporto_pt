@@ -22,9 +22,6 @@ class GuiaHarvesterPlugin(CKANHarvester):
             'form_config_interface':'Text'
         }
 
-    def _should_import(self,package_dict):
-        return True
-
     def _should_import_local(self, package_dict):
         if package_dict.get('type', '') == u'app':
             return False

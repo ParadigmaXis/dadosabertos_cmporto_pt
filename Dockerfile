@@ -29,7 +29,7 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckan/requirements.txt; \
     $APP_HOME/bin/paster make-config ckan ${CKAN_CONFIG}/${CONFIG_FILE}; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
-    $APP_HOME/bin/pip install -e git+https://github.com/ParadigmaXis/ckanext-harvest.git@ckan_harvester_filter#egg=ckanext-harvest; \
+    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-harvest.git@89b6ad2ce1#egg=ckanext-harvest; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview
 
