@@ -88,6 +88,12 @@ msgstr "Data de atualização dos dados"
 msgid "data criacao"
 msgstr "Data de criação dos dados"
 
+msgid "data referencia inicial"
+msgstr "Data de referência inicial"
+
+msgid "data referencia final"
+msgstr "Data de referência final"
+
 msgid "resource type"
 msgstr "Tipo"
 
