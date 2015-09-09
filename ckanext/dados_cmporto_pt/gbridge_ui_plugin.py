@@ -2,6 +2,7 @@
 
 import ckan.plugins as plugins
 import ckan.model as model
+import ckan.new_authz as new_authz
 import ckan.lib.dictization.model_dictize as model_dictize
 from ckan.common import g
 import json
