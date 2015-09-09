@@ -80,7 +80,7 @@ msgid "Most viewed datasets"
 msgstr "Dados mais vistos"
 
 msgid "Recently updated datasets"
-msgstr "Atualizados recentemente"
+msgstr "Dados atualizados recentemente"
 
 msgid "Popular terms"
 msgstr "Termos em destaque"
@@ -90,3 +90,39 @@ msgstr "{0} visualizações"
 
 msgid "View all ..."
 msgstr "Ver todos ..."
+
+msgid "notas resource"
+msgstr "Notas"
+
+msgid "data actualizacao"
+msgstr "Data de atualização dos dados"
+
+msgid "data criacao"
+msgstr "Data de criação dos dados"
+
+msgid "data referencia inicial"
+msgstr "Data de referência inicial"
+
+msgid "data referencia final"
+msgstr "Data de referência final"
+
+msgid "resource type"
+msgstr "Tipo"
+
+msgid "state"
+msgstr "Estado"
+
+msgid "package_id"
+msgstr "Conjunto de dados"
+
+msgid "id"
+msgstr "Recurso"
+
+msgid "revision_id"
+msgstr "Revisão"
+
+msgid "position"
+msgstr "Posição"
+
+msgid "Metadata"
+msgstr "Metadados"
