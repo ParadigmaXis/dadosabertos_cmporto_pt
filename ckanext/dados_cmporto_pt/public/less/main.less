@@ -35,45 +35,6 @@
 // Lengths
 @layout_min_width: 768px;
 
-.stages {
-  color: @stagesTextColor;
-}
-.stages li {
-  background-color: @stagesBackground;
-}
-.stages li:before {
-  color: @stagesCounterTextColor;
-  background-color: @stagesCounterBackground;
-}
-.stages li:after {
-  border-top-color: @stagesBackground;
-  border-bottom-color: @stagesBackground;
-}
-.stages li.active:after {
-  border-top-color: @stagesActiveBackground;
-  border-bottom-color: @stagesActiveBackground;
-}
-.stages li.complete:after {
-  border-top-color: @stagesCompleteBackground;
-  border-bottom-color: @stagesCompleteBackground;
-}
-.stages li.active:before {
-  color: @stagesCounterActiveTextColor;
-  background: @stagesCounterActiveBackground;
-}
-.stages li.complete:before {
-  color: @stagesCounterCompleteTextColor;
-  background: @stagesCounterCompleteBackground;
-}
-.stages li.active .highlight {
-  color: @stagesActiveTextColor;
-  background: @stagesActiveBackground;
-}
-.stages li.complete .highlight {
-  color: @stagesCompleteTextColor;
-  background: @stagesCompleteBackground;
-}
-
 a {
   color: @cmp_color_dark1;
 }
@@ -211,6 +172,40 @@ a.tag:hover {
 .control-custom.disabled .checkbox.btn:active,
 .control-custom.disabled .checkbox.btn.active {
   background-color: @cmp_color_dark4;
+}
+.stages {
+  color: @stagesTextColor;
+}
+.stages li {
+  background-color: @stagesBackground;
+}
+.stages li:before {
+  color: @stagesCounterTextColor;
+  background-color: @stagesCounterBackground;
+}
+.stages li:after {
+  border-top-color: @stagesBackground;
+  border-bottom-color: @stagesBackground;
+}
+.stages li.active:after {
+  border-top-color: @stagesActiveBackground;
+  border-bottom-color: @stagesActiveBackground;
+}
+.stages li.active:before {
+  color: @stagesCounterActiveTextColor;
+  background: @stagesCounterActiveBackground;
+}
+.stages li.complete:before {
+  color: @stagesCounterCompleteTextColor;
+  background: @stagesCounterCompleteBackground;
+}
+.stages li.active .highlight {
+  color: @stagesActiveTextColor;
+  background: @stagesActiveBackground;
+}
+.stages li.complete .highlight {
+  color: @stagesCompleteTextColor;
+  background: @stagesCompleteBackground;
 }
 .resource-list.reordering .resource-item.ui-sortable-helper {
   border: 1px solid @cmp_color_dark1;
