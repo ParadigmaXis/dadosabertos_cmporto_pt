@@ -164,7 +164,7 @@ a.tag:hover {
 }
 .stages li.complete:before {
   color: #c1cade;
-  background: stagesCompleteTextColor;
+  background: #ffffff;
 }
 .stages li.active .highlight {
   color: #ffffff;
