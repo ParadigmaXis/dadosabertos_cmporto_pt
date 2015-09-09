@@ -2,8 +2,9 @@
 $(document).ready(function(){
 	$("#tag_cloud").awesomeCloud({
 		"size" : {
-			"grid" : 16,
-			"normalize" : false
+			"grid" : 8,
+			"factor" : 2,
+			"normalize" : true
 		},
 		"options" : {
 			"color" : "random-dark",
