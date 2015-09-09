@@ -102,6 +102,9 @@ msgstr "Recurso"
 msgid "revision id"
 msgstr "Revisão"
 
+msgid "Metadata"
+msgstr "Metadados"
+
 #: ckan/authz.py:178
 #, python-format
 msgid "Authorization function not found: %s"

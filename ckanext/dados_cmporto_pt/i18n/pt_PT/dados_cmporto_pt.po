@@ -102,3 +102,6 @@ msgstr "Recurso"
 
 msgid "revision id"
 msgstr "Revisão"
+
+msgid "Metadata"
+msgstr "Metadados"
