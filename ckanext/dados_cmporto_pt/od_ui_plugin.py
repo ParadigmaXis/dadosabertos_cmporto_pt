@@ -36,7 +36,7 @@ def get_top_tags():
     if not c.facets or not c.facets.get('tags'):
         return []
     tags_list = [(_tag,_val) for _tag,_val in c.facets.get('tags').iteritems()]
-    return sorted(tags_list, key=lambda x:x[1], reverse=True)[0:min(50,len(tags_list))]
+    return sorted(tags_list, key=lambda x:x[1], reverse=True)[0:min(20,len(tags_list))]
 
 
 def format_non_duplicate_resource_items(res_dict):
