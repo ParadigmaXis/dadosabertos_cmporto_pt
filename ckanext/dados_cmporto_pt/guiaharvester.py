@@ -35,7 +35,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
 
         if import_stage_result:
             package_dict = json.loads(harvest_object.content)
-            havested_rels = package_dict.get('relationships', [])
+            harvested_rels = package_dict.get('relationships', [])
             try:
                 this_package = model.Package.get(package_dict['name'])
                 if not this_package: raise logic.NotFound
@@ -45,9 +45,8 @@ class GuiaHarvesterPlugin(CKANHarvester):
 
             existing_rels = this_package.get_relationships()
             log.info('import_stage() : this package: {0}'.format(this_package))
-            self._replace_relationships(existing_rels, havested_rels)
+            self._replace_relationships(existing_rels, harvested_rels)
         return import_stage_result
-
 
     def _should_import_local(self, package_dict):
         if package_dict.get('type', '') == u'app':
