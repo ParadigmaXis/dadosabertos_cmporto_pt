@@ -38,9 +38,9 @@ class GuiaHarvesterPlugin(CKANHarvester):
             harvested_rels = package_dict.get('relationships', [])
             try:
                 this_package = model.Package.get(package_dict['name'])
-                if not this_package: raise logic.NotFound
+                if not this_package: raise logic.NotFound()
             except logic.NotFound as nf:
-                log.info('import_stage(): relationships not replaced; could not find package {0}: {1}'.format(package_dict['name'], nf))
+                log.info('import_stage(): relationships not replaced; could not find package "{0}": {1}'.format(package_dict['name'], nf))
                 return import_stage_result
 
             existing_rels = this_package.get_relationships()
