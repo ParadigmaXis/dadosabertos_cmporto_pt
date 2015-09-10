@@ -8,6 +8,7 @@ from ckan.lib.helpers import json
 
 from ckan import model
 from ckan.model import PackageRelationship, Session
+from ckan.model.license import LicenseCreativeCommonsAttribution
 import ckan.logic as logic
 
 import ckan.new_authz as new_authz
@@ -118,6 +119,11 @@ class GuiaHarvesterPlugin(CKANHarvester):
                     resource[field] = '{0} '.format(value)
         return package_dict
 
+    def _set_license(self, package_dict):
+        lic = LicenseCreativeCommonsAttribution()
+        package_dict['license_id'] = lic.id
+        return package_dict
+        
     def import_stage(self, harvest_object):
         #log.info('import_stage().harvest_object.content : {0}'.format(harvest_object.content) )
 
@@ -128,6 +134,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
             package_dict = self._apply_package_extras_white_list(package_dict)
             package_dict = self._apply_package_resource_extras_black_list(package_dict)
             package_dict = self._fix_date_in_fields(package_dict)
+            package_dict = self._set_license(package_dict)
             harvest_object.content = json.dumps(package_dict)
 
         _super_import = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
