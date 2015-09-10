@@ -17,9 +17,11 @@
 {% endblock %}
 
 {% block package_additional_info %}
-	{% snippet "package/snippets/px-relationships-as-object.html", pkg=pkg %}
-	{% snippet "package/snippets/px-relationships-origem-derivado.html", pkg=pkg %} 
-    {% snippet "package/snippets/px-metadata.html", pkg=pkg %}
+	{% if pkg.type in ['composto', 'simples'] %}
+		{% snippet "package/snippets/px-relationships-as-object.html", pkg=pkg %}
+		{% snippet "package/snippets/px-relationships-origem-derivado.html", pkg=pkg %} 
+	    {% snippet "package/snippets/px-metadata.html", pkg=pkg %}
+	{% endif %}
 	{{ super() }}
 {% endblock %} {# package_additional_info #}
 
