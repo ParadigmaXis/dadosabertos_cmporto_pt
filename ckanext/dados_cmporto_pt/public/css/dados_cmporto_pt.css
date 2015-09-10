@@ -21,3 +21,12 @@
   padding-left: 4px;
   padding-right: 4px;
 }
+
+a.see-all{
+  display: block;
+  text-align: right;
+}
+
+.group-list .module-content {
+  padding-left: 0;
+}

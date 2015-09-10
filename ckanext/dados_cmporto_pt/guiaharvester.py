@@ -1,51 +1,16 @@
 # -*- coding: utf-8 -*-
-
-import ckan.plugins as plugins
-import ckan.plugins.toolkit as toolkit
-from ckanext.harvest.harvesters import CKANHarvester
-
-
-from ckan.lib.helpers import json
-
 from ckan import model
 from ckan.model import PackageRelationship, Session
-from ckan.model.license import LicenseCreativeCommonsAttribution
+import ckan.new_authz as new_authz
 import ckan.logic as logic
 
-import ckan.new_authz as new_authz
+from ckan.lib.helpers import json
+from ckanext.harvest.harvesters import CKANHarvester
 import utils
 
 import logging
 log = logging.getLogger(__name__)
 
-
-class CMPortoPlugin(plugins.SingletonPlugin):
-    '''Theme for the dados.cmporto.pt portal
-    '''
-    plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IRoutes, inherit=True)
-
-    # IConfigurer
-
-    def update_config(self, config_):
-        toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('public', 'dados_cmporto_pt')
-        
-
-    # IRoutes
-
-    def before_map(self, map):
-        """This IRoutes implementation overrides the standard
-        ``/ckan-admin/config`` behaviour with a custom controller.
-        """
-        map.connect('/ckan-admin/config', controller='ckanext.dados_cmporto_pt.controller:AdminController', action='config')
-        map.connect('/terms-of-use', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='terms_of_use')
-        map.connect('/privacy-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='privacy_policy')
-        map.connect('/moderation-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy')
-        return map
-
- 
 class GuiaHarvesterPlugin(CKANHarvester):
     '''Harvester for CMPorto's GUIA
     '''
@@ -57,12 +22,9 @@ class GuiaHarvesterPlugin(CKANHarvester):
             'form_config_interface':'Text'
         }
 
-    def _should_import(self,package_dict):
-        return True
-
     def _should_import_local(self, package_dict):
-        if package_dict.get('type', '') == u'app': 
-            return False 
+        if package_dict.get('type', '') == u'app':
+            return False
         extras = package_dict.get('extras', {})
         is_public_package = extras.get('fornecimento_externo', '') == u'Não'
         if not is_public_package:
@@ -121,11 +83,6 @@ class GuiaHarvesterPlugin(CKANHarvester):
                     resource[field] = '{0} '.format(value)
         return package_dict
 
-    def _set_license(self, package_dict):
-        lic = LicenseCreativeCommonsAttribution()
-        package_dict['license_id'] = lic.id
-        return package_dict
-        
     def import_stage(self, harvest_object):
         #log.info('import_stage().harvest_object.content : {0}'.format(harvest_object.content) )
 
@@ -136,16 +93,15 @@ class GuiaHarvesterPlugin(CKANHarvester):
             package_dict = self._apply_package_extras_white_list(package_dict)
             package_dict = self._apply_package_resource_extras_black_list(package_dict)
             package_dict = self._fix_date_in_fields(package_dict)
-            package_dict = self._set_license(package_dict)
-            harvest_object.content = json.dumps(package_dict)
+        harvest_object.content = json.dumps(package_dict)
 
         _super_import = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
-        
+
         if _super_import:
             _ctx = {'model': model, 'session': Session, 'user': self._get_user_name()}
             package_dict = json.loads(harvest_object.content)
             _havested_rels = package_dict.get('relationships', [])
-            
+
             try:
                 this_package = model.Package.get(package_dict['name'])
                 log.info('import_stage() : this package: {0}'.format(this_package))
@@ -158,16 +114,16 @@ class GuiaHarvesterPlugin(CKANHarvester):
                         log.info('import_stage() .  deleted relationship : {0}'.format(_existing.as_dict()))
                     except Exception as e:
                         log.info('import_stage().relationship : could not delete: {0}'.format(e))
-            
+
             except logic.NotFound as nf:
                 # The package was not created:
                 log.info('import_stage().relationship : could not find package: {0}'.format(nf))
-            except Exception as e: 
+            except Exception as e:
                 log.info('import_stage().relationship : exception {0}'.format(e))
-                   
+
             # Debug only:
             _fwd_types = PackageRelationship.get_forward_types()
-            
+
             for _rel in _havested_rels:
                 # Debug only:
                 if _rel['type'] in _fwd_types:
@@ -191,6 +147,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
                     log.info('import_stage().relationship : not found package: {0}'.format(nf))
                 except logic.ValidationError as ve:
                     log.info('import_stage().relationship : validation error : {0}'.format(ve))
-                    
+
         return _super_import
-    
+
+
