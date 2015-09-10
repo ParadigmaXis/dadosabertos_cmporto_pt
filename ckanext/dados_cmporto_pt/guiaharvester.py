@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-from ckan import model
-from ckan.model import PackageRelationship, Session
-import ckan.new_authz as new_authz
-import ckan.logic as logic
-
+from ckan import model, new_authz, logic
+from ckan.model import Session
 from ckan.model.license import LicenseCreativeCommonsAttribution
 from ckan.lib.helpers import json
 from ckanext.harvest.harvesters import CKANHarvester
@@ -22,6 +19,35 @@ class GuiaHarvesterPlugin(CKANHarvester):
             'description': 'Harvests remote GUIA CKAN instances',
             'form_config_interface':'Text'
         }
+
+    def import_stage(self, harvest_object):
+        package_dict = json.loads(harvest_object.content)
+        if not self._should_import_local(package_dict):
+            package_dict['state'] = 'deleted'
+        else:
+            package_dict = self._apply_package_extras_white_list(package_dict)
+            package_dict = self._apply_package_resource_extras_black_list(package_dict)
+            package_dict = self._fix_date_in_fields(package_dict)
+            package_dict = self._set_license(package_dict)
+        harvest_object.content = json.dumps(package_dict)
+
+        import_stage_result = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
+
+        if import_stage_result:
+            package_dict = json.loads(harvest_object.content)
+            havested_rels = package_dict.get('relationships', [])
+            try:
+                this_package = model.Package.get(package_dict['name'])
+                if not this_package: raise logic.NotFound
+            except logic.NotFound as nf:
+                log.info('import_stage(): relationships not replaced; could not find package {0}: {1}'.format(package_dict['name'], nf))
+                return import_stage_result
+
+            existing_rels = this_package.get_relationships()
+            log.info('import_stage() : this package: {0}'.format(this_package))
+            self._replace_relationships(existing_rels, havested_rels)
+        return import_stage_result
+
 
     def _should_import_local(self, package_dict):
         if package_dict.get('type', '') == u'app':
@@ -89,72 +115,35 @@ class GuiaHarvesterPlugin(CKANHarvester):
         package_dict['license_id'] = lic.id
         return package_dict
 
-    def import_stage(self, harvest_object):
-        #log.info('import_stage().harvest_object.content : {0}'.format(harvest_object.content) )
-
-        package_dict = json.loads(harvest_object.content)
-        if not self._should_import_local(package_dict):
-            package_dict['state'] = 'deleted'
-        else:
-            package_dict = self._apply_package_extras_white_list(package_dict)
-            package_dict = self._apply_package_resource_extras_black_list(package_dict)
-            package_dict = self._fix_date_in_fields(package_dict)
-            package_dict = self._set_license(package_dict)
-        harvest_object.content = json.dumps(package_dict)
-
-        _super_import = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
-
-        if _super_import:
-            _ctx = {'model': model, 'session': Session, 'user': self._get_user_name()}
-            package_dict = json.loads(harvest_object.content)
-            _havested_rels = package_dict.get('relationships', [])
-
-            try:
-                this_package = model.Package.get(package_dict['name'])
-                log.info('import_stage() : this package: {0}'.format(this_package))
-                _existing_rels = this_package.get_relationships()
-                log.info('import_stage() : existing relationships: {0}'.format(_existing_rels))
-                for _existing in _existing_rels:
-                    try:
-                        ## TODO: should use toolkit.get_action(...)
-                        logic.action.delete.package_relationship_delete(_ctx, _existing.as_dict())
-                        log.info('import_stage() .  deleted relationship : {0}'.format(_existing.as_dict()))
-                    except Exception as e:
-                        log.info('import_stage().relationship : could not delete: {0}'.format(e))
-
-            except logic.NotFound as nf:
-                # The package was not created:
-                log.info('import_stage().relationship : could not find package: {0}'.format(nf))
-            except Exception as e:
-                log.info('import_stage().relationship : exception {0}'.format(e))
-
-            # Debug only:
-            _fwd_types = PackageRelationship.get_forward_types()
-
-            for _rel in _havested_rels:
-                # Debug only:
-                if _rel['type'] in _fwd_types:
-                    log.debug('import_stage() . relationship : {0}'.format(_rel))
-                    _subj = _rel['subject']
-                    log.debug('import_stage() . relationship.SUBJECT : {0}'.format(_subj))
-                    _type = _rel['type']
-                    log.debug('import_stage() . relationship.TYPE : {0}'.format(_type))
-                    _obj = _rel['object']
-                    log.debug('import_stage() . relationship.OBJECT : {0}'.format(_obj))
-                    _comment = _rel['comment']
-                    log.debug('import_stage() . relationship.COMMENT : {0}'.format(_comment))
+    def _replace_relationships(self, existing_rels, havested_rels):
+        _ctx = {'model': model, 'session': Session, 'user': self._get_user_name()}
+        try:
+            log.info('import_stage() : existing relationships: {0}'.format(existing_rels))
+            for _existing in existing_rels:
                 try:
-                    _can_create = new_authz.is_authorized('package_relationship_create', _ctx, _rel)
-                    if _can_create['success']:
-                        ## TODO: should use toolkit.get_action(...)
-                        #_r_dicts = toolkit.get_action('package_relationship_create')(_ctx, _rel)
-                        _r_dicts = logic.action.create.package_relationship_create(_ctx, _rel)
-                        log.info('import_stage() .  created relationship : {0}'.format(_r_dicts))
-                except logic.NotFound as nf:
-                    log.info('import_stage().relationship : not found package: {0}'.format(nf))
-                except logic.ValidationError as ve:
-                    log.info('import_stage().relationship : validation error : {0}'.format(ve))
+                    ## TODO: should use toolkit.get_action(...)
+                    logic.action.delete.package_relationship_delete(_ctx, _existing.as_dict())
+                    log.info('import_stage() .  deleted relationship : {0}'.format(_existing.as_dict()))
+                except Exception as e:
+                    log.info('import_stage().relationship : could not delete: {0}'.format(e))
 
-        return _super_import
+        except logic.NotFound as nf:
+            # The package was not created:
+            log.info('import_stage().relationship : could not find package: {0}'.format(nf))
+        except Exception as e:
+            log.info('import_stage().relationship : exception {0}'.format(e))
+
+        for _rel in havested_rels:
+            try:
+                _can_create = new_authz.is_authorized('package_relationship_create', _ctx, _rel)
+                if _can_create['success']:
+                    ## TODO: should use toolkit.get_action(...)
+                    # _r_dicts = toolkit.get_action('package_relationship_create')(_ctx, _rel)
+                    _r_dicts = logic.action.create.package_relationship_create(_ctx, _rel)
+                    log.info('import_stage() .  created relationship : {0}'.format(_r_dicts))
+            except logic.NotFound as nf:
+                log.info('import_stage().relationship : not found package: {0}'.format(nf))
+            except logic.ValidationError as ve:
+                log.info('import_stage().relationship : validation error : {0}'.format(ve))
 
 

@@ -2,18 +2,6 @@
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckanext.harvest.harvesters import CKANHarvester
-
-
-from ckan.lib.helpers import json
-
-from ckan import model
-from ckan.model import PackageRelationship, Session
-from ckan.model.license import LicenseCreativeCommonsAttribution
-import ckan.logic as logic
-
-import ckan.new_authz as new_authz
-import utils
 
 import logging
 log = logging.getLogger(__name__)
