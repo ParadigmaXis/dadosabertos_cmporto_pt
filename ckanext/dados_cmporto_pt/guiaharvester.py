@@ -4,6 +4,7 @@ from ckan.model import PackageRelationship, Session
 import ckan.new_authz as new_authz
 import ckan.logic as logic
 
+from ckan.model.license import LicenseCreativeCommonsAttribution
 from ckan.lib.helpers import json
 from ckanext.harvest.harvesters import CKANHarvester
 import utils
