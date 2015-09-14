@@ -379,6 +379,9 @@ img.tiny-logo {
   padding-right: 0.5em;
 }
 .sponsors {
+  overflow: hidden;
+}
+.sponsors img {
   max-width: none;
   height: 100px;
   margin-top: 0.5em;
