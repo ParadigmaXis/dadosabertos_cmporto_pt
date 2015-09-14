@@ -26,3 +26,4 @@ ckan:
   volumes:
     - /srv/docker/ckan/filestore:/srv/app/store
     - /srv/docker/ckan/conf:/srv/app/conf
+    - /srv/docker/ckan/httpd:/var/log/httpd
