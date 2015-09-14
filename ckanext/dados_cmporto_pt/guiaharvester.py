@@ -4,7 +4,11 @@ from ckan.model import Session
 from ckan.model.license import LicenseCreativeCommonsAttribution
 from ckan.lib.helpers import json
 from ckanext.harvest.harvesters import CKANHarvester
+import ckan.plugins.toolkit as toolkit
+from cgi import FieldStorage
 import utils
+import requests
+from StringIO import StringIO
 
 import logging
 log = logging.getLogger(__name__)
@@ -31,6 +35,8 @@ class GuiaHarvesterPlugin(CKANHarvester):
             package_dict = self._set_license(package_dict)
         harvest_object.content = json.dumps(package_dict)
 
+        upload_resources = self._pop_upload_resources(package_dict)
+
         import_stage_result = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
 
         if import_stage_result:
@@ -40,13 +46,48 @@ class GuiaHarvesterPlugin(CKANHarvester):
                 this_package = model.Package.get(package_dict['name'])
                 if not this_package: raise logic.NotFound()
             except logic.NotFound as nf:
-                log.info('import_stage(): relationships not replaced; could not find package "{0}": {1}'.format(package_dict['name'], nf))
+                log.info('import_stage(): could not find package "{0}"; relationships not updated: {1}'.format(package_dict['name'], nf))
                 return import_stage_result
 
             existing_rels = this_package.get_relationships()
-            log.info('import_stage() : this package: {0}'.format(this_package))
-            self._replace_relationships(existing_rels, harvested_rels)
+            self._update_relationships(existing_rels, harvested_rels)
+
+            for resource_dict in upload_resources:
+                resource_url = resource_dict['url']
+                resource_filename = resource_url.split('/')[-1]
+
+                try:
+                    response = requests.get(resource_url)
+                    resource_file = StringIO(response.content)
+                except Exception,e:
+                    self._save_object_error('Resource not harvested. Unable to fetch resource from "{0}": {1}'.format(resource_url, e), harvest_object, 'Import')
+                    continue
+
+                cfs = FieldStorage()
+                cfs.file = resource_file
+                cfs.filename = resource_filename
+                resource_dict['upload'] = cfs
+                if 'created' in resource_dict: del resource_dict['created']
+                if 'last_modified' in resource_dict: del resource_dict['last_modified']
+                if 'api' in resource_dict: del resource_dict['api']
+
+                try:
+                    the_resource = toolkit.get_action('resource_create')(data_dict=resource_dict)
+                except Exception,e:
+                    self._save_object_error('Resource not harvested. Unable to import the resource originally from "{0}": {1}'.format(resource_url, e), harvest_object, 'Import')
+                    continue
+
         return import_stage_result
+
+    def _pop_upload_resources(self, package_dict):
+        upload_resources = []
+        resources_lst = package_dict.get('resources', [])
+        for resource_dict in resources_lst:
+            if resource_dict.get('url_type', None) == "upload":
+                resources_lst.remove(resource_dict)
+                del resource_dict['url_type']
+                upload_resources.append(resource_dict)
+        return upload_resources
 
     def _should_import_local(self, package_dict):
         if package_dict.get('type', '') == u'app':
@@ -114,10 +155,10 @@ class GuiaHarvesterPlugin(CKANHarvester):
         package_dict['license_id'] = lic.id
         return package_dict
 
-    def _replace_relationships(self, existing_rels, havested_rels):
+    def _update_relationships(self, existing_rels, havested_rels):
+        log.info('import_stage() : updating existing relationships ({0}) with harvested relationships ({1}).'.format(existing_rels, havested_rels))
         _ctx = {'model': model, 'session': Session, 'user': self._get_user_name()}
         try:
-            log.info('import_stage() : existing relationships: {0}'.format(existing_rels))
             for _existing in existing_rels:
                 try:
                     ## TODO: should use toolkit.get_action(...)
