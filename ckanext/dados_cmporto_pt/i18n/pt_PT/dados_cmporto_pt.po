@@ -41,7 +41,7 @@ msgid "anotacoes"
 msgstr "Notas"
 
 msgid "responsavel_produtor_und_organica"
-msgstr "Unidade orgânica produtora"
+msgstr "Produtor"
 
 msgid "responsavel_produtor_nome"
 msgstr "Responsável"
