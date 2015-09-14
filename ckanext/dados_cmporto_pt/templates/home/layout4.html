@@ -16,17 +16,6 @@
   <div class="container boxes">
     <div class="row row2">
       <div class="span6 col2">
-        {% block populars %}
-        <div class="box">
-          <div class="inner">
-            <h3>{{ _('Most viewed datasets') }}</h3>
-            {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets(), show_tracking=True, list_class = "unstyled dataset-list" %}
-            <a class="see-all" href="{{datasets_url}}?sort=views_recent+desc">{{ _('View all ...') }}</a>
-          </div>
-        </div>
-        {% endblock %}
-      </div>
-      <div class="span6 col1">
         {% block tagcloud %}
         <div class="box">
           <div class="inner">
@@ -34,6 +23,11 @@
             {% snippet 'home/snippets/most_pop_tags.html', top_tags = h.get_top_tags() %}
           </div>
         </div>
+        {% endblock %}
+      </div>
+      <div class="span6 col1">
+        {% block stats %}
+          {% snippet 'home/snippets/stats.html' %}
         {% endblock %}
       </div>
     </div>
@@ -50,8 +44,14 @@
         {% endblock %}
       </div>
       <div class="span6 col1">
-        {% block stats %}
-          {% snippet 'home/snippets/stats.html' %}
+        {% block populars %}
+        <div class="box">
+          <div class="inner">
+            <h3>{{ _('Most viewed datasets') }}</h3>
+            {% snippet 'home/snippets/ordered_datasets.html', packages=h.get_most_pop_datasets(), show_tracking=True, list_class = "unstyled dataset-list" %}
+            <a class="see-all" href="{{datasets_url}}?sort=views_recent+desc">{{ _('View all ...') }}</a>
+          </div>
+        </div>
         {% endblock %}
       </div>
     </div>
