@@ -30,3 +30,19 @@ a.see-all{
 .group-list .module-content {
   padding-left: 0;
 }
+
+@media print {
+  @page {
+    size: auto;
+    margin: 25mm 25mm 25mm 25mm;
+  }
+  .page_primary_action, .search-form, .pagination, .dropdown, .account-masthead,
+ .masthead, .site-footer, .toolbar, .secondary, .page-header {
+    display: none !important;
+  }
+  [role="main"] .primary {
+    float: none;
+    width: 100%;
+  }
+}
+
