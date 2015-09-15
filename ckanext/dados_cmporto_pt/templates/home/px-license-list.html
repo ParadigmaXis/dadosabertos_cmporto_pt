@@ -1,0 +1,31 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Lista de Licenças') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Lista de Licenças'), controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='list_license' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <h1 class="page-heading">{{ _('Lista de Licenças') }}</h1>
+
+        <table>
+          <tr>
+            <th>{{ _('License') }}</th>
+            <th>{{ _('Title') }}</th>
+          </tr>
+          {% for license in licenses %}
+            <tr>
+              <td>{{ license[1].id }}</td>
+              <td>{% if license[1].url %}<a href="{{ license[1].url }}">{{ license[1].title }}</a>{% else %}{{ license[1].title }}{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </table>
+
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

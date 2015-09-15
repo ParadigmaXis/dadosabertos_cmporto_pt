@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from ckan import model, new_authz, logic
-from ckan.model import Session
+from ckan.model import Session, Package
 from ckan.model.license import LicenseCreativeCommonsAttribution
 from ckan.lib.helpers import json
 from ckanext.harvest.harvesters import CKANHarvester
@@ -9,6 +9,7 @@ from cgi import FieldStorage
 import utils
 import requests
 from StringIO import StringIO
+import json
 
 import logging
 log = logging.getLogger(__name__)
@@ -23,6 +24,15 @@ class GuiaHarvesterPlugin(CKANHarvester):
             'description': 'Harvests remote GUIA CKAN instances',
             'form_config_interface':'Text'
         }
+
+    def validate_config(self,config):
+        super(GuiaHarvesterPlugin, self).validate_config(config)
+        config_obj = json.loads(config)
+        if 'license_id' in config:
+            license_id = config_obj.get('license_id', None)
+            if license_id not in Package.get_license_register().keys():
+                raise ValueError('license_id not found')
+        return config
 
     def import_stage(self, harvest_object):
         package_dict = json.loads(harvest_object.content)
@@ -151,8 +161,8 @@ class GuiaHarvesterPlugin(CKANHarvester):
         return package_dict
 
     def _set_license(self, package_dict):
-        lic = LicenseCreativeCommonsAttribution()
-        package_dict['license_id'] = lic.id
+        license_id = self.config.get('license_id', None) or LicenseCreativeCommonsAttribution().id
+        package_dict['license_id'] = license_id
         return package_dict
 
     def _update_relationships(self, existing_rels, havested_rels):
