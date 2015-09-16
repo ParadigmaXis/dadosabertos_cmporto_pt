@@ -31,7 +31,8 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install ckanext-pdfview; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-harvest.git@89b6ad2ce1#egg=ckanext-harvest; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt; \
-    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview
+    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview; \
+    $APP_HOME/bin/pip install -e git+https://github.com/okfn/ckanext-disqus#egg=ckanext-disqus
 
 # Add dados_cmporto_pt plugin
 ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
@@ -48,7 +49,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester dados_cmporto_pt  gbridge_ui od_ui_plugin" \
+      "ckan.plugins                                    = disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester dados_cmporto_pt  gbridge_ui od_ui_plugin" \
       "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
@@ -56,6 +57,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.max_resource_size                          = 512" \
       "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
+      "disqus.name                                     = paradigmaxisopendata" \
       "package_hide_extras  =  fornecimento_externo 	identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica   restricoes_acesso_interno limitacoes fornecimento_externo limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria  codificacao_caracteres notas_metodologicas" \
       "ckan.storage_path                               = $STORE_PATH" \
       "ckan.i18n_directory                             = $APP_HOME/src/ckan/ckanext-dados_cmporto_pt/ckanext/dados_cmporto_pt" \
