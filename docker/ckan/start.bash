@@ -18,6 +18,19 @@ if [[ $count -eq 0 ]]; then
   psql -h db -U postgres -c "ALTER ROLE $CKAN_DB_USER WITH ENCRYPTED PASSWORD '$CKAN_DB_PASS';"
 fi
 
+# Check if datastore database already exist or create a new one
+count=$(psql -lqt -U postgres -h db | cut -d \| -f 1 | grep -w datastore | wc -l)
+
+if [[ $count -eq 0 ]]; then
+  echo 'Creating datastore database...'
+  createuser -h db -U postgres -S -D -R -w $DATASTORE_DB_USER
+  createdb -h db -U postgres -O $CKAN_DB_USER $DATASTORE_DB_NAME -E utf-8
+  psql -h db -U postgres -c "ALTER ROLE $DATASTORE_DB_USER WITH ENCRYPTED PASSWORD '$DATASTORE_DB_PASS';"
+fi
+
+# Set permissions for datastore db
+"$APP_HOME"/bin/paster --plugin=ckan datastore set-permissions -c "${CKAN_CONFIG}/ckan.ini" | psql -h db -U postgres --set ON_ERROR_STOP=1
+
 # Configure filestore
 mkdir -p $STORE_PATH
 chown apache $STORE_PATH
