@@ -37,12 +37,15 @@ a.see-all{
     margin: 25mm 25mm 25mm 25mm;
   }
   .page_primary_action, .search-form, .pagination, .dropdown, .account-masthead,
- .masthead, .site-footer, .toolbar, .secondary, .page-header {
+ .masthead, .site-footer, .toolbar, .secondary, .page-header, #dataset-resources, .tags {
     display: none !important;
   }
   [role="main"] .primary {
     float: none;
     width: 100%;
+  }
+  a[href]:after {
+    content: none !important;
   }
 }
 
