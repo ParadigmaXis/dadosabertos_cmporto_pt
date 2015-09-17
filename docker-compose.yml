@@ -13,7 +13,12 @@ solr:
   domainname: localdomain
   volumes:
    - /srv/docker/ckan/solr:/opt/solr/example/solr/ckan
-   
+
+datapusher:
+  build: ./docker/datapusher
+  hostname: datapusher
+  domainname: localdomain
+
 ckan:
   build: .
   hostname: ckan
@@ -21,6 +26,7 @@ ckan:
   links:
     - db:db
     - solr:solr
+    - datapusher:datapusher
   ports:
     - 80:80
   volumes:

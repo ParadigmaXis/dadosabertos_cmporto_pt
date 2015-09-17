@@ -48,13 +48,14 @@ RUN mkdir -p $CKAN_CONFIG; \
       "solr_url                                        = http://solr:8983/solr/ckan" \
       "ckan.datastore.write_url                        = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$DATASTORE_DB_NAME" \
       "ckan.datastore.read_url                         = postgresql://$DATASTORE_DB_USER:$DATASTORE_DB_PASS@db/$DATASTORE_DB_NAME" \
+      "ckan.datapusher.url                             = http://datapusher:8800/" \
       "ckan.auth.create_unowned_dataset                = false" \
       "ckan.auth.create_dataset_if_not_in_organization = false" \
       "ckan.auth.user_create_groups                    = false" \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester dados_cmporto_pt  gbridge_ui od_ui_plugin" \
+      "ckan.plugins                                    = datapusher datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester dados_cmporto_pt  gbridge_ui od_ui_plugin" \
       "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
