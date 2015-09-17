@@ -12,20 +12,16 @@
 
 {% block header_site_navigation_tabs %}
 
-              {% if c.userobj.sysadmin %}
-              {{ h.build_nav_main(
-                ('search', _('Datasets')),
-                ('organizations_index', _('Organizations')),
-                ('group_index', _('Groups')),
-                ('about', _('About'))
-              ) }}
-              {% else %}
-              {{ h.build_nav_main(
-                ('search', _('Datasets')),
-                ('organizations_index', _('Organizations')),
-                ('about', _('About'))
-              ) }}
-              {% endif %}
+    {% set items = [('search', _('Datasets'))] %}
+    {% if h.is_dcat_plugin_active() %}
+        {% set items = items + [('linked_data', _('Linked Data'))] %}
+    {% endif %}
+    {% set items = items + [('organizations_index', _('Organizations'))] %}
+    {% if c.userobj.sysadmin %}
+        {% set items = items + [('group_index', _('Groups'))] %}
+    {% endif %}
+    {% set items = items + [('about', _('About'))] %}
+    {{ h.build_nav_main(*items) }}
 
 {% endblock %}
 

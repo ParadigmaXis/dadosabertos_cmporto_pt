@@ -1,0 +1,109 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Linked Data') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  {% if h.is_dcat_plugin_active() %}
+    <li class="active">{% link_for _('Linked Data'), controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='linked_data' %}</li>
+  {% endif %}
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content static-page">
+    {% if not h.is_dcat_plugin_active() %}
+      <h1>404 Not Found</h1>
+      The resource could not be found.
+    {% else %}
+      <h1 class="page-heading">{{ _('Linked Data') }}</h1>
+
+      Este portal disponibiliza o seu catálogo de conjuntos de dados em diferentes formatos de <a href="https://pt.wikipedia.org/wiki/Linked_data">dados ligados</a>.
+
+      <h2>Conjuntos de dados</h2>
+
+      <p>Representações RDF dos metadados de um conjunto de dados em particular podem ser acedidos através de URLs do tipo:</p>
+      <pre><code>https://dados.cm-porto.pt/datasets/{dataset-id}.{format}</code></pre>
+
+      <p>Os formatos atualmente suportados são:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Sufixo</th>
+            <th>Formato</th>
+            <th>Tipo MIME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>xml</code></td>
+            <td><a href="https://en.wikipedia.org/wiki/RDF/XML">RDF/XML</a></td>
+            <td>application/rdf+xml</td>
+          </tr>
+          <tr>
+            <td><code>rdf</code> (o mesmo que <code>xml</code>)</td>
+            <td><a href="https://en.wikipedia.org/wiki/RDF/XML">RDF/XML</a></td>
+            <td>application/rdf+xml</td>
+          </tr>
+          <tr>
+            <td><code>ttl</code></td>
+            <td><a href="https://en.wikipedia.org/wiki/Turtle_%28syntax%29">Turtle</a></td>
+            <td>text/turtle</td>
+          </tr>
+          <tr>
+            <td><code>n3</code></td>
+            <td><a href="https://en.wikipedia.org/wiki/Notation3">Notation3</a></td>
+            <td>text/n3</td>
+          </tr>
+          <tr>
+            <td><code>jsonld</code></td>
+            <td><a href="http://json-ld.org/">JSON-LD</a></td>
+            <td>application/ld+json</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Alguns exemplos dos diferentes formatos disponibilizados:</p>
+      <ul>
+        <li><a href="http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.rdf">http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.rdf</a></li>
+        <li><a href="http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.xml">http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.xml</a></li>
+        <li><a href="http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.ttl">http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.ttl</a></li>
+        <li><a href="http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.n3">http://demo.ckan.org/dataset/newcastle-city-council-payments-over-500.n3</a></li>
+      </ul>
+
+      <h2>Catálogo de conjuntos de dados</h2>
+      <p>Em adição às representações individuais dos metadados de cada conjuntos de dados, também é dada
+          uma forma de obter os metadados de múltiplos conjuntos de dados ao mesmo tempo (esta lista é paginada,
+          ver em baixo para mais detalhes):</p>
+      <pre><code>https://dados.cm-porto.pt/catalog.{format}?[page={page}]&amp;[modified_date={date}]</code></pre>
+
+      <p>O formato a ser devolvido pode ser especificado de forma semelhante ao acesso a um conjunto de dados individual, como aqui exemplificado:</p>
+      <ul>
+        <li><a href="http://dados.cm-porto.pt/catalog.rdf">http://dados.cm-porto.pt/catalog.rdf</a></li>
+        <li><a href="http://dados.cm-porto.pt/catalog.xml">http://dados.cm-porto.pt/catalog.xml</a></li>
+        <li><a href="http://dados.cm-porto.pt/catalog.ttl">http://dados.cm-porto.pt/catalog.ttl</a></li>
+      </ul>
+
+      <p>O número de conjuntos de dados devolvido é limitado. A resposta inclui informação de paginação,
+          serializada usando o vocabulário <a href="http://www.w3.org/ns/hydra/spec/latest/core/">Hydra</a>.
+          Os diferentes termos são auto-explicativos, e podem ser usados por clientes para iterar sobre o catálogo:</p>
+
+      <pre><code>@prefix hydra: &lt;http://www.w3.org/ns/hydra/core#&gt; .
+
+      &lt;http://dados.cm-porto.pt/catalog.ttl?page=1&gt; a hydra:PagedCollection ;
+          hydra:firstPage "http://dados.cm-porto.pt/catalog.ttl?page=1" ;
+          hydra:itemsPerPage 100 ;
+          hydra:lastPage "http://dados.cm-porto.pt/catalog.ttl?page=3" ;
+          hydra:nextPage "http://dados.cm-porto.pt/catalog.ttl?page=2" ;
+          hydra:totalItems 283 .
+      </code></pre>
+
+      <p>O URL de acesso ao catálogo também aceita o parâmetro <code>modified_date</code> para restringir os resultados
+          aos conjuntos de dados modificados desde uma certa data. O parâmetro deve ser uma data ISO-8601 válida:</p>
+
+      <p><a href="http://dados.cm-porto.pt/catalog.xml?modified_since=2015-07-24">http://demo.ckan.org/catalog.xml?modified_since=2015-09-13</a></p>
+    {% endif %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
