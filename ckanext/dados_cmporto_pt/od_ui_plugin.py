@@ -15,9 +15,9 @@ class OpenDataUIPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.ITemplateHelpers)
     
     def get_helpers(self):
-        return {'get_recent_datasets' : get_recent_datasets, \
-                'get_most_pop_datasets' : get_most_pop_datasets, \
-                'get_top_tags' : get_top_tags, \
+        return {'get_recent_datasets' : get_recent_datasets,
+                'get_most_pop_datasets' : get_most_pop_datasets,
+                'get_top_tags' : get_top_tags,
                 'format_non_duplicate_resource_items' : format_non_duplicate_resource_items
         }
 
