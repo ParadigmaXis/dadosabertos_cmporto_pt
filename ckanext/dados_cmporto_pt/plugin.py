@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import ckan.plugins as plugins
-import ckan.plugins.toolkit as toolkit
+from ckan import plugins
+from ckan.plugins import toolkit
 
 import logging
 log = logging.getLogger(__name__)
@@ -12,6 +12,12 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     '''
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IConfigurable)
+    plugins.implements(plugins.ITemplateHelpers)
+
+    def __init__(self, **kwargs):
+        super(plugins.SingletonPlugin, self).__init__(**kwargs)
+        self.is_dcat_plugin_active = False
 
     # IConfigurer
 
@@ -32,4 +38,19 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         map.connect('/privacy-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='privacy_policy')
         map.connect('/moderation-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy')
         map.connect('/license', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='list_license')
+        map.connect('linked_data', '/linked-data', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='linked_data')
         return map
+
+
+    # IConfigurable
+
+    def configure(self, config):
+        self.is_dcat_plugin_active = 'dcat' in config.get('ckan.plugins', '')
+
+
+    #ITemplateHelpers
+
+    def get_helpers(self):
+        return {
+            'is_dcat_plugin_active' : lambda: self.is_dcat_plugin_active,
+        }

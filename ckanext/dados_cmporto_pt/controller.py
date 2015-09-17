@@ -12,6 +12,9 @@ class AdminController(admin.AdminController):
         return items
 
 class StaticPagesController(base.BaseController):
+    def linked_data(self):
+        return base.render('home/px-linked-data.html')
+
     def terms_of_use(self):
         return base.render('home/px-terms-of-use.html')
 
