@@ -45,7 +45,6 @@ ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
 # Set configurations
 RUN mkdir -p $CKAN_CONFIG; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e \
-      "ckan.site_url                                   = http://dados.cm-porto.pt" \
       "sqlalchemy.url                                  = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$CKAN_DB_NAME" \
       "solr_url                                        = http://solr:8983/solr/ckan" \
       "ckan.datastore.write_url                        = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$DATASTORE_DB_NAME" \
