@@ -81,6 +81,5 @@ setup(
         guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
         cmporto_relationships=ckanext.dados_cmporto_pt.relationships_plugin:RelationshipsPlugin
         cmporto_catalog_overview=ckanext.dados_cmporto_pt.catalog_overview_plugin:CatalogOverviewPlugin
-        read_composto_simples_plugin=ckanext.dados_cmporto_pt.read_composto_simples_plugin:ReadCompostoSimplesPlugin
     ''',
 )
