@@ -15,10 +15,6 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.ITemplateHelpers)
 
-    def __init__(self, **kwargs):
-        super(plugins.SingletonPlugin, self).__init__(**kwargs)
-        self.is_dcat_plugin_active = False
-
     # IConfigurer
 
     def update_config(self, config_):
