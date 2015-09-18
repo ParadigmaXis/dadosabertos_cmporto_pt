@@ -77,10 +77,10 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        dados_cmporto_pt=ckanext.dados_cmporto_pt.plugin:CMPortoPlugin
+        cmporto=ckanext.dados_cmporto_pt.plugin:CMPortoPlugin
         guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
         gbridge_ui=ckanext.dados_cmporto_pt.gbridge_ui_plugin:GBridgeUIPlugin
-        od_ui_plugin=ckanext.dados_cmporto_pt.od_ui_plugin:OpenDataUIPlugin
+        cmporto_catalog_overview=ckanext.dados_cmporto_pt.catalog_overview_plugin:CatalogOverviewPlugin
         read_composto_simples_plugin=ckanext.dados_cmporto_pt.read_composto_simples_plugin:ReadCompostoSimplesPlugin
     ''',
 )

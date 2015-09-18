@@ -9,7 +9,7 @@ import copy
 import logging
 log = logging.getLogger(__name__)
 
-class OpenDataUIPlugin(plugins.SingletonPlugin):
+class CatalogOverviewPlugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.ITemplateHelpers)
     
