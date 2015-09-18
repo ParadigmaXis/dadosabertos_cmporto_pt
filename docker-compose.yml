@@ -3,9 +3,7 @@ db:
 #  image: hermes:5001/db
   hostname: db
   domainname: localdomain
-  ports:
-    - 15432:5432
-  volumes: 
+  volumes:
     - /srv/docker/ckan/db:/var/lib/postgresql/data
 
 solr:
@@ -13,8 +11,6 @@ solr:
 #  image: hermes:5001/solr
   hostname: solr
   domainname: localdomain
-  ports:
-    - 18983:8983
   volumes:
    - /srv/docker/ckan/solr:/opt/solr/example/solr/ckan
 
