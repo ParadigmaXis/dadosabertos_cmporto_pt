@@ -78,8 +78,8 @@ setup(
     entry_points='''
         [ckan.plugins]
         cmporto=ckanext.dados_cmporto_pt.plugin:CMPortoPlugin
-        guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
         cmporto_relationships=ckanext.dados_cmporto_pt.relationships_plugin:RelationshipsPlugin
         cmporto_catalog_overview=ckanext.dados_cmporto_pt.catalog_overview_plugin:CatalogOverviewPlugin
+        guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
     ''',
 )
