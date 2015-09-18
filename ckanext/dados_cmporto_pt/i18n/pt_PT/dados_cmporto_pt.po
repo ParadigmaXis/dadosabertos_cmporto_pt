@@ -13,6 +13,9 @@ msgstr "Estatísticas do portal"
 # dados_cmporto_pt plugin
 #
 
+msgid "Linked Data"
+msgstr "Dados Ligados"
+
 msgid "objectivo"
 msgstr "Objetivo"
 

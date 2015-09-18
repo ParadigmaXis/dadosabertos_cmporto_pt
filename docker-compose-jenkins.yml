@@ -1,21 +1,24 @@
 db:
-  build: ./docker/postgres
+  image: hermes:5001/db
   hostname: db
   domainname: localdomain
   volumes:
     - /srv/docker/ckan/db:/var/lib/postgresql/data
+  restart: always
 
 solr:
-  build: ./docker/solr
+  image: hermes:5001/solr
   hostname: solr
   domainname: localdomain
   volumes:
    - /srv/docker/ckan/solr:/opt/solr/example/solr/ckan
+  restart: always
 
 datapusher:
-  build: ./docker/datapusher
+  image: opendata_datapusher
   hostname: datapusher
   domainname: localdomain
+  restart: always
 
 ckan:
   build: .
@@ -26,8 +29,9 @@ ckan:
     - solr:solr
     - datapusher:datapusher
   ports:
-    - 80:80
+    - 192.168.102.24:80:80
   volumes:
     - /srv/docker/ckan/filestore:/srv/app/store
     - /srv/docker/ckan/conf:/srv/app/conf
     - /srv/docker/ckan/httpd:/var/log/httpd
+  restart: always

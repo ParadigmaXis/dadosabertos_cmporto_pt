@@ -12,15 +12,18 @@ class AdminController(admin.AdminController):
         return items
 
 class StaticPagesController(base.BaseController):
+    def linked_data(self):
+        return base.render('home/cmp/linked-data.html')
+
     def terms_of_use(self):
-        return base.render('home/px-terms-of-use.html')
+        return base.render('home/cmp/terms-of-use.html')
 
     def privacy_policy(self):
-        return base.render('home/px-privacy-policy.html')
+        return base.render('home/cmp/privacy-policy.html')
 
     def moderation_policy(self):
-        return base.render('home/px-moderation-policy.html')
+        return base.render('home/cmp/moderation-policy.html')
 
     def list_license(self):
-        return base.render('home/px-license-list.html', extra_vars = {'licenses': Package.get_license_register().items()})
+        return base.render('home/cmp/license-list.html', extra_vars = {'licenses': Package.get_license_register().items()})
 

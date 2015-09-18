@@ -31,6 +31,47 @@ a.see-all{
   padding-left: 0;
 }
 
+nav.navigation {
+    width: 500px;
+}
+
+.static-page h2 {
+  margin-top: 1em;
+}
+
+.static-page table {
+  margin-bottom: 1em;
+}
+
+.static-page table th,
+.static-page table td {
+  padding: 0.3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: 1px solid #ddd;
+}
+
+.static-page pre {
+    padding: 1em;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    border-radius: 3px;
+    background-color: rgba(247, 247, 247, 255);
+}
+
+.static-page code{
+  padding: 0.3em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+
+.static-page pre code {
+  background-color: transparent;
+}
+
 @media print {
   @page {
     size: auto;

@@ -3,22 +3,20 @@
 import ckan.plugins as plugins
 import ckan.model as model
 import ckan.logic as logic
-import ckan.lib.helpers as helpers
 
 from pylons import c
 import copy
 import logging
 log = logging.getLogger(__name__)
 
-class OpenDataUIPlugin(plugins.SingletonPlugin):
+class CatalogOverviewPlugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.ITemplateHelpers)
     
     def get_helpers(self):
-        return {'get_recent_datasets' : get_recent_datasets, \
-                'get_most_pop_datasets' : get_most_pop_datasets, \
-                'get_top_tags' : get_top_tags, \
-                'format_non_duplicate_resource_items' : format_non_duplicate_resource_items
+        return {'get_recent_datasets' : get_recent_datasets,
+                'get_most_pop_datasets' : get_most_pop_datasets,
+                'get_top_tags' : get_top_tags,
         }
 
 def get_recent_datasets():
@@ -39,17 +37,3 @@ def get_top_tags():
     return sorted(tags_list, key=lambda x:x[1], reverse=True)[0:min(20,len(tags_list))]
 
 
-def format_non_duplicate_resource_items(resource_dict):
-    if not resource_dict: return []
-    res_dict = resource_dict.copy()
-    # From resource_read.html:
-    used_fields = ['last_modified', 'revision_timestamp', 'created', 'mimetype_inner', 'mimetype', 'format']
-    black_list = [ f for f in used_fields if f in res_dict.keys() and res_dict.get(f) ]
-    
-    black_list += ['id', 'resource_type', 'package_id', 'state', 'revision_id', 'position']
-    
-    for f in black_list: 
-        if f in res_dict.keys(): del res_dict[f] 
-    return helpers.format_resource_items(res_dict.items())
-
-        

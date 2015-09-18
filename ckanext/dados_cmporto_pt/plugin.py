@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import ckan.plugins as plugins
-import ckan.plugins.toolkit as toolkit
+from ckan import plugins
+from ckan.plugins import toolkit
+from ckan.lib import helpers
+from ckan.common import g
+import json
+import utils
+
 
 import logging
 log = logging.getLogger(__name__)
@@ -12,6 +17,8 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     '''
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IConfigurable)
+    plugins.implements(plugins.ITemplateHelpers)
 
     # IConfigurer
 
@@ -32,7 +39,80 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         map.connect('/privacy-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='privacy_policy')
         map.connect('/moderation-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy')
         map.connect('/license', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='list_license')
+        map.connect('linked_data', '/linked-data', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='linked_data')
         return map
+
+    # IConfigurable
+
+    def configure(self, config):
+        self.is_dcat_plugin_active = 'dcat' in config.get('ckan.plugins', '')
+
+
+    #ITemplateHelpers
+
+    def get_helpers(self):
+        return {
+            'is_dcat_plugin_active' : lambda: self.is_dcat_plugin_active,
+            'format_non_duplicate_resource_items' : format_non_duplicate_resource_items,
+            'sorted_guia_extras' : sorted_guia_extras,
+        }
+
+
+def format_non_duplicate_resource_items(resource_dict):
+    if not resource_dict: return []
+    res_dict = resource_dict.copy()
+    # From resource_read.html:
+    used_fields = ['last_modified', 'revision_timestamp', 'created', 'mimetype_inner', 'mimetype', 'format']
+    black_list = [ f for f in used_fields if f in res_dict.keys() and res_dict.get(f) ]
+
+    black_list += ['id', 'resource_type', 'package_id', 'state', 'revision_id', 'position']
+
+    for f in black_list:
+        if f in res_dict.keys(): del res_dict[f]
+    return helpers.format_resource_items(res_dict.items())
+
+
+def sorted_guia_extras(package_extras):
+    ''' Used for outputting package extras
+
+    :param package_extras: the package extras
+    :type package_extras: dict
+    '''
+
+    guia_extras = utils.get_ordered_package_extras()
+
+    def guia_sort_key(value):
+        try:
+            return guia_extras.index(value)
+        except ValueError:
+            return len(guia_extras)+1
+
+    def to_value(key, value):
+        if key in ['h_manutencao_recurso', 'h_idioma', 'h_tipo_representacao_espacial', 'h_extensao_geografica']:
+            parsed = json.loads(value)
+            value = ", ".join(map(unicode, parsed))
+        if key == 'consulta_online':
+            parsed = json.loads(value)
+            value = parsed
+            return (key, value, 'package/snippets/read_table_consulta_online.html')
+        if key == 'resolucao_espacial':
+            parsed = json.loads(value)
+            value = parsed
+            return (key, value, 'package/snippets/read_table_resolucao_espacial.html')
+        return (key, value, None)
+
+    exclude = g.package_hide_extras
+    output = []
+    for extra in sorted(package_extras, key=lambda x: guia_sort_key(x['key'])):
+        if extra.get('state') == 'deleted':
+            continue
+        k, v = extra['key'], extra['value']
+        if k in exclude:
+            continue
+        if isinstance(v, (list, tuple)):
+            v = ", ".join(map(unicode, v))
+        output.append(to_value(k, v))
+    return output
 
 class ShapefilePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IResourceView, inherit=True)

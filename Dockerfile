@@ -35,7 +35,9 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-harvest.git@89b6ad2ce1#egg=ckanext-harvest; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-harvest/pip-requirements.txt; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview; \
-    $APP_HOME/bin/pip install -e git+https://github.com/okfn/ckanext-disqus#egg=ckanext-disqus
+    $APP_HOME/bin/pip install -e git+https://github.com/okfn/ckanext-disqus#egg=ckanext-disqus; \
+    $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-dcat.git#egg=ckanext-dcat; \
+    $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-dcat/requirements.txt
 
 # Add dados_cmporto_pt plugin
 ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
@@ -43,18 +45,18 @@ ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
 # Set configurations
 RUN mkdir -p $CKAN_CONFIG; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e \
-      "ckan.site_url                                   = http://dados.cm-porto.pt" \
       "sqlalchemy.url                                  = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$CKAN_DB_NAME" \
       "solr_url                                        = http://solr:8983/solr/ckan" \
       "ckan.datastore.write_url                        = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$DATASTORE_DB_NAME" \
       "ckan.datastore.read_url                         = postgresql://$DATASTORE_DB_USER:$DATASTORE_DB_PASS@db/$DATASTORE_DB_NAME" \
+      "ckan.datapusher.url                             = http://datapusher:8800/" \
       "ckan.auth.create_unowned_dataset                = false" \
       "ckan.auth.create_dataset_if_not_in_organization = false" \
       "ckan.auth.user_create_groups                    = false" \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view shapefile_view harvest guia_harvester dados_cmporto_pt  gbridge_ui od_ui_plugin" \
+      "ckan.plugins                                    = dcat dcat_json_interface datapusher datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view shapefile_view harvest cmporto cmporto_guia_harvester cmporto_relationships cmporto_catalog_overview" \
       "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
