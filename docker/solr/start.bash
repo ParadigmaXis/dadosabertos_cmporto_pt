@@ -1,6 +1,5 @@
 #!/bin/bash
 
-"$DIRECTORY)"
 if [ ! "$(ls -A $SOLR_HOME/ckan/)" ]; then
   cp -R $SOLR_HOME/collection1/* $SOLR_HOME/ckan/
   echo name=ckan > $SOLR_HOME/ckan/core.properties
