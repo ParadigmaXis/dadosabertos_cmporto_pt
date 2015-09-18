@@ -18,9 +18,9 @@
 
 {% block package_additional_info %}
 	{% if pkg.type in ['composto', 'simples'] %}
-		{% snippet "package/snippets/cmp/px-relationships-as-object.html", pkg=pkg %}
-		{% snippet "package/snippets/cmp/px-relationships-origem-derivado.html", pkg=pkg %}
-	    {% snippet "package/snippets/cmp/px-metadata.html", pkg=pkg %}
+		{% snippet "package/snippets/cmp/relationships-as-object.html", pkg=pkg %}
+		{% snippet "package/snippets/cmp/relationships-origem-derivado.html", pkg=pkg %}
+	    {% snippet "package/snippets/cmp/metadata.html", pkg=pkg %}
 	{% endif %}
 	{{ super() }}
 {% endblock %} {# package_additional_info #}
