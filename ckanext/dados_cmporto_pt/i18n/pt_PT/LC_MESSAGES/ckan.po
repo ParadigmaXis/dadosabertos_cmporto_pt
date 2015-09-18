@@ -126,6 +126,15 @@ msgstr "Revisão"
 msgid "position"
 msgstr "Posição"
 
+msgid "has_views"
+msgstr "Visualizações"
+
+msgid "on_same_domain"
+msgstr "No mesmo domínio"
+
+msgid "url_type"
+msgstr "Tipo de URL"
+
 msgid "Metadata"
 msgstr "Metadados"
 
