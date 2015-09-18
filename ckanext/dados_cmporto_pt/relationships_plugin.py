@@ -4,16 +4,13 @@ import ckan.plugins as plugins
 import ckan.model as model
 import ckan.new_authz as new_authz
 import ckan.lib.dictization.model_dictize as model_dictize
-from ckan.common import g
-import json
-import utils
 
 from pylons import c
 
 import logging
 log = logging.getLogger(__name__)
 
-class GBridgeUIPlugin(plugins.SingletonPlugin):
+class RelationshipsPlugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.ITemplateHelpers)
     
@@ -22,7 +19,6 @@ class GBridgeUIPlugin(plugins.SingletonPlugin):
                 'get_relationships_as_Obj_isDependencyOf_Subj' : get_relationships_as_Obj_isDependencyOf_Subj,
                 'get_relationships_as_Subj_derives_from_Obj' : get_relationships_as_Subj_derives_from_Obj,
                 'get_relationships_as_Obj_has_derivation_Subj' : get_relationships_as_Obj_has_derivation_Subj,
-                'sorted_guia_extras' : sorted_guia_extras,
         }
 
 
@@ -83,44 +79,3 @@ def _get_relationships_Packages(pkg_ids):
                 ret.append(model_dictize.package_dictize(pkg,context))
     return ret
 
-def sorted_guia_extras(package_extras):
-    ''' Used for outputting package extras
-
-    :param package_extras: the package extras
-    :type package_extras: dict
-    '''
-
-    guia_extras = utils.get_ordered_package_extras()
-
-    def guia_sort_key(value):
-        try:
-            return guia_extras.index(value)
-        except ValueError:
-            return len(guia_extras)+1
-
-    def to_value(key, value):
-        if key in ['h_manutencao_recurso', 'h_idioma', 'h_tipo_representacao_espacial', 'h_extensao_geografica']:
-            parsed = json.loads(value)
-            value = ", ".join(map(unicode, parsed))
-        if key == 'consulta_online':
-            parsed = json.loads(value)
-            value = parsed
-            return (key, value, 'package/snippets/read_table_consulta_online.html')
-        if key == 'resolucao_espacial':
-            parsed = json.loads(value)
-            value = parsed
-            return (key, value, 'package/snippets/read_table_resolucao_espacial.html')
-        return (key, value, None)
-
-    exclude = g.package_hide_extras
-    output = []
-    for extra in sorted(package_extras, key=lambda x: guia_sort_key(x['key'])):
-        if extra.get('state') == 'deleted':
-            continue
-        k, v = extra['key'], extra['value']
-        if k in exclude:
-            continue
-        if isinstance(v, (list, tuple)):
-            v = ", ".join(map(unicode, v))
-        output.append(to_value(k, v))
-    return output

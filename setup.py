@@ -79,7 +79,7 @@ setup(
         [ckan.plugins]
         cmporto=ckanext.dados_cmporto_pt.plugin:CMPortoPlugin
         guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
-        gbridge_ui=ckanext.dados_cmporto_pt.gbridge_ui_plugin:GBridgeUIPlugin
+        cmporto_relationships=ckanext.dados_cmporto_pt.relationships_plugin:RelationshipsPlugin
         cmporto_catalog_overview=ckanext.dados_cmporto_pt.catalog_overview_plugin:CatalogOverviewPlugin
         read_composto_simples_plugin=ckanext.dados_cmporto_pt.read_composto_simples_plugin:ReadCompostoSimplesPlugin
     ''',
