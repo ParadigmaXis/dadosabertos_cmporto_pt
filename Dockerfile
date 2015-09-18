@@ -56,7 +56,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.auth.user_create_organizations             = false" \
       "ckan.auth.user_delete_groups                    = false" \
       "ckan.auth.user_delete_organizations             = false" \
-      "ckan.plugins                                    = dcat dcat_json_interface datapusher datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester dados_cmporto_pt  gbridge_ui dados_cmporto_pt_catalog_overview" \
+      "ckan.plugins                                    = dcat dcat_json_interface datapusher datastore disqus resource_proxy text_view image_view recline_view pdf_view stats geo_view harvest guia_harvester cmporto  gbridge_ui cmporto_catalog_overview" \
       "ckan.favicon                                    = /img/icon-cmp-blue.png" \
       "ckan.locale_default                             = pt_PT" \
       "ckan.locale_order                               = pt_PT" \
