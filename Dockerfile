@@ -77,7 +77,7 @@ RUN mkdir -p $CKAN_CONFIG; \
 # Add APP Settings
 RUN mkdir -p $APP_CONFIG
 ADD ./app.ini $APP_CONFIG_FILE
-ADD ./apache/rewrites.conf $APACHE_REWRITES_FILE
+ADD ./docker/apache/rewrites.conf $APACHE_REWRITES_FILE
 
 # Supervisor to run ckan and harvest jobs
 RUN mkdir -p /etc/supervisor/conf.d
