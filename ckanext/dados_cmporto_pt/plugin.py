@@ -123,11 +123,11 @@ class ShapefilePlugin(plugins.SingletonPlugin):
         self.gapi_key = config.get('ckanext.geoview.gapi_key', None)
 
     def info(self):
-        return {'name': 'shp_view',
+        return {'name': 'shapefile_view',
                 'title': plugins.toolkit._('Shapefile Viewer (GeoStore)'),
                 'icon': 'globe',
                 'iframed': True,
-                'default_title': plugins.toolkit._('Map viewer')
+                'default_title': plugins.toolkit._('Shapefile Viewer (GeoStore)')
                 }
 
     def can_view(self, data_dict):

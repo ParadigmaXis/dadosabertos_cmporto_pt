@@ -63,7 +63,7 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.locale_order                               = pt_PT" \
       "ckan.locales_filtered_out                       = en_GB pt_BR" \
       "ckan.max_resource_size                          = 512" \
-      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view"; \
+      "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view shapefile_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
       "package_hide_extras                             = identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica restricoes_acesso_interno limitacoes publicar_exterior limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria  codificacao_caracteres notas_metodologicas" \
       "ckan.storage_path                               = $STORE_PATH" \
