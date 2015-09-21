@@ -85,9 +85,13 @@ COPY ./docker/ckan/crontab.root /var/spool/cron/root
 COPY ./docker/ckan/ckan-harvest-gatherer.bash /usr/local/bin/
 COPY ./docker/ckan/ckan-harvest-fetcher.bash /usr/local/bin/
 COPY ./docker/ckan/ckan-harvest-run.bash /usr/local/bin/
+COPY ./docker/ckan/ckan-search-index-rebuild.bash /usr/local/bin/
+COPY ./docker/ckan/ckan-tracking-update.bash /usr/local/bin/
 RUN chmod +x /usr/local/bin/ckan-harvest-gatherer.bash; \
     chmod +x /usr/local/bin/ckan-harvest-fetcher.bash; \
     chmod +x /usr/local/bin/ckan-harvest-run.bash; \
+    chmod +x /usr/local/bin/ckan-search-index-rebuild.bash; \
+    chmod +x /usr/local/bin/ckan-tracking-update.bash; \
     chmod 600 /var/spool/cron/root; \
     env > /etc/envvars
 
