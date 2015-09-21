@@ -35,23 +35,23 @@ nav.navigation {
     width: 500px;
 }
 
-.static-page h2 {
+.cmp-page h2 {
   margin-top: 1em;
 }
 
-.static-page table {
+.cmp-page table {
   margin-bottom: 1em;
 }
 
-.static-page table th,
-.static-page table td {
+.cmp-page table th,
+.cmp-page table td {
   padding: 0.3em;
   padding-left: 1em;
   padding-right: 1em;
   border: 1px solid #ddd;
 }
 
-.static-page pre {
+.cmp-page pre {
     padding: 1em;
     overflow: auto;
     font-size: 85%;
@@ -60,7 +60,7 @@ nav.navigation {
     background-color: rgba(247, 247, 247, 255);
 }
 
-.static-page code{
+.cmp-page code{
   padding: 0.3em;
   margin: 0;
   font-size: 85%;
@@ -68,7 +68,7 @@ nav.navigation {
   border-radius: 3px;
 }
 
-.static-page pre code {
+.cmp-page pre code {
   background-color: transparent;
 }
 
