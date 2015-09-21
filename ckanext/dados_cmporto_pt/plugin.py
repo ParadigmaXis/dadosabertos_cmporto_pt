@@ -135,7 +135,7 @@ class ShapefilePlugin(plugins.SingletonPlugin):
             url_type = resource.get('url_type', '')
             format_lower = resource.get('format', '').lower()
             if url_type == 'upload' and format_lower == 'shp':
-                return self.proxy_enabled
+                return True
         return False
 
     def view_template(self, context, data_dict):
