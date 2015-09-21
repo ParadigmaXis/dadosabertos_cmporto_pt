@@ -10,7 +10,7 @@
 
 {% block primary %}
   <article class="module">
-    <div class="module-content static-page">
+    <div class="module-content cmp-page">
     {% if not h.is_dcat_plugin_active() %}
       <h1>404 Not Found</h1>
       The resource could not be found.
@@ -22,7 +22,7 @@
       <h2>Conjuntos de dados</h2>
 
       <p>Representações RDF dos metadados de um conjunto de dados em particular podem ser acedidos através de URLs do tipo:</p>
-      <pre><code>https://dados.cm-porto.pt/datasets/{dataset-id}.{format}</code></pre>
+      <pre><code>https://dados.cm-porto.pt/dataset/{dataset-id}.{format}</code></pre>
 
       <p>Os formatos atualmente suportados são:</p>
       <table>
@@ -69,7 +69,7 @@
       <p>Em adição às representações individuais dos metadados de cada conjuntos de dados, também é dada
           uma forma de obter os metadados de múltiplos conjuntos de dados ao mesmo tempo (esta lista é paginada,
           ver em baixo para mais detalhes):</p>
-      <pre><code>https://dados.cm-porto.pt/catalog.{format}?[page={page}]&amp;[modified_date={date}]</code></pre>
+      <pre><code>https://dados.cm-porto.pt/catalog.{format}?[page={page}]&amp;[modified_since={date}]</code></pre>
 
       <p>O formato a ser devolvido pode ser especificado de forma semelhante ao acesso a um conjunto de dados individual, como aqui exemplificado:</p>
       <ul>
@@ -79,8 +79,9 @@
       </ul>
 
       <p>O número de conjuntos de dados devolvido é limitado. A resposta inclui informação de paginação,
-          serializada usando o vocabulário <a href="http://www.w3.org/ns/hydra/spec/latest/core/">Hydra</a>.
-          Os diferentes termos são auto-explicativos, e podem ser usados por clientes para iterar sobre o catálogo:</p>
+        serializada usando o vocabulário <a href="http://www.w3.org/ns/hydra/spec/latest/core/">Hydra</a>.
+        Os diferentes termos são auto-explicativos, e podem ser usados por clientes para iterar sobre o catálogo.
+        O exemplo seguinte utiliza o formato <em>turtle</em>:</p>
 
       <pre><code>@prefix hydra: &lt;http://www.w3.org/ns/hydra/core#&gt; .
 
@@ -92,10 +93,10 @@
           hydra:totalItems 283 .
       </code></pre>
 
-      <p>O URL de acesso ao catálogo também aceita o parâmetro <code>modified_date</code> para restringir os resultados
+      <p>O URL de acesso ao catálogo também aceita o parâmetro <code>modified_since</code> para restringir os resultados
           aos conjuntos de dados modificados desde uma certa data. O parâmetro deve ser uma data ISO-8601 válida:</p>
 
-      <p><a href="http://dados.cm-porto.pt/catalog.xml?modified_since=2015-07-24">http://demo.ckan.org/catalog.xml?modified_since=2015-09-13</a></p>
+      <p><a href="http://dados.cm-porto.pt/catalog.xml?modified_since=2015-07-24">http://dados.cm-porto.pt/catalog.xml?modified_since=2015-09-13</a></p>
     {% endif %}
     </div>
   </article>

@@ -7,7 +7,9 @@
   <h2>{{ _('Metadata') }}</h2>
   <table class="table table-striped table-bordered table-condensed">
     <tbody>
-      {% for key, value in h.format_non_duplicate_resource_items(res) %}
+      {% for key, value in h.format_non_duplicate_resource_items(res,
+                                              ['id', 'resource_type', 'package_id', 'state', 'revision_id', 'position',
+                                               'has_views', 'on_same_domain', 'url_type', 'api', 'datastore_active']) %}
         <tr class="toggle-more"><th scope="row">{{ _(key) }}</th><td>{{ value }}</td></tr>
       {% endfor %}
       <tr>
@@ -41,11 +43,14 @@
         <th scope="row">{{ _('Created') }}</th>
         <td>{{ h.render_datetime(res.created) or _('unknown') }}</td>
       </tr>
-	  {% for field in ['package_id', 'id', 'state', 'position', 'revision_id'] %}
-      <tr>
-        <th scope="row">{{ _(field) }}</th>
-        <td>{{ res[field] or _('unknown') }}</td>
-      </tr>
+      {% for key, value in h.format_non_duplicate_resource_items(res) %}
+        {% if key in ['package id', 'id', 'state', 'revision id', 'position',
+                      'has views', 'on same domain', 'url type', 'api', 'datastore_active'] %}
+          <tr>
+            <th scope="row">{{ _(key) }}</th>
+            <td>{{ value or _('unknown') }}</td>
+          </tr>
+        {% endif %}
       {% endfor %}
     </tbody>
   </table>

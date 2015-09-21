@@ -103,7 +103,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
         if package_dict.get('type', '') == u'app':
             return False
         extras = package_dict.get('extras', {})
-        is_public_package = extras.get('fornecimento_externo', '') == u'Não'
+        is_public_package = extras.get('publicar_exterior', '') == u'Sim'
         if not is_public_package:
             log.warn('Remote dataset is not published ({0}), not importing...'.format(package_dict.get('id', '')))
             return False

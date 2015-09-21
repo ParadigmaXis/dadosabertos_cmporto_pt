@@ -58,14 +58,15 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         }
 
 
-def format_non_duplicate_resource_items(resource_dict):
+def format_non_duplicate_resource_items(resource_dict, extra_black_list=None):
     if not resource_dict: return []
     res_dict = resource_dict.copy()
     # From resource_read.html:
     used_fields = ['last_modified', 'revision_timestamp', 'created', 'mimetype_inner', 'mimetype', 'format']
     black_list = [ f for f in used_fields if f in res_dict.keys() and res_dict.get(f) ]
 
-    black_list += ['id', 'resource_type', 'package_id', 'state', 'revision_id', 'position']
+    if extra_black_list:
+        black_list.extend(extra_black_list)
 
     for f in black_list:
         if f in res_dict.keys(): del res_dict[f]

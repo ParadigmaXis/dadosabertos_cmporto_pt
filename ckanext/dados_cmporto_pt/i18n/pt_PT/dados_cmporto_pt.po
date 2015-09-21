@@ -115,26 +115,35 @@ msgstr "Tipo"
 msgid "state"
 msgstr "Estado"
 
-msgid "package_id"
-msgstr "Conjunto de dados"
+msgid "package id"
+msgstr "Identificador do conjunto de dados"
 
 msgid "id"
-msgstr "Recurso"
+msgstr "Identificador"
 
-msgid "revision_id"
-msgstr "Revisão"
+msgid "revision id"
+msgstr "Identificador da revisão"
 
 msgid "position"
 msgstr "Posição"
 
-msgid "has_views"
+msgid "size"
+msgstr "Tamanho"
+
+msgid "datastore active"
+msgstr "Datastore ativo"
+
+msgid "has views"
 msgstr "Visualizações"
 
-msgid "on_same_domain"
+msgid "on same domain"
 msgstr "No mesmo domínio"
 
-msgid "url_type"
+msgid "url type"
 msgstr "Tipo de URL"
+
+msgid "api"
+msgstr "API"
 
 msgid "Metadata"
 msgstr "Metadados"
