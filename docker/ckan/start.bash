@@ -36,7 +36,7 @@ mkdir -p $STORE_PATH
 chown apache $STORE_PATH
 chmod u+rwx $STORE_PATH
 
-# Add MQ settings
+# Add CKAN settings
 if [ ! -f /srv/app/conf/app.ini ]; then
     cp -n "$APP_CONFIG_FILE" /srv/app/conf/
 else
