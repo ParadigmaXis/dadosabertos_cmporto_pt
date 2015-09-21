@@ -70,7 +70,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
                     response = requests.get(resource_url)
                     resource_file = StringIO(response.content)
                 except Exception,e:
-                    self._save_object_error('Resource not harvested. Unable to fetch resource from "{0}": {1}'.format(resource_url, e), harvest_object, 'Import')
+                    self._save_object_error('Resource not harvested for package "{0}". Unable to fetch resource from "{1}": {2}'.format(package_dict['name'], resource_url, e), harvest_object, 'Import')
                     continue
 
                 cfs = FieldStorage()
@@ -84,7 +84,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
                 try:
                     the_resource = toolkit.get_action('resource_create')(data_dict=resource_dict)
                 except Exception,e:
-                    self._save_object_error('Resource not harvested. Unable to import the resource originally from "{0}": {1}'.format(resource_url, e), harvest_object, 'Import')
+                    self._save_object_error('Resource not harvested for package "{0}". Unable to import the resource originally from "{1}": {2}'.format(package_dict['name'], resource_url, e), harvest_object, 'Import')
                     continue
 
         return import_stage_result
