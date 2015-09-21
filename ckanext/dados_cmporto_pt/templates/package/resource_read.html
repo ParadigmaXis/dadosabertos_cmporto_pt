@@ -45,7 +45,7 @@
       </tr>
       {% for key, value in h.format_non_duplicate_resource_items(res) %}
         {% if key in ['package id', 'id', 'state', 'revision id', 'position',
-                      'has views', 'on same domain', 'url type', 'api', 'datastore_active'] %}
+                      'has views', 'on same domain', 'url type', 'api', 'datastore active'] %}
           <tr>
             <th scope="row">{{ _(key) }}</th>
             <td>{{ value or _('unknown') }}</td>
