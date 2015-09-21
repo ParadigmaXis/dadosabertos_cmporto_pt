@@ -4,6 +4,7 @@ ENV APP_NAME ckan
 ENV APP_HOME /srv/app/$APP_NAME
 ENV APP_CONFIG /etc/app
 ENV APP_CONFIG_FILE $APP_CONFIG/app.ini
+ENV APACHE_REWRITES_FILE $APP_CONFIG/rewrites.conf
 ENV CKAN_CONFIG /etc/ckan
 ENV CKAN_DB_USER ckan
 ENV CKAN_DB_PASS 123456
@@ -76,6 +77,7 @@ RUN mkdir -p $CKAN_CONFIG; \
 # Add APP Settings
 RUN mkdir -p $APP_CONFIG
 ADD ./app.ini $APP_CONFIG_FILE
+ADD ./apache/rewrites.conf $APACHE_REWRITES_FILE
 
 # Supervisor to run ckan and harvest jobs
 RUN mkdir -p /etc/supervisor/conf.d

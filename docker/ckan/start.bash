@@ -50,5 +50,12 @@ fi
 # Release lock
 rm -rf /root/start.lock
 
+# Generate rewrites file for apache
+if [ ! -f /srv/app/conf/rewrites.conf ]; then
+    cp -n "$APACHE_REWRITES_FILE" /srv/app/conf/
+else
+    cp -f /srv/app/conf/rewrites.ini "$APP_CONFIG"
+fi
+
 # Start Apache
 exec httpd-foreground
