@@ -1,0 +1,8 @@
+geoserver:
+  build: .
+  hostname: geoserver
+  domainname: localdomain
+  volumes:
+    - /srv/docker/geoserver/shapefiles:/usr/local/tomcat/webapps/geoserver/data/shapefiles
+  ports:
+    - "8080:8080"
