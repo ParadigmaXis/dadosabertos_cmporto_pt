@@ -30,6 +30,7 @@ ckan:
     - db:db
     - solr:solr
     - datapusher:datapusher
+    - geoserver:geoserver
   ports:
     - 80:80
   volumes:
