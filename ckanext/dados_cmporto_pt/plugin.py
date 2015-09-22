@@ -64,6 +64,7 @@ def format_non_duplicate_resource_items(resource_dict, extra_black_list=None):
     # From resource_read.html:
     used_fields = ['last_modified', 'revision_timestamp', 'created', 'mimetype_inner', 'mimetype', 'format']
     black_list = [ f for f in used_fields if f in res_dict.keys() and res_dict.get(f) ]
+    black_list.append('input_Diag_Store_OK_MSG')
 
     if extra_black_list:
         black_list.extend(extra_black_list)
