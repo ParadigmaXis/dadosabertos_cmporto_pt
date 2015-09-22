@@ -94,9 +94,10 @@ class GuiaHarvesterPlugin(CKANHarvester):
         resources_lst = package_dict.get('resources', [])
         for resource_dict in resources_lst:
             if resource_dict.get('url_type', None) == "upload":
-                resources_lst.remove(resource_dict)
                 del resource_dict['url_type']
                 upload_resources.append(resource_dict)
+        for resource_dict in upload_resources:
+            resources_lst.remove(resource_dict)
         return upload_resources
 
     def _should_import_local(self, package_dict):
