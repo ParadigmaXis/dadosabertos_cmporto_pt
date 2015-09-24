@@ -1,0 +1,8 @@
+geoserver:
+  build: .
+  hostname: geoserver
+  domainname: localdomain
+  volumes:
+    - /srv/docker/geoserver/data:/usr/local/tomcat/webapps/geoserver/data
+  ports:
+    - "8080:8080"

@@ -38,6 +38,7 @@ RUN ln -s /usr/pgsql-9.4/bin/* /usr/local/bin/; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-geoview.git#egg=ckanext-geoview; \
     $APP_HOME/bin/pip install -e git+https://github.com/okfn/ckanext-disqus#egg=ckanext-disqus; \
     $APP_HOME/bin/pip install -e git+https://github.com/ckan/ckanext-dcat.git#egg=ckanext-dcat; \
+    sed -i.bak 's/git+git/git+https/' $APP_HOME/src/ckanext-dcat/requirements.txt; \
     $APP_HOME/bin/pip install -r $APP_HOME/src/ckanext-dcat/requirements.txt
 
 # Add dados_cmporto_pt plugin

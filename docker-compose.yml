@@ -5,6 +5,11 @@ db:
   volumes:
     - /srv/docker/ckan/db:/var/lib/postgresql/data
 
+geoserver:
+  extends:
+    file: docker/geoserver/docker-compose.yml
+    service: geoserver
+
 solr:
   build: ./docker/solr
   hostname: solr
@@ -25,6 +30,7 @@ ckan:
     - db:db
     - solr:solr
     - datapusher:datapusher
+    - geoserver:geoserver
   ports:
     - 80:80
   volumes:
