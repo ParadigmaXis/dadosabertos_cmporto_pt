@@ -10,8 +10,9 @@ ENV DATAPUSHER_HOME /usr/lib/ckan/datapusher
 #create a source directory and switch to it
 RUN mkdir -p $DATAPUSHER_HOME/src; \
     cd $DATAPUSHER_HOME/src; \
-    git clone -b 0.0.4 https://github.com/ckan/datapusher.git; \
+    git clone https://github.com/ckan/datapusher.git; \
     cd datapusher; \
+    git checkout -b master 847f4bb; \
     pip install -r requirements.txt; \
     python setup.py develop
 
