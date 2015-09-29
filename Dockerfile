@@ -7,10 +7,8 @@ ENV APP_CONFIG_FILE $APP_CONFIG/app.ini
 ENV APACHE_REWRITES_FILE $APP_CONFIG/rewrites.conf
 ENV CKAN_CONFIG /etc/ckan
 ENV CKAN_DB_USER ckan
-ENV CKAN_DB_PASS 123456
 ENV CKAN_DB_NAME ckan
 ENV DATASTORE_DB_USER datastore_default
-ENV DATASTORE_DB_PASS 123456
 ENV DATASTORE_DB_NAME datastore_default
 ENV CONFIG_FILE ckan.ini
 ENV STORE_PATH /srv/app/store
@@ -47,10 +45,7 @@ ADD . $APP_HOME/src/ckan/ckanext-dados_cmporto_pt
 # Set configurations
 RUN mkdir -p $CKAN_CONFIG; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e \
-      "sqlalchemy.url                                  = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$CKAN_DB_NAME" \
       "solr_url                                        = http://solr:8983/solr/ckan" \
-      "ckan.datastore.write_url                        = postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$DATASTORE_DB_NAME" \
-      "ckan.datastore.read_url                         = postgresql://$DATASTORE_DB_USER:$DATASTORE_DB_PASS@db/$DATASTORE_DB_NAME" \
       "ckan.datapusher.url                             = http://datapusher:8800/" \
       "ckan.auth.create_unowned_dataset                = false" \
       "ckan.auth.create_dataset_if_not_in_organization = false" \

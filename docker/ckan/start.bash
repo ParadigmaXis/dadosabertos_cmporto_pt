@@ -2,7 +2,7 @@
 
 source $(dirname "$0")/utils.bash
 
-export PGPASSWORD=$DB_ENV_POSTGRES_PASSWORD
+export PGPASSWORD=$POSTGRES_PASSWORD
 
 # Wait for dependencies
 wait_for_service db 5432
@@ -43,6 +43,9 @@ else
     cp -f /srv/app/conf/app.ini "$APP_CONFIG"
 fi
 "$APP_HOME"/bin/paster --plugin=ckan config-tool -f "$APP_CONFIG_FILE" "$CKAN_CONFIG/$CONFIG_FILE" -e
+"$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e sqlalchemy.url=postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$CKAN_DB_NAME
+"$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e ckan.datastore.write_url=postgresql://$CKAN_DB_USER:$CKAN_DB_PASS@db/$DATASTORE_DB_NAME
+"$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e ckan.datastore.read_url=postgresql://$DATASTORE_DB_USER:$DATASTORE_DB_PASS@db/$DATASTORE_DB_NAME
 
 # Initialize db
 "$APP_HOME"/bin/paster --plugin=ckan db init -c "${CKAN_CONFIG}/ckan.ini"
