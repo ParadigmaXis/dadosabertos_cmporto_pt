@@ -54,7 +54,7 @@ rm -rf /root/start.lock
 if [ ! -f /srv/app/conf/rewrites.conf ]; then
     cp -n "$APACHE_REWRITES_FILE" /srv/app/conf/
 else
-    cp -f /srv/app/conf/rewrites.ini "$APP_CONFIG"
+    cp -f /srv/app/conf/rewrites.conf "$APP_CONFIG"
 fi
 
 # Start Apache
