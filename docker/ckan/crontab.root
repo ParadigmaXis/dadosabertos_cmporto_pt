@@ -1,3 +1,3 @@
 # m  h  dom mon dow   command
 */2 *  *   *   *   "/usr/local/bin/ckan-harvest-run.bash"
-*   2  *   *   *   "/usr/local/bin/ckan-tracking-update.bash && /usr/local/bin/ckan-search-index-rebuild.bash"
+*  */2  *   *   *   "/usr/local/bin/ckan-tracking-update.bash && /usr/local/bin/ckan-search-index-rebuild.bash"
