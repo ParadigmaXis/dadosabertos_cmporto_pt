@@ -2,7 +2,7 @@ FROM centos:7
 
 RUN yum -y update; \
     yum -y install epel-release; \
-    yum -y install python-pip git gcc python-devel libxslt-devel libxml2-devel; \
+    yum -y install python-pip git gcc libffi-devel openssl-devel python-devel libxslt-devel libxml2-devel; \
     yum clean all
 
 ENV DATAPUSHER_HOME /usr/lib/ckan/datapusher
@@ -12,7 +12,8 @@ RUN mkdir -p $DATAPUSHER_HOME/src; \
     cd $DATAPUSHER_HOME/src; \
     git clone https://github.com/ckan/datapusher.git; \
     cd datapusher; \
-    git checkout -b master 847f4bb; \
+    git checkout 847f4bb; \
+    pip install requests[security]; \
     pip install -r requirements.txt; \
     python setup.py develop
 
