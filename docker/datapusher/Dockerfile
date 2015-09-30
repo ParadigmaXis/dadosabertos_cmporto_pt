@@ -20,4 +20,4 @@ RUN mkdir -p $DATAPUSHER_HOME/src; \
 WORKDIR $DATAPUSHER_HOME/src/datapusher/
 EXPOSE 8800
 
-CMD [ "python", "datapusher/main.py", "deployment/datapusher_settings.py"]
+CMD ["start.bash"]
