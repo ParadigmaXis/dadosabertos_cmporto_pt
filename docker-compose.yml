@@ -4,6 +4,7 @@ db:
   domainname: localdomain
   volumes:
     - /srv/docker/ckan/db:/var/lib/postgresql/data
+  env_file: db.environment
 
 geoserver:
   extends:
@@ -37,3 +38,6 @@ ckan:
     - /srv/docker/ckan/filestore:/srv/app/store
     - /srv/docker/ckan/conf:/srv/app/conf
     - /srv/docker/ckan/httpd:/var/log/httpd
+  env_file:
+    - db.environment
+    - ckan.environment
