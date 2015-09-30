@@ -28,9 +28,6 @@ if [[ $count -eq 0 ]]; then
   psql -h db -U postgres -c "ALTER ROLE $DATASTORE_DB_USER WITH ENCRYPTED PASSWORD '$DATASTORE_DB_PASS';"
 fi
 
-# Set permissions for datastore db
-"$APP_HOME"/bin/paster --plugin=ckan datastore set-permissions -c "${CKAN_CONFIG}/ckan.ini" | psql -h db -U postgres --set ON_ERROR_STOP=1
-
 # Configure filestore
 mkdir -p $STORE_PATH
 chown apache $STORE_PATH
@@ -48,7 +45,10 @@ fi
 "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" -e ckan.datastore.read_url=postgresql://$DATASTORE_DB_USER:$DATASTORE_DB_PASS@db/$DATASTORE_DB_NAME
 
 # Initialize db
-"$APP_HOME"/bin/paster --plugin=ckan db init -c "${CKAN_CONFIG}/ckan.ini"
+"$APP_HOME"/bin/paster --plugin=ckan db init -c "${CKAN_CONFIG}/$CONFIG_FILE"
+
+# Set permissions for datastore db
+"$APP_HOME"/bin/paster --plugin=ckan datastore set-permissions -c "${CKAN_CONFIG}/$CONFIG_FILE" | psql -h db -U postgres --set ON_ERROR_STOP=1
 
 # Release lock
 rm -rf /root/start.lock
