@@ -20,9 +20,11 @@
       Este portal disponibiliza o seu catálogo de conjuntos de dados em diferentes formatos de <a href="https://pt.wikipedia.org/wiki/Linked_data">dados ligados</a>.
 
       <h2>Conjuntos de dados</h2>
-
+	  
+	  {% set pkg_read_url = h.url_for(controller='package', action='read', id='___dataset-id__', qualified=true) %}
+	  {% set pkg_read_url = pkg_read_url|replace('___', '{') %}
       <p>Representações RDF dos metadados de um conjunto de dados em particular podem ser acedidos através de URLs do tipo:</p>
-      <pre><code>https://dados.cm-porto.pt/dataset/{dataset-id}.{format}</code></pre>
+      <pre><code>{{pkg_read_url|replace('__', '}')}}.{format}</code></pre>
 
       <p>Os formatos atualmente suportados são:</p>
       <table>
@@ -56,26 +58,31 @@
           </tr>
         </tbody>
       </table>
-
+	
+	  {% set dataset_name = 'planos-de-pormenor-2014' %}
+	  {% set read_url = h.url_for(controller='package', action='read', id=dataset_name, qualified=true) %}
+	  
       <p>Alguns exemplos dos diferentes formatos disponibilizados:</p>
       <ul>
-        <li><a href="http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.rdf">http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.rdf</a></li>
-        <li><a href="http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.xml">http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.xml</a></li>
-        <li><a href="http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.ttl">http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.ttl</a></li>
-        <li><a href="http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.n3">http://dados.cm-porto.pt/dataset/unidades-de-cuidados-de-saude-primarios-2011.n3</a></li>
+        <li><a href="{{read_url}}.rdf">{{read_url}}.rdf</a></li>
+        <li><a href="{{read_url}}.xml">{{read_url}}.xml</a></li>
+        <li><a href="{{read_url}}.ttl">{{read_url}}.ttl</a></li>
+        <li><a href="{{read_url}}.n3">{{read_url}}.n3</a></li>
       </ul>
 
       <h2>Catálogo de conjuntos de dados</h2>
       <p>Em adição às representações individuais dos metadados de cada conjuntos de dados, também é dada
           uma forma de obter os metadados de múltiplos conjuntos de dados ao mesmo tempo (esta lista é paginada,
           ver em baixo para mais detalhes):</p>
-      <pre><code>https://dados.cm-porto.pt/catalog.{format}?[page={page}]&amp;[modified_since={date}]</code></pre>
+      
+      {% set _read_url = h.url_for(action='index', qualified=true)|replace('/packages', '') %}
+      <pre><code>{{_read_url}}/catalog.{format}?[page={page}]&amp;[modified_since={date}]</code></pre>
 
       <p>O formato a ser devolvido pode ser especificado de forma semelhante ao acesso a um conjunto de dados individual, como aqui exemplificado:</p>
       <ul>
-        <li><a href="http://dados.cm-porto.pt/catalog.rdf">http://dados.cm-porto.pt/catalog.rdf</a></li>
-        <li><a href="http://dados.cm-porto.pt/catalog.xml">http://dados.cm-porto.pt/catalog.xml</a></li>
-        <li><a href="http://dados.cm-porto.pt/catalog.ttl">http://dados.cm-porto.pt/catalog.ttl</a></li>
+        <li><a href="{{_read_url}}/catalog.rdf">{{_read_url}}/catalog.rdf</a></li>
+        <li><a href="{{_read_url}}/catalog.xml">{{_read_url}}/catalog.xml</a></li>
+        <li><a href="{{_read_url}}/catalog.ttl">{{_read_url}}/catalog.ttl</a></li>
       </ul>
 
       <p>O número de conjuntos de dados devolvido é limitado. A resposta inclui informação de paginação,
@@ -85,18 +92,18 @@
 
       <pre><code>@prefix hydra: &lt;http://www.w3.org/ns/hydra/core#&gt; .
 
-      &lt;http://dados.cm-porto.pt/catalog.ttl?page=1&gt; a hydra:PagedCollection ;
-          hydra:firstPage "http://dados.cm-porto.pt/catalog.ttl?page=1" ;
+      &lt;{{_read_url}}/catalog.ttl?page=1&gt; a hydra:PagedCollection ;
+          hydra:firstPage "{{_read_url}}/catalog.ttl?page=1" ;
           hydra:itemsPerPage 100 ;
-          hydra:lastPage "http://dados.cm-porto.pt/catalog.ttl?page=3" ;
-          hydra:nextPage "http://dados.cm-porto.pt/catalog.ttl?page=2" ;
+          hydra:lastPage "{{_read_url}}/catalog.ttl?page=3" ;
+          hydra:nextPage "{{_read_url}}/catalog.ttl?page=2" ;
           hydra:totalItems 283 .
       </code></pre>
 
       <p>O URL de acesso ao catálogo também aceita o parâmetro <code>modified_since</code> para restringir os resultados
           aos conjuntos de dados modificados desde uma certa data. O parâmetro deve ser uma data ISO-8601 válida:</p>
 
-      <p><a href="http://dados.cm-porto.pt/catalog.xml?modified_since=2015-07-24">http://dados.cm-porto.pt/catalog.xml?modified_since=2015-09-13</a></p>
+      <p><a href="{{_read_url}}/catalog.xml?modified_since=2015-07-24">{{_read_url}}/catalog.xml?modified_since=2015-09-13</a></p>
     {% endif %}
     </div>
   </article>
