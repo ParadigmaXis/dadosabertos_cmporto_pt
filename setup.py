@@ -16,7 +16,7 @@ setup(
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.1',
 
-    description='''dados.cm-porto.pt''',
+    description='''dadosabertos.cm-porto.pt''',
     long_description=long_description,
 
     # The project's main homepage.
