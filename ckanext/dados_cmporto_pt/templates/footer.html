@@ -10,7 +10,7 @@
               <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('Sobre o Portal') }}</a></li>
               <li><a href="{{ h.url_for(controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='terms_of_use') }}">{{ _('Termos de Utilização') }}</a></li>
               <li><a href="{{ h.url_for(controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='privacy_policy') }}">{{ _('Política de Privacidade') }}</a></li>
-              <li><a href="{{ h.url_for(controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy') }}">{{ _('Política de Moderação') }}</a></li>
+              {# <li><a href="{{ h.url_for(controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy') }}">{{ _('Política de Moderação') }}</a></li> #}
             {% endblock %}
           </ul>
           <ul class="unstyled">
