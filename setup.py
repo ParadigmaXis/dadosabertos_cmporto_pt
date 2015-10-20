@@ -81,6 +81,6 @@ setup(
         cmporto_relationships=ckanext.dados_cmporto_pt.relationships_plugin:RelationshipsPlugin
         cmporto_catalog_overview=ckanext.dados_cmporto_pt.catalog_overview_plugin:CatalogOverviewPlugin
         guia_harvester=ckanext.dados_cmporto_pt.guiaharvester:GuiaHarvesterPlugin
-        shapefile_view=ckanext.dados_cmporto_pt.plugin:ShapefilePlugin
+        shapefile_view=ckanext.dados_cmporto_pt.shapefile:ShapefilePlugin
     ''',
 )
