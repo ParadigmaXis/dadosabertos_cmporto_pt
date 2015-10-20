@@ -134,13 +134,15 @@ class ShapefilePlugin(plugins.SingletonPlugin):
                 upload_shapefile_resource(self.geoserver_url, self.geoserver_user, self.geoserver_password, resource_id, self.get_resource_storage_path(resource_id))
         except Exception as e:
             log.exception(e)
-            raise e
     def before_update(self, context, current, resource):
         pass
     def after_update(self, context, resource):
-        if self.can_view_resource(resource):
-            resource_id = resource['id']
-            upload_shapefile_resource(self.geoserver_url, self.geoserver_user, self.geoserver_password, resource_id, self.get_resource_storage_path(resource_id))
+        try:
+            if self.can_view_resource(resource):
+                resource_id = resource['id']
+                upload_shapefile_resource(self.geoserver_url, self.geoserver_user, self.geoserver_password, resource_id, self.get_resource_storage_path(resource_id))
+        except Exception as e:
+            log.exception(e)
     def before_delete(self, context, resource, resources):
         pass
     def after_delete(self, context, resources):
