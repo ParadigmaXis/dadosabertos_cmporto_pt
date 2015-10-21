@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from ckan.lib.uploader import get_storage_path
 from ckan import plugins
 from ckan.plugins import toolkit
 from ckan.lib import helpers
@@ -47,7 +48,7 @@ class ShapefilePlugin(plugins.SingletonPlugin):
 
     def configure(self, config):
         self.gapi_key = config.get('ckanext.geoview.gapi_key', None)
-        self.storage_path = config.get('ckan.storage_path', None)
+        self.storage_path = get_storage_path()
         self.geoserver_url = config.get('dadosabertos.geoserver.url', None)
         self.geoserver_user = config.get('dadosabertos.geoserver.user', None)
         self.geoserver_password = config.get('dadosabertos.geoserver.password', None)
