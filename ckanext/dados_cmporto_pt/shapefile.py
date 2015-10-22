@@ -7,19 +7,23 @@ from ckan.lib import helpers
 from ckan.common import g
 import json
 import utils
-
+from os.path import join
 from geoserver_integration import upload_shapefile_resource
 
 import logging
 log = logging.getLogger(__name__)
 
 class ShapefilePlugin(plugins.SingletonPlugin):
+    """
+    This class requires the following redirect on the apache virtual server for ckan:
+    RewriteRule ^/dataset/[^/]*/resource/([^/]*)/wms$ http://${OPENDATA_GEOSERVER_1_PORT_8080_TCP_ADDR}:${OPENDATA_GEOSERVER_1_PORT_8080_TCP_PORT}/geoserver/shp-$1/wms [P]
+    """
     plugins.implements(plugins.IResourceController, inherit=True)
     plugins.implements(plugins.IResourceView, inherit=True)
     plugins.implements(plugins.IConfigurable, inherit=True)
 
     def get_resource_storage_path(self, resource_id):
-        return '{0}/resources/{1}/{2}/{3}'.format(self.storage_path, resource_id[0:3], resource_id[3:6], resource_id[6:])
+        return join(self.storage_path, 'resources', resource_id[0:3], resource_id[3:6], resource_id[6:])
 
     def before_create(self, context, resource):
         pass
