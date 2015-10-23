@@ -6,7 +6,6 @@ from ckan.plugins import toolkit
 from ckan.lib import helpers
 from ckan.common import g
 import json
-import utils
 from os.path import join
 from geoserver_integration import upload_shapefile_resource
 
