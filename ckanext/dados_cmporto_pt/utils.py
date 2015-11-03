@@ -11,6 +11,7 @@ def get_ordered_package_extras():
         'dataset_data_criacao',
         'dataset_data_atualizacao',
         'vigencia_inicio',
+        'vigencia_fim',
         'anotacoes',
         'responsavel_produtor_und_organica',
         'responsavel_produtor_nome',
