@@ -7,16 +7,7 @@
 </div>
 <div>
   <div class="container">
-  {# Groups here #}
-  {% snippet 'home/snippets/groups.html' %}
-  </div>
-</div>
-<div role="main">
-  {% set datasets_url = h.url_for(controller='package', action='search') %}
-  <div class="container boxes">
-    <div class="row row2">
-      <div class="span6 col2">
-        {% block tagcloud %}
+  {% block tagcloud %}
         <div class="box">
           <div class="inner">
             <h3>{{ _('Popular terms') }}</h3>
@@ -24,11 +15,20 @@
           </div>
         </div>
         {% endblock %}
-      </div>
-      <div class="span6 col1">
-        {% block stats %}
+  </div>
+</div>
+<div role="main">
+  {% set datasets_url = h.url_for(controller='package', action='search') %}
+  <div class="container boxes">
+    <div class="row row2">
+      <div class="span6 col2">
+                {% block stats %}
           {% snippet 'home/snippets/stats.html' %}
         {% endblock %}
+      </div>
+      <div class="span6 col1">
+          {# Groups here #}
+  {% snippet 'home/snippets/groups.html' %}
       </div>
     </div>
     <div class="row row2">

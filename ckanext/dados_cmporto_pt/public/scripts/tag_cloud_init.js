@@ -2,17 +2,17 @@
 $(document).ready(function(){
 	$("#tag_cloud").awesomeCloud({
 		"size" : {
-			"grid" : 8,
-			"factor" : 2,
+			"grid" : 0,
+			"factor" : 0,
 			"normalize" : true
 		},
 		"options" : {
 			"color" : "random-dark",
 			"rotationRatio" : 0,
-			"printMultiplier" : 3,
+			"printMultiplier" : 1,
 			"sort" : "highest"
 		},
 		"font" : "'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif",
-		"shape" : "square"
+		"shape" : "circle"
 	});
 });
