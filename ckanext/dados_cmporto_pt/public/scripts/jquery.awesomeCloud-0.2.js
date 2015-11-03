@@ -341,8 +341,8 @@ Extra Thanks:
 					"id": ctxID,
 					"width": dimension,
 					"height": dimension,
-					"left": dimension,
-					"top": dimension
+					"left": 0,
+					"top": 0
 				});
 				// Find the widest word at normal resolution.
 				for (i = 0; i < this.words.length; i++) {

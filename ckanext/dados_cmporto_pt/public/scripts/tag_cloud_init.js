@@ -13,6 +13,6 @@ $(document).ready(function(){
 			"sort" : "highest"
 		},
 		"font" : "'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif",
-		"shape" : "circle"
+		"shape" : "pentagon"
 	});
 });
