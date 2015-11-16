@@ -428,11 +428,17 @@ img.tiny-logo {
   margin-bottom: 30px;
 }
 .box.stats .inner li {
-  margin-bottom: 30px;
-  margin-left: 30px;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 35%;
+  white-space: nowrap;
 }
 .box.stats .inner b {
   font-size: 40px;
+}
+.box.stats .inner p {
+  margin: 0px;
+  padding: 0px;
 }
 /****************************************/
 /*                                      */
