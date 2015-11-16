@@ -2,7 +2,7 @@
 $(document).ready(function(){
 	$("#tag_cloud").awesomeCloud({
 		"size" : {
-			"grid" : 0,
+			"grid" : 10,
 			"factor" : 0,
 			"normalize" : true
 		},
@@ -13,6 +13,6 @@ $(document).ready(function(){
 			"sort" : "highest"
 		},
 		"font" : "'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif",
-		"shape" : "pentagon"
+		"shape" : "circle"
 	});
 });

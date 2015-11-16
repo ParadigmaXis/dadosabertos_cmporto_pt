@@ -78,7 +78,8 @@ nav.navigation {
 	    margin: 5mm 5mm 5mm 5mm;
 	}
 	.page_primary_action, .search-form, .pagination, .dropdown, .account-masthead,
-	.masthead, .site-footer, .toolbar, .secondary, .page-header, #dataset-resources, .dataset-resources, .tags {
+	.masthead, .site-footer, .toolbar, .secondary, .page-header, #dataset-resources, 
+	.dataset-resources, .tags, .resource-view,  .actions {
 	    display: none !important;
 	}
 	[role="main"] .primary {
@@ -88,25 +89,13 @@ nav.navigation {
 	a[href]:after {
 		content: none !important;
 	}
-	/* Retira botões gerir e ir para recurso */
-	.actions {
-		display: none;
-	}
-	
 	#disqus_thread {
-		display: none;
-	}
-
-	.resource-view {
 		display: none;
 	}
 	.additional-info {
 		font-size: 14px;
 		page-break-inside:avoid; 
 		page-break-after:auto;
-	}
-	.table .toggle-more {
-	
 	}
 }
 

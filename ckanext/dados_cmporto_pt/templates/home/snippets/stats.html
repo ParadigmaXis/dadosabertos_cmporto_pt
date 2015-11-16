@@ -7,33 +7,29 @@ PX: removed the stats about groups if the admin is not logged-in
 <div class="box stats">
   <div class="inner">
     <h3>{{ _('{0} statistics').format(g.site_title) }}</h3>
-    <ul>
-      <li>
+    	<li>
         <a href="{{ h.url_for(controller='package', action='search') }}">
-          <b>{{ h.SI_number_span(stats.dataset_count) }}</b>
-          {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}
-        </a>
-      </li>
-      <li>
+        	<b>{{ h.SI_number_span(stats.dataset_count) }}</b>
+        	<span>{{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}</span>
+        </a></li>
+        <li>
         <a href="{{ h.url_for(controller='organization', action='index') }}">
-          <b>{{ h.SI_number_span(stats.organization_count) }}</b>
-          {{ _('organization') if stats.organization_count == 1 else _('organizations') }}
-        </a>
-      </li>
-      <li>
-      {% if c.userobj.sysadmin %}
+        	<b>{{ h.SI_number_span(stats.organization_count) }}</b>
+        	<span>{{ _('organization') if stats.organization_count == 1 else _('organizations') }}</span>
+        </a></li>
+        {#
+        <li>
+      	{% if c.userobj.sysadmin %}
         <a href="{{ h.url_for(controller='group', action='index') }}">
-          <b>{{ h.SI_number_span(stats.group_count) }}</b>
-          {{ _('group') if stats.group_count == 1 else _('groups') }}
-        </a>
-      {% endif %}
-      </li>
-      <li>
+        	<b>{{ h.SI_number_span(stats.group_count) }}</b>
+        	<span>{{ _('group') if stats.group_count == 1 else _('groups') }}</span>
+        </a></li>
+      	{% endif %}#} 
+ 		<li>
         <a href="{{ h.url_for(controller='related', action='dashboard') }}">
-          <b>{{ h.SI_number_span(stats.related_count) }}</b>
-          {{ _('related item') if stats.related_count == 1 else _('related items') }}
+        	<b>{{ h.SI_number_span(stats.related_count) }}</b>
+        	<span>{{ _('related item') if stats.related_count == 1 else _('related items') }}</span>
         </a>
-      </li>
-    </ul>
-  </div>
+        </li>
+	</div>
 </div>
