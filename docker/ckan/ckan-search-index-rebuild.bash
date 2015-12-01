@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source /etc/envvars
 source $(dirname "$0")/utils.bash
 
 # Wait for dependencies
