@@ -18,6 +18,7 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IConfigurable)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -56,6 +57,12 @@ class CMPortoPlugin(plugins.SingletonPlugin):
             'sorted_guia_extras' : sorted_guia_extras,
         }
 
+    # IPackageController
+
+    def before_search(self, search_params):
+        # Este query parser aceita pesquisa com wildcards:
+        search_params['defType'] = 'edismax'
+        return search_params
 
 def format_non_duplicate_resource_items(resource_dict, extra_black_list=None):
     if not resource_dict: return []
