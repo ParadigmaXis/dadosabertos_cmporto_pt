@@ -21,15 +21,12 @@ class CMPortoPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
-
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('public', 'dados_cmporto_pt')
-        
 
     # IRoutes
-
     def before_map(self, map):
         """This IRoutes implementation overrides the standard
         ``/ckan-admin/config`` behaviour with a custom controller.
@@ -43,22 +40,19 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         return map
 
     # IConfigurable
-
     def configure(self, config):
         self.is_dcat_plugin_active = 'dcat' in config.get('ckan.plugins', '')
 
-
     #ITemplateHelpers
-
     def get_helpers(self):
         return {
             'is_dcat_plugin_active' : lambda: self.is_dcat_plugin_active,
             'format_non_duplicate_resource_items' : format_non_duplicate_resource_items,
             'sorted_guia_extras' : sorted_guia_extras,
+            'group_list_all_fields' : lambda: toolkit.get_action('group_list')(data_dict = {'all_fields' : True}),
         }
 
     # IPackageController
-
     def before_search(self, search_params):
         # Este query parser aceita pesquisa com wildcards:
         search_params['defType'] = 'edismax'
@@ -72,8 +66,7 @@ def format_non_duplicate_resource_items(resource_dict, extra_black_list=None):
     black_list = [ f for f in used_fields if f in res_dict.keys() and res_dict.get(f) ]
     black_list.append('input_Diag_Store_OK_MSG')
 
-    if extra_black_list:
-        black_list.extend(extra_black_list)
+    if extra_black_list: black_list.extend(extra_black_list)
 
     for f in black_list:
         if f in res_dict.keys(): del res_dict[f]
@@ -88,10 +81,8 @@ def sorted_guia_extras(package_extras):
     '''
 
     guia_extras = utils.get_ordered_package_extras()
-
     def guia_sort_key(value):
-        try:
-            return guia_extras.index(value)
+        try: return guia_extras.index(value)
         except ValueError:
             return len(guia_extras)+1
 
@@ -121,5 +112,3 @@ def sorted_guia_extras(package_extras):
             v = ", ".join(map(unicode, v))
         output.append(to_value(k, v))
     return output
-
-

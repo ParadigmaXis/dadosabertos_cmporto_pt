@@ -1,9 +1,7 @@
-
 <div class="module module-narrow module-shallow box">
-
 <div class="row-fluid">
 <div class="row"></div>
-{% for _g in c.groups|sort(attribute='display_name') %}
+{% for _g in h.group_list_all_fields()|sort(attribute='display_name') %}
 	{% snippet "home/snippets/group.html", group=_g, position=loop.index %}
 {% endfor %}
 </div>
