@@ -12,6 +12,7 @@ from StringIO import StringIO
 import json
 
 import logging
+from dateutil.parser import _resultbase
 log = logging.getLogger(__name__)
 
 class GuiaHarvesterPlugin(CKANHarvester):
@@ -36,6 +37,7 @@ class GuiaHarvesterPlugin(CKANHarvester):
 
     def import_stage(self, harvest_object):
         package_dict = json.loads(harvest_object.content)
+        
         if not self._should_import_local(package_dict):
             package_dict['state'] = 'deleted'
         else:
@@ -43,10 +45,11 @@ class GuiaHarvesterPlugin(CKANHarvester):
             package_dict = self._apply_package_resource_extras_black_list(package_dict)
             package_dict = self._fix_date_in_fields(package_dict)
             package_dict = self._set_license(package_dict)
+        
+        package_dict = self._pop_black_list_resources_by_type(package_dict)
         harvest_object.content = json.dumps(package_dict)
-
         upload_resources = self._pop_upload_resources(package_dict)
-
+        
         import_stage_result = super(GuiaHarvesterPlugin, self).import_stage(harvest_object)
 
         if import_stage_result:
@@ -100,6 +103,12 @@ class GuiaHarvesterPlugin(CKANHarvester):
             resources_lst.remove(resource_dict)
         return upload_resources
 
+    def _pop_black_list_resources_by_type(self, package_dict):
+        _rr = package_dict.get('resources',[])
+        _result = [ _r for _r in _rr if _r.get('resource_type','') not in ('arcgis', 'type_pasta') ]
+        package_dict['resources'] = _result
+        return package_dict
+        
     def _should_import_local(self, package_dict):
         if package_dict.get('type', '') == u'app':
             return False

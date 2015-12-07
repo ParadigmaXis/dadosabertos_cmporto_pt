@@ -1,6 +1,4 @@
-{#
-Based on group/snippets/group-item.html
-#}
+{# Based on group/snippets/group-item.html #}
 
 {% set type = group.type or 'group' %}
 {% set url = h.url_for(type ~ '_read', action='read', id=group.name) %}

@@ -61,12 +61,13 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.max_resource_size                          = 512" \
       "ckan.views.default_views                        = webpage_view pdf_view text_view image_view recline_view geo_view shapefile_view"; \
     "$APP_HOME"/bin/paster --plugin=ckan config-tool "$CKAN_CONFIG/$CONFIG_FILE" \
-      "package_hide_extras                             = identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica restricoes_acesso_interno limitacoes publicar_exterior limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria  codificacao_caracteres notas_metodologicas" \
+      "package_hide_extras                             = identificacao_responsavel_fornecedor responsavel_editor_nome responsavel_editor_email responsavel_editor_telefone responsavel_editor_und_organica  responsavel_tutor_nome responsavel_tutor_email responsavel_tutor_telefone responsavel_tutor_und_organica restricoes_acesso_interno limitacoes publicar_exterior limitacoes_fornecimento_externo  principais_utilizadores dataset_data_atualizacao dataset_data_criacao origem_geometria notas_metodologicas" \
       "ckan.storage_path                               = $STORE_PATH" \
       "ckan.i18n_directory                             = $APP_HOME/src/ckan/ckanext-dados_cmporto_pt/ckanext/dados_cmporto_pt" \
       "ckan.tracking_enabled                           = true" \
       "ckan.search.show_all_types                      = true" \
-      "ckanext.geo_view.ol_viewer                      = wms"; \
+      "ckanext.geo_view.ol_viewer                      = wms" \
+      "package_edit_return_url                         = /dataset/<NAME>"; \
     cd $APP_HOME/src/ckan/ckanext-dados_cmporto_pt && "$APP_HOME"/bin/python setup.py develop; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
 
@@ -83,12 +84,10 @@ COPY ./docker/ckan/crontab.root /var/spool/cron/root
 COPY ./docker/ckan/ckan-harvest-gatherer.bash /usr/local/bin/
 COPY ./docker/ckan/ckan-harvest-fetcher.bash /usr/local/bin/
 COPY ./docker/ckan/ckan-harvest-run.bash /usr/local/bin/
-COPY ./docker/ckan/ckan-search-index-rebuild.bash /usr/local/bin/
 COPY ./docker/ckan/ckan-tracking-update.bash /usr/local/bin/
 RUN chmod +x /usr/local/bin/ckan-harvest-gatherer.bash; \
     chmod +x /usr/local/bin/ckan-harvest-fetcher.bash; \
     chmod +x /usr/local/bin/ckan-harvest-run.bash; \
-    chmod +x /usr/local/bin/ckan-search-index-rebuild.bash; \
     chmod +x /usr/local/bin/ckan-tracking-update.bash; \
     chmod 600 /var/spool/cron/root; \
     env > /etc/envvars
