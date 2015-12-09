@@ -415,17 +415,15 @@ img.tiny-logo {
   float: left;
   margin-right: 12px;
 }
-
 /****************************************/
 /*                                      */
 /*            ICON-GROUPS               */
 /*                                      */
 /* Fix Icon-Groups Layout on Frontpage  */
 /****************************************/
-
 .row-fluid .span2 {
-	width: auto;
-	float: left;
+  width: auto;
+  float: left;
 }
 /****************************************/
 /*                                      */
@@ -453,7 +451,7 @@ img.tiny-logo {
 /****************************************/
 /* To not overlap the cloud div in mobile width */
 #awesomeCloudtag_cloud {
-	width: 100%;
+  width: 100%;
 }
 .innerPop {
   position: absolute;
