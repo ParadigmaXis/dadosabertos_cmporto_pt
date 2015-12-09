@@ -415,6 +415,18 @@ img.tiny-logo {
   float: left;
   margin-right: 12px;
 }
+
+/****************************************/
+/*                                      */
+/*            ICON-GROUPS               */
+/*                                      */
+/* Fix Icon-Groups Layout on Frontpage  */
+/****************************************/
+
+.row-fluid .span2 {
+	width: auto;
+	float: left;
+}
 /****************************************/
 /*                                      */
 /*                STATS                 */
@@ -428,23 +440,21 @@ img.tiny-logo {
   margin-bottom: 30px;
 }
 .box.stats .inner li {
-  text-align: right;
-  margin-bottom: 10px;
-  margin-right: 35%;
-  white-space: nowrap;
+  margin-bottom: 30px;
+  margin-left: 30px;
 }
 .box.stats .inner b {
   font-size: 40px;
-}
-.box.stats .inner p {
-  margin: 0px;
-  padding: 0px;
 }
 /****************************************/
 /*                                      */
 /*                CLOUD                 */
 /*                                      */
 /****************************************/
+/* To not overlap the cloud div in mobile width */
+#awesomeCloudtag_cloud {
+	width: 100%;
+}
 .innerPop {
   position: absolute;
 }
