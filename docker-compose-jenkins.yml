@@ -8,13 +8,9 @@ db:
   restart: always
 
 geoserver:
-  build: .
-  hostname: geoserver
-  domainname: localdomain
-  volumes:
-    - /srv/docker/geoserver/data:/usr/local/tomcat/webapps/geoserver/data
-  ports:
-    - "8080:8080"
+  extends:
+    file: docker/geoserver/docker-compose.yml
+    service: geoserver
   restart: always
 
 solr:
@@ -39,6 +35,7 @@ ckan:
     - db:db
     - solr:solr
     - datapusher:datapusher
+    - geoserver:geoserver
   ports:
     - 192.168.102.24:80:80
   volumes:
