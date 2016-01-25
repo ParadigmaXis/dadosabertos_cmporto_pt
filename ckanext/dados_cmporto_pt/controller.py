@@ -27,3 +27,6 @@ class StaticPagesController(base.BaseController):
     def list_license(self):
         return base.render('home/cmp/license-list.html', extra_vars = {'licenses': Package.get_license_register().items()})
 
+    def data_cubes(self):
+        return base.render('home/cmp/data-cubes.html')
+

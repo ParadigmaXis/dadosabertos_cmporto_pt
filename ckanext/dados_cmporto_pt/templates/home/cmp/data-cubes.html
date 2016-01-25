@@ -1,0 +1,56 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Data Cubes') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  {% if h.is_dcat_plugin_active() %}
+    <li class="active">{% link_for _('Data Cubes'), controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='data_cubes' %}</li>
+  {% endif %}
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content cmp-page">
+    {% if not h.is_dcat_plugin_active() %}
+      <h1>404 Not Found</h1>
+      The resource could not be found.
+    {% else %}
+      <h1 class="page-heading">{{ _('Data Cubes') }}</h1>
+
+      Este portal disponibiliza os relatórios de acesso aos conjuntos de dados no formato <a href="http://mondrian.pentaho.com/documentation/schema.php" target="_blank"><em>Mondrian Schema</em></a>.
+
+	  <h2>Modelo Estrela</h2>
+	  Foi definido um modelo em estrela, usando uma Base de Dados Postgres, alimentada da Base de Dados principal do portal Dados Abertos.<br />
+	  Para a transformação de dados, foram criados em <a href="http://community.pentaho.com/projects/data-integration/" target=_blank><em>Pentaho Data Integration</em></a> um conjunto de transformações, que
+	  podem ser obtidas <a href="home/cmp/OD-CubeGenerator.zip">aqui</a>.<br />
+	  Este ficheiro ZIP possui um <em>Job</em> que efetua a transformação, podendo ser executado sobre um servidor <em>Pentaho Data Integration</em>
+	  executando o comando <code>kitchen /file:"zip:file://{location}/OD-CubeGenerator.zip!Cube Generator.kjb"</code>, ajustando o nome do
+	  ficheiro ZIP para a sua localização (<code>{location}</code>) no servidor.<br />
+	  A transformação espera a existência de uma base de dados Postgres, denominada <code>ckan_olap</code>, com um utilizador <code>ckan_olap</code>,
+	  com password <code>ckan_olap</code>. No caso de pretender alterar estas definições, deve editar o ficheiro <code>.kjb</code> existente no ZIP.
+	  
+      <h2>Dimensões</h2>
+      Estão definidas as seguintes dimensões para análise:
+      <ul>
+      	<li>Package Dimension</li>Identifica cada Conjunto de Dados publicado
+      	<li>Time Dimension</li>Possui as hierarquias: Ano, Mês, Dia da Semana
+      </ul>
+      
+      <h2>Factos</h2>
+      A tabela de Factos possui como medida única o Número de Visitas, obtido pelo somatório de todos os acessos a um determinado Conjunto de Dados, numa Data.
+      
+      <h2>Ficheiros</h2>
+      O ficheiro de esquema pode ser obtido <a href="home/cmp/CuboVisitas.xml" download target="_blank">aqui</a>.
+      
+      <h2>Utilização do Cubo</h2>
+      Para poder utilizar o cubo, é necessário possuir um servidor OLAP mondrian devidamente configurado. Pode utilizar o servidor Open-source
+      <a href="http://community.pentaho.com/" target="_blank"><em>Pentaho Community 6.0</em></a>.<br />
+      Este servidor possui já o motor Mondrian devidamente configurado.<br />
+      Recomenda-se o uso do plugin <a href="http://www.meteorite.bi/" target="_blank"><em>Saiku Analytics</em></a> para uma melhor visualização dos dados.
+      
+    {% endif %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

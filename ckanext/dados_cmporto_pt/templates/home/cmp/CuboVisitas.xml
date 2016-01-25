@@ -1,0 +1,20 @@
+<Schema name="Open Data">
+  <Cube name="Visitas" visible="true" cache="true" enabled="true">
+    <Table name="FactTable" schema="public" />
+    <Dimension type="StandardDimension" visible="true" foreignKey="package_id" highCardinality="false" name="Dataset">
+      <Hierarchy name="Dataset" visible="true" hasAll="true">
+        <Table name="DimDataset" schema="public" />
+        <Level name="Dataset" visible="true" column="Id" nameColumn="Title" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" />
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="TimeDimension" visible="true" foreignKey="tracking_date" highCardinality="false" name="Datas">
+      <Hierarchy name="Data" visible="true" hasAll="true" primaryKey="Id">
+        <Table name="DimDate" schema="public" />
+        <Level name="Ano" visible="true" column="Year" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never" />
+        <Level name="M&#234;s" visible="true" column="Month" nameColumn="MonthName" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" />
+        <Level name="Dia da Semana" visible="true" column="Weekday" nameColumn="WeekdayName" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" />
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Visitas" column="count" aggregator="sum" visible="true" />
+  </Cube>
+</Schema>

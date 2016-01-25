@@ -37,6 +37,7 @@ class CMPortoPlugin(plugins.SingletonPlugin):
         map.connect('/moderation-policy', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='moderation_policy')
         map.connect('/license', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='list_license')
         map.connect('linked_data', '/linked-data', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='linked_data')
+        map.connect('data_cubes', '/data-cubes', controller='ckanext.dados_cmporto_pt.controller:StaticPagesController', action='data_cubes')
         return map
 
     # IConfigurable

@@ -16,6 +16,9 @@
     {% if h.is_dcat_plugin_active() %}
         {% set items = items + [('linked_data', _('Linked Data'))] %}
     {% endif %}
+    {% if c.userobj.admin or c.userobj.sysadmin %}
+    	{% set items = items + [('data_cubes', _('Data Cubes'))] %}
+    {% endif %}
     {% set items = items + [('organizations_index', _('Organizations'))] %}
     {% if c.userobj.sysadmin %}
         {% set items = items + [('group_index', _('Groups'))] %}
