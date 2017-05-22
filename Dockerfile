@@ -67,6 +67,9 @@ RUN mkdir -p $CKAN_CONFIG; \
       "ckan.tracking_enabled                           = true" \
       "ckan.search.show_all_types                      = true" \
       "ckanext.geo_view.ol_viewer                      = wms" \
+      "ckanext.spatial.common_map.type 				   = custom" \
+	  "ckanext.spatial.common_map.custom.url           = http://tile.openstreetmap.org/{z}/{x}/{y}.png" \
+	  "ckanext.spatial.common_map.attribution          = Map tiles & Data by OpenStreetMap, under CC BY SA." \
       "package_edit_return_url                         = /dataset/<NAME>"; \
     cd $APP_HOME/src/ckan/ckanext-dados_cmporto_pt && "$APP_HOME"/bin/python setup.py develop; \
     ln -s $APP_HOME/src/ckan/ckan/config/who.ini $CKAN_CONFIG/who.ini
