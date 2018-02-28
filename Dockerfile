@@ -15,7 +15,7 @@ ENV STORE_PATH /srv/app/store
 
 RUN yum -y update; \
     yum -y install epel-release; \
-    yum -y install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm; \
+    yum -y install http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-3.noarch.rpm; \
     yum -y install httpd python-virtualenv mod_wsgi git postgresql94 postgresql94-devel gcc supervisor cronie; \
     yum clean all
 
